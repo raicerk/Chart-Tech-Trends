@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.top-container {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+}
+
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
+.contenido{
+    padding: 15px;
+}
+.content {
+  padding: 0;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+/**/
+
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700";
+*, :before, :after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: Roboto;
+}
+
+input[name="tabs"] {
+  display: none;
+}
+input[name="tabs"]#tab-1:checked ~ .content .tab:nth-of-type(1) {
+  display: inline-block;
+}
+input[name="tabs"]#tab-1:checked ~ .tabs label:nth-child(1) {
+  color: #242b36;
+}
+input[name="tabs"]#tab-1:checked ~ .tabs label:nth-child(1):after {
+  width: calc(100% - 40px);
+  transition: .3s;
+}
+input[name="tabs"]#tab-2:checked ~ .content .tab:nth-of-type(2) {
+  display: inline-block;
+}
+input[name="tabs"]#tab-2:checked ~ .tabs label:nth-child(2) {
+  color: #242b36;
+}
+input[name="tabs"]#tab-2:checked ~ .tabs label:nth-child(2):after {
+  width: calc(100% - 40px);
+  transition: .3s;
+}
+input[name="tabs"]#tab-3:checked ~ .content .tab:nth-of-type(3) {
+  display: inline-block;
+}
+input[name="tabs"]#tab-3:checked ~ .tabs label:nth-child(3) {
+  color: #242b36;
+}
+input[name="tabs"]#tab-3:checked ~ .tabs label:nth-child(3):after {
+  width: calc(100% - 40px);
+  transition: .3s;
+}
+input[name="tabs"]#tab-4:checked ~ .content .tab:nth-of-type(4) {
+  display: inline-block;
+}
+input[name="tabs"]#tab-4:checked ~ .tabs label:nth-child(4) {
+  color: #242b36;
+}
+input[name="tabs"]#tab-4:checked ~ .tabs label:nth-child(4):after {
+  width: calc(100% - 40px);
+  transition: .3s;
+}
+
+.tabs {
+  overflow-X: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  white-space: nowrap;
+}
+.tabs label {
+  display: inline-block;
+  padding: 18px;
+  position: relative;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+.tabs label:after {
+  content: '';
+  background: #D22C3F;
+  width: 0;
+  height: 4px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: .1s;
+}
+
+.container {
+  margin: 0 auto;
+  overflow: hidden;
+}
+.container .tab {
+  display: none;
+  padding: 0 px;
+}
