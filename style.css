@@ -4,15 +4,14 @@ body {
 }
 
 .top-container {
-  background-color: #f1f1f1;
   padding: 30px;
   text-align: center;
 }
 
 .header {
   padding: 10px 16px;
-  background: #555;
-  color: #f1f1f1;
+  background: #000;
+  color: #ffffff;
 }
 .contenido{
     padding: 15px;
@@ -53,7 +52,7 @@ input[name="tabs"]#tab-1:checked ~ .tabs label:nth-child(1) {
   color: #242b36;
 }
 input[name="tabs"]#tab-1:checked ~ .tabs label:nth-child(1):after {
-  width: calc(100% - 40px);
+  width: 100%;
   transition: .3s;
 }
 input[name="tabs"]#tab-2:checked ~ .content .tab:nth-of-type(2) {
@@ -95,7 +94,7 @@ input[name="tabs"]#tab-4:checked ~ .tabs label:nth-child(4):after {
 }
 .tabs label {
   display: inline-block;
-  padding: 18px;
+  padding: 18px 18px 18px 0;
   position: relative;
   font-weight: 700;
   font-size: 20px;
@@ -105,9 +104,9 @@ input[name="tabs"]#tab-4:checked ~ .tabs label:nth-child(4):after {
 }
 .tabs label:after {
   content: '';
-  background: #D22C3F;
+  background: #000;
   width: 0;
-  height: 4px;
+  height: 2px;
   position: absolute;
   bottom: 0;
   left: 50%;
