@@ -4,8 +4,7 @@ body {
 }
 
 .top-container {
-  padding: 30px;
-  text-align: center;
+  padding: 15px;
 }
 
 .header {
@@ -107,10 +106,6 @@ input[name="tabs"]#tab-4:checked~.tabs label:nth-child(4):after {
   display: inline-block;
   padding: 18px 18px 18px 0;
   position: relative;
-  font-weight: 700;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   cursor: pointer;
 }
 
