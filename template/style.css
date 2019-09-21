@@ -131,6 +131,8 @@ input[name="tabs"]#tab-4:checked~.tabs label:nth-child(4):after {
 }
 
 #menuToggle {
+  float: left;
+  width: 50px;
   display: block;
   position: relative;
   z-index: 1;
