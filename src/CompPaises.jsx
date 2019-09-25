@@ -18,7 +18,14 @@ class CompPaises extends Component {
                 paises: result.data
             });
         }).catch(error => {
-            console.log("A ocurrido un error en la peticion")
+            this.setState({
+                paises: [
+                    {
+                        id: 0,
+                        nombre: "Ocurrio un error al cargar los paises"
+                    }
+                ]
+            });
         })
     }
 
