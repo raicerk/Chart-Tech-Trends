@@ -4,12 +4,7 @@ import Axios from 'axios';
 class CompPaises extends Component {
 
     state = {
-        paises: [
-            {
-                id: 0,
-                nombre: "Cargando paises..."
-            }
-        ]
+        paises: []
     }
 
     componentDidMount() {
@@ -19,21 +14,24 @@ class CompPaises extends Component {
             });
         }).catch(error => {
             this.setState({
-                paises: [
-                    {
-                        id: 0,
-                        nombre: "Ocurrio un error al cargar los paises"
-                    }
-                ]
+                paises: ""
             });
         })
     }
 
     render() {
 
-        let optionItems = this.state.paises.map((pais) =>
-            <option key={pais.id}>{pais.nombre}</option>
-        );
+        let optionItems
+
+        if (Array.isArray(this.state.paises)) {
+            optionItems = this.state.paises.map((pais) =>
+                <option key={pais.id}>{pais.nombre}</option>
+            )
+        } else {
+            optionItems = <option disabled>Cagando...</option>
+        }
+
+
         return <div className="paises">
             <select>
                 {optionItems}
