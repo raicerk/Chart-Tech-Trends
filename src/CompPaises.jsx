@@ -4,12 +4,22 @@ import Axios from 'axios';
 class CompPaises extends Component {
 
     state = {
-        paises: []
+        paises: [
+            {
+                id: 0,
+                nombre: "Cargando paises..."
+            }
+        ]
     }
 
-    async componentDidMount() {
-        let { data } = await  Axios.get(`http://www.mocky.io/v2/5d8ad48f3500005200d46a6b`);
-        this.setState({ paises: data });
+    componentDidMount() {
+        Axios.get(`http://www.mocky.io/v2/5d8ad48f3500005200d46a6b`).then(result => {
+            this.setState({
+                paises: result.data
+            });
+        }).catch(error => {
+            console.log("A ocurrido un error en la peticion")
+        })
     }
 
     render() {
