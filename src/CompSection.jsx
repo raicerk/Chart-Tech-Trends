@@ -9,7 +9,7 @@ class CompSection extends Component {
             
 
             <div className="contenido">
-                <CompGraficos data="jose"/>
+                <CompGraficos data={{nombre:"juan"}}/>
                 <p>The header will stick to the top when you reach its scroll position.</p>
                 <p>Scroll back up to remove the sticky effect.</p>
                 <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset
