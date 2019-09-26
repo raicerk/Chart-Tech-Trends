@@ -18,6 +18,10 @@ header {
   box-shadow: 0 0 0.5rem rgba(83,78,76,.5);
 }
 
+.grafico{
+  height: 400px;
+}
+
 .paises{
   float: right;
 }
