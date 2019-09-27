@@ -1,5 +1,5 @@
 {
-    "urlDataLaboral": "http://ec2-18-188-88-73.us-east-2.compute.amazonaws.com:8083/graphql?query=%7B%0A%20%20LaboralAgrupadoPorMes(where%3A%20%7Bfield%3A%20%22pais%22%2Cvalue%3A%20%22CL%22%7D)%7B%0A%20%20%20%20skill%0A%20%20%20%20datos%7B%0A%20%20%20%20%20%20fecha%2C%0A%20%20%20%20%20%20cantidad%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D%0A",
+    "urlDataLaboral": "http://www.mocky.io/v2/5d8d7c83310000ce032b4e82",
     "chart": {
         "axisBottom": {
             "orient": "bottom",

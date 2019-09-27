@@ -17,22 +17,19 @@ class CompSection extends Component {
 
     componentDidMount() {
         Axios.get(config.urlDataLaboral).then(res => {
-            // let dataLenguaje = res.data.data.LaboralAgrupadoPorMes.map(iter => {
-            //     return {
-            //         "id": iter.skill,
-            //         "data": iter.datos.map(i => {
-            //             return {
-            //                 "x": i.fecha,
-            //                 "y": iter.cantidad
-            //             }
-            //         })
-            //     }
-            // })
-
-            console.log(res.data.data)
-
-
-            //this.setState({ dataLenguajes: dataLenguaje })
+            let dataLenguaje = res.data.data.LaboralAgrupadoPorMes.filter(iter=>iter.skill === ".NET" || iter.skill === "sql" || iter.skill === "javascript").map(iter => {
+                return {
+                    "id": iter.skill,
+                    "data": iter.datos.map(i => {
+                        return {
+                            "x": i.fecha,
+                            "y": i.cantidad
+                        }
+                    })
+                }
+            })
+            console.log(dataLenguaje)
+            this.setState({ dataLenguajes: dataLenguaje })
         }).catch(error => {
             console.log(error)
         })
