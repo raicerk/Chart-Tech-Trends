@@ -17,10 +17,28 @@ class CompSection extends Component {
 
     componentDidMount() {
         Axios.get(config.urlDataLaboral).then(res => {
-            let dataLenguaje = res.data.data.LaboralAgrupadoPorMes.filter(iter=>iter.skill === ".NET" || iter.skill === "sql" || iter.skill === "javascript").map(iter => {
+            let dataLenguaje = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
+                iter.skill === "C" ||
+                iter.skill === "C#" ||
+                iter.skill === "C++" ||
+                iter.skill === "Go" ||
+                iter.skill === "Golang" ||
+                iter.skill === "Java" ||
+                iter.skill === "JavaScript" ||
+                iter.skill === "Objetive-C" ||
+                iter.skill === "PHP" ||
+                iter.skill === "Python" ||
+                iter.skill === "R" ||
+                iter.skill === "C++" ||
+                iter.skill === "Ruby" ||
+                iter.skill === "Scala" ||
+                iter.skill === "Swift" ||
+                iter.skill === "TypeScript" ||
+                iter.skill === "Kotlin"
+            ).map(iter => {
                 return {
                     "id": iter.skill,
-                    "data": iter.datos.map(i => {
+                    "data": iter.datos.sort().map(i => {
                         return {
                             "x": i.fecha,
                             "y": i.cantidad
@@ -28,7 +46,7 @@ class CompSection extends Component {
                     })
                 }
             })
-            console.log(dataLenguaje)
+            console.log(JSON.stringify(dataLenguaje))
             this.setState({ dataLenguajes: dataLenguaje })
         }).catch(error => {
             console.log(error)
@@ -40,10 +58,6 @@ class CompSection extends Component {
             <div className="contenido">
 
                 <CompGraficos data={this.state.dataLenguajes} />
-                <p>
-                    Lorea El Ipsum Washas gila saque embarao brocacochi zoronca hermano zorra de vioh, saque del corte para la mano hermano zarpao brocacochi chantar querí ser leyenda, readi saque pero pa q po de vioh chantale el pate oe zi terrible de perkin. Qliao paquepo zarpao chantar asikalao saque truco machucao te tiraste, odio tenis mano? cuca rati querí ser leyenda choro buqué de vioh, tenis mano? de vioh terrible de perkin matagatos de vioh de corte pasa paca coshino ql.
-                </p>
-                <CompGraficos data={this.state.data} />
                 <p>
                     Lorea El Ipsum Washas gila saque embarao brocacochi zoronca hermano zorra de vioh, saque del corte para la mano hermano zarpao brocacochi chantar querí ser leyenda, readi saque pero pa q po de vioh chantale el pate oe zi terrible de perkin. Qliao paquepo zarpao chantar asikalao saque truco machucao te tiraste, odio tenis mano? cuca rati querí ser leyenda choro buqué de vioh, tenis mano? de vioh terrible de perkin matagatos de vioh de corte pasa paca coshino ql.
                 </p>

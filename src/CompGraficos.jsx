@@ -30,8 +30,9 @@ class CompGraficos extends Component {
                     pointBorderColor={ config.chart.pointBorderColor }
                     pointLabel="y"
                     pointLabelYOffset={ config.chart.pointLabelYOffset }
+                    enableSlices="x"
                     useMesh={ config.chart.useMesh }
-                    legends={ config.chart.legends }
+                    legends={ config.chart.legens }        
                 />
             </div>
         );

@@ -1,12 +1,12 @@
 {
-    "urlDataLaboral": "http://www.mocky.io/v2/5d8d7c83310000ce032b4e82",
+    "urlDataLaboral": "http://www.mocky.io/v2/5d8d74d3310000d0032b4e70",
     "chart": {
         "axisBottom": {
             "orient": "bottom",
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 0,
-            "legend": "transportation",
+            "legend": "Mes-Año",
             "legendOffset": 36,
             "legendPosition": "middle"
         },
@@ -21,7 +21,7 @@
         },
         "yScale": {
             "type": "linear",
-            "stacked": true,
+            "stacked": false,
             "min": "auto",
             "max": "auto"
         },
@@ -30,7 +30,7 @@
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 0,
-            "legend": "Cantidad",
+            "legend": "Cantidad de ofertas que lo requieren",
             "legendOffset": -40,
             "legendPosition": "middle"
         },
@@ -61,7 +61,7 @@
             }
         ],
         "colors": {
-            "scheme": "nivo"
+            "scheme": "category10"
         },
         "pointColor": {
             "theme": "background"
@@ -72,6 +72,10 @@
         },
         "pointSize": 10,
         "pointLabelYOffset": -12,
-        "useMesh": true
+        "useMesh": true,
+        "isInteractive":
+        {
+            "enableSlices": "x"
+        }
     }
 }
