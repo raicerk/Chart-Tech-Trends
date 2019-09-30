@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CompGraficos from './CompGraficos';
 import Axios from 'axios';
 import config from './config.json';
+import { myFirstContext } from './CompPaises'
 
 
 class CompSection extends Component {
@@ -11,16 +12,16 @@ class CompSection extends Component {
         this.state = {
             data: [],
             dataLenguajes: [],
-            dataBaseDeDatos: []
+            dataBaseDeDatos: [],
+            pais: 0
         };
     }
-
 
     componentDidMount() {
 
         // Lenguajes de programacion
         Axios.post(config.urlGraphQL, {
-            query:`{
+            query: `{
                 LaboralAgrupadoPorMes(where: {field: "pais",value: "CL"}){
                     skill
                     datos{
@@ -68,7 +69,7 @@ class CompSection extends Component {
 
         // Bases de datos
         Axios.post(config.urlGraphQL, {
-            query:`{
+            query: `{
                 LaboralAgrupadoPorMes(where: {field: "pais",value: "CL"}){
                     skill
                     datos{
@@ -110,15 +111,19 @@ class CompSection extends Component {
         return (
             <div className="contenido">
 
-                <CompGraficos data={this.state.dataLenguajes} />
-                <p>
-                    Lorea El Ipsum Washas gila saque embarao brocacochi zoronca hermano zorra de vioh, saque del corte para la mano hermano zarpao brocacochi chantar querí ser leyenda, readi saque pero pa q po de vioh chantale el pate oe zi terrible de perkin. Qliao paquepo zarpao chantar asikalao saque truco machucao te tiraste, odio tenis mano? cuca rati querí ser leyenda choro buqué de vioh, tenis mano? de vioh terrible de perkin matagatos de vioh de corte pasa paca coshino ql.
-                </p>
 
-                <CompGraficos data={this.state.dataBaseDeDatos} />
+                <myFirstContext.Consumer>
+                    {({ pais }) => (
+                        <CompGraficos data={this.state.dataLenguajes} pais={pais} />
+                    )}
+                </myFirstContext.Consumer>
                 <p>
                     Lorea El Ipsum Washas gila saque embarao brocacochi zoronca hermano zorra de vioh, saque del corte para la mano hermano zarpao brocacochi chantar querí ser leyenda, readi saque pero pa q po de vioh chantale el pate oe zi terrible de perkin. Qliao paquepo zarpao chantar asikalao saque truco machucao te tiraste, odio tenis mano? cuca rati querí ser leyenda choro buqué de vioh, tenis mano? de vioh terrible de perkin matagatos de vioh de corte pasa paca coshino ql.
-                </p>
+                        </p>
+
+
+
+
             </div>
         );
     }
