@@ -1,5 +1,6 @@
 {
-    "urlDataLaboral": "http://www.mocky.io/v2/5d8d7c83310000ce032b4e82",
+    "urlGraphQL" : "http://ec2-18-188-88-73.us-east-2.compute.amazonaws.com:8083/graphql",
+    "urlDataLaboral": "https://labrai.free.beeceptor.com/",
     "chart": {
         "axisBottom": {
             "orient": "bottom",

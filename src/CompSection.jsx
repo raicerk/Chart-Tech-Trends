@@ -3,6 +3,7 @@ import CompGraficos from './CompGraficos';
 import Axios from 'axios';
 import config from './config.json';
 
+
 class CompSection extends Component {
 
     constructor(props) {
@@ -16,7 +17,18 @@ class CompSection extends Component {
 
 
     componentDidMount() {
-        Axios.get(config.urlDataLaboral).then(res => {
+
+        Axios.post(config.urlGraphQL, {
+            query:`{
+                LaboralAgrupadoPorMes(where: {field: "pais",value: "CL"}){
+                    skill
+                    datos{
+                        fecha
+                        cantidad
+                    }
+                }
+            }`
+        }).then(res => {
             let dataLenguaje = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
                 iter.skill === "C" ||
                 iter.skill === "C#" ||
@@ -39,14 +51,14 @@ class CompSection extends Component {
                 return {
                     "id": iter.skill,
                     "data": iter.datos.sort().map(i => {
+                        let fec = i.fecha.split("-")
                         return {
-                            "x": i.fecha,
+                            "x": `${fec[0]}${fec[1]}`,
                             "y": i.cantidad
                         }
                     })
                 }
             })
-            console.log(JSON.stringify(dataLenguaje))
             this.setState({ dataLenguajes: dataLenguaje })
         }).catch(error => {
             console.log(error)
