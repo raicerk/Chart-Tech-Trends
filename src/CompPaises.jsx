@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 
-export const myFirstContext = React.createContext()
+export const myFirstContext = React.createContext({
+    pais: 0
+})
 
 class CompPaises extends Component {
 
@@ -33,14 +35,14 @@ class CompPaises extends Component {
 
         if (Array.isArray(this.state.paises)) {
             optionItems = this.state.paises.map((pais) =>
-                <option value={pais.id} key={{ pais: pais.id }}>{pais.nombre}</option>
+                <option key={pais.id.toString()} value={pais.id} >{pais.nombre}</option>
             )
         } else {
             optionItems = <option disabled>Cagando...</option>
         }
 
         return <div className="paises">
-            <myFirstContext.Provider value={{ pais: "0" }}></myFirstContext.Provider>
+            <myFirstContext.Provider value={{ pais: this.state.idpais }}></myFirstContext.Provider>
             <select onChange={this.handleChange.bind(this)} value={this.state.idpais} >
                 {optionItems}
             </select>
