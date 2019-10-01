@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CompGraficos from './CompGraficos';
 import Axios from 'axios';
 import config from './config.json';
-import { myFirstContext } from './CompPaises'
+import { myFirstContext } from './App'
 
 
 class CompSection extends Component {
@@ -110,8 +110,6 @@ class CompSection extends Component {
     render() {
         return (
             <div className="contenido">
-
-
                 <myFirstContext.Consumer>
                     {({ pais }) => (
                         <CompGraficos data={this.state.dataLenguajes} pais={pais} />
@@ -119,11 +117,7 @@ class CompSection extends Component {
                 </myFirstContext.Consumer>
                 <p>
                     Lorea El Ipsum Washas gila saque embarao brocacochi zoronca hermano zorra de vioh, saque del corte para la mano hermano zarpao brocacochi chantar querí ser leyenda, readi saque pero pa q po de vioh chantale el pate oe zi terrible de perkin. Qliao paquepo zarpao chantar asikalao saque truco machucao te tiraste, odio tenis mano? cuca rati querí ser leyenda choro buqué de vioh, tenis mano? de vioh terrible de perkin matagatos de vioh de corte pasa paca coshino ql.
-                        </p>
-
-
-
-
+                </p>
             </div>
         );
     }

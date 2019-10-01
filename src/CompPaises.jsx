@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { myFirstContext } from './App'
 
-export const myFirstContext = React.createContext({
-    pais: 0
-})
 
 class CompPaises extends Component {
 
@@ -25,7 +23,7 @@ class CompPaises extends Component {
         })
     }
 
-    handleChange = (event) => {
+    handleChange = (contx,event) => {
         this.setState({ idpais: event.target.value });
     }
 
@@ -42,10 +40,16 @@ class CompPaises extends Component {
         }
 
         return <div className="paises">
-            <myFirstContext.Provider value={{ pais: this.state.idpais }}></myFirstContext.Provider>
-            <select onChange={this.handleChange.bind(this)} value={this.state.idpais} >
-                {optionItems}
-            </select>
+            <myFirstContext.Consumer>
+                {(context) => (
+                    <select onChange={(e)=> {
+                        context.setPais(this.state.idpais)
+                        this.handleChange(this,e)
+                    }} value={this.state.idpais} >
+                        {optionItems}
+                    </select>
+                )}
+            </myFirstContext.Consumer>
         </div>
     }
 }
