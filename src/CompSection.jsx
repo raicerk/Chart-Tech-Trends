@@ -55,9 +55,8 @@ const LanguageGraph = () => {
                 return {
                     "id": iter.skill,
                     "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
                         return {
-                            "x": `${fec[0]}${fec[1]}`,
+                            "x": i.fecha,
                             "y": i.cantidad
                         }
                     })
@@ -103,9 +102,8 @@ const DatabaseGraph = () => {
                 return {
                     "id": iter.skill,
                     "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
                         return {
-                            "x": `${fec[0]}${fec[1]}`,
+                            "x": i.fecha,
                             "y": i.cantidad
                         }
                     })
@@ -146,17 +144,18 @@ const FrameworkJSGraph = () => {
                 iter.skill === "AngularJS" ||
                 iter.skill === "Backbone.js" ||
                 iter.skill === "Ember.js" ||
+                iter.skill === "jQuery" ||
+                iter.skill === "Meteor" ||
                 iter.skill === "React" ||
                 iter.skill === "Sails.js" ||
-                iter.skill === "vue.js" ||
-                iter.skill === "Meteor"
+                iter.skill === "vue.js"
+                
             ).map(iter => {
                 return {
                     "id": iter.skill,
                     "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
                         return {
-                            "x": `${fec[0]}${fec[1]}`,
+                            "x": i.fecha,
                             "y": i.cantidad
                         }
                     })
