@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import CompHeader from './CompHeader';
 import CompSection from './CompSection';
-
-export const myFirstContext = React.createContext({
-  pais: 3,
-  setPais: () => { }
-})
+import AppContext from './AppContext'
 
 class App extends Component {
 
   state = {
-    pais: 0
+    pais: "CL"
   }
 
   handleSetPais = (Pais) => {
@@ -21,14 +17,15 @@ class App extends Component {
   render() {
 
     return (
-      <div className="App">
-        <myFirstContext.Provider value={{ 
-          pais: this.state.pais,
-          setPais: this.handleSetPais
-         }}></myFirstContext.Provider>
-        <CompHeader />
-        <CompSection />
-      </div>
+      <AppContext.Provider value={{ 
+        pais: this.state.pais,
+        setPais: this.handleSetPais
+       }}>
+        <div className="App">
+          <CompHeader />
+          <CompSection />
+        </div>
+      </AppContext.Provider>
     );
   }
 }

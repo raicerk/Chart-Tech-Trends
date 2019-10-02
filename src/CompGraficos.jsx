@@ -14,7 +14,6 @@ class CompGraficos extends Component {
     render() {
         return (
             <div className="grafico">
-                hola: {this.props.pais}
                 <ResponsiveLine
                     data={ this.props.data }
                     margin={ config.chart.margin }

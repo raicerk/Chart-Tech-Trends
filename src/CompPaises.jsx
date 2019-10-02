@@ -1,57 +1,52 @@
-import React, { Component } from 'react';
-import Axios from 'axios';
-import { myFirstContext } from './App'
+import React  from 'react';
+import AppContext from './AppContext'
 
-
-class CompPaises extends Component {
-
-    state = {
-        paises: [],
-        idpais: 0
+const OPTIONS = [
+    {
+        "code": "CL",
+        "nombre": "Chile"
+    },
+    {
+        "code": "AR",
+        "nombre": "Argentina"
+    },
+    { 
+        "code": "PE",
+        "nombre": "Peru"
+    },
+    {
+        "code": "MX",
+        "nombre": "Mexico"
+    },
+    {
+        "code": "RE",
+        "nombre": "Remoto"
     }
+]
 
-
-    componentDidMount() {
-        Axios.get(`http://www.mocky.io/v2/5d8ad48f3500005200d46a6b`).then(result => {
-            this.setState({
-                paises: result.data
-            });
-        }).catch(error => {
-            this.setState({
-                paises: ""
-            });
-        })
-    }
-
-    handleChange = (contx,event) => {
-        this.setState({ idpais: event.target.value });
-    }
-
-    render() {
-
-        let optionItems
-
-        if (Array.isArray(this.state.paises)) {
-            optionItems = this.state.paises.map((pais) =>
-                <option key={pais.id.toString()} value={pais.id} >{pais.nombre}</option>
-            )
-        } else {
-            optionItems = <option disabled>Cagando...</option>
-        }
-
-        return <div className="paises">
-            <myFirstContext.Consumer>
-                {(context) => (
-                    <select onChange={(e)=> {
-                        context.setPais(this.state.idpais)
-                        this.handleChange(this,e)
-                    }} value={this.state.idpais} >
-                        {optionItems}
-                    </select>
-                )}
-            </myFirstContext.Consumer>
-        </div>
-    }
-}
+const CompPaises = React.memo((props) => (
+    <AppContext.Consumer>
+        {(context) => (
+            <div className="paises">
+                <select
+                    onChange={(e) => { context.setPais(e.target.value) }}
+                    value={context.pais}
+                >
+                    {
+                        OPTIONS.map(
+                            (pais) =>
+                                <option 
+                                    key={String(pais.code)}
+                                    value={pais.code}
+                                >
+                                    { pais.nombre }
+                                </option>
+                        )
+                    }
+                </select>
+            </div>
+        )}
+    </AppContext.Consumer>
+))
 
 export default CompPaises;
