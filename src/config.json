@@ -1,12 +1,14 @@
 {
-    "urlGraphQL" : "https://laboral.pro-gramadores.org/graphql",
+    "urlGraphQL": "https://laboral.pro-gramadores.org/graphql",
     "chart": {
         "axisBottom": {
+            "format": "%b %Y",
+            "tickValues": "every month",
             "orient": "bottom",
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 0,
-            "legend": "Mes-Año",
+            "legend": "Mes Año",
             "legendOffset": 36,
             "legendPosition": "middle"
         },
@@ -17,7 +19,9 @@
             "left": 60
         },
         "xScale": {
-            "type": "point"
+            "type": "time",
+            "format": "%Y-%m-%d",
+            "precision": "day"
         },
         "yScale": {
             "type": "linear",
@@ -73,8 +77,7 @@
         "pointSize": 10,
         "pointLabelYOffset": -12,
         "useMesh": true,
-        "isInteractive":
-        {
+        "isInteractive": {
             "enableSlices": "x"
         }
     }

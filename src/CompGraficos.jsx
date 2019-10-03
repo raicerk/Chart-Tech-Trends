@@ -28,11 +28,12 @@ class CompGraficos extends Component {
                     pointColor={ config.chart.pointColor }
                     pointBorderWidth={ config.chart.pointBorderWidth }
                     pointBorderColor={ config.chart.pointBorderColor }
-                    pointLabel="y"
                     pointLabelYOffset={ config.chart.pointLabelYOffset }
-                    enableSlices="x"
                     useMesh={ config.chart.useMesh }
-                    legends={ config.chart.legens }        
+                    legends={ config.chart.legens }
+                    xFormat="time:%Y-%m-%d"
+                    enableSlices="x"
+                    pointLabel="y"
                 />
             </div>
         );
