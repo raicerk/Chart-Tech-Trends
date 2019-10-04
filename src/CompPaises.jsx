@@ -19,8 +19,8 @@ const OPTIONS = [
         "nombre": "Mexico"
     },
     {
-        "code": "RE",
-        "nombre": "Remoto"
+        "code": "CO",
+        "nombre": "Colombia"
     }
 ]
 
