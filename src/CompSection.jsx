@@ -1,5 +1,6 @@
 import React, { Component, useContext, useState, useEffect } from 'react';
-import CompGraficos from './CompGraficos';
+import CompGraficos from './CompGraficoLinea';
+import CompGraficoPie from './CompGraficoPie';
 import Axios from 'axios';
 import config from './config.json';
 import AppContext from './AppContext'
@@ -9,9 +10,12 @@ class CompSection extends Component {
     render() {
         return (
             <div className="contenido">
+                <LanguageAcumulatedGraph />
                 <LanguageGraph />
                 <DatabaseGraph />
-                <FrameworkJSGraph/>
+                <FrameworkJSGraph />
+                <CloudServicesGraph />
+                <MobileGraph />
             </div>
         );
     }
@@ -37,6 +41,7 @@ const LanguageGraph = () => {
                 iter.skill === "C" ||
                 iter.skill === "C#" ||
                 iter.skill === "C++" ||
+                iter.skill === "Erlang" ||
                 iter.skill === "Go" ||
                 iter.skill === "Golang" ||
                 iter.skill === "Java" ||
@@ -45,7 +50,6 @@ const LanguageGraph = () => {
                 iter.skill === "PHP" ||
                 iter.skill === "Python" ||
                 iter.skill === "R" ||
-                iter.skill === "C++" ||
                 iter.skill === "Ruby" ||
                 iter.skill === "Scala" ||
                 iter.skill === "Swift" ||
@@ -151,7 +155,7 @@ const FrameworkJSGraph = () => {
                 iter.skill === "React" ||
                 iter.skill === "Sails.js" ||
                 iter.skill === "vue.js"
-                
+
             ).map(iter => {
                 return {
                     "id": iter.skill,
@@ -172,6 +176,148 @@ const FrameworkJSGraph = () => {
 
     return (
         <CompGraficos data={data} />
+    )
+}
+
+const CloudServicesGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                    LaboralAgrupadoPorMes(where: {field: "pais",value: "${context.pais}"}){
+                        skill
+                        datos{
+                            fecha
+                            cantidad
+                        }
+                    }
+                }`
+        }).then(res => {
+            let dataCloudServices = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
+                iter.skill === "Amazon Web Services" ||
+                iter.skill === "Azure" ||
+                iter.skill === "Google App Engine"
+
+            ).map(iter => {
+                return {
+                    "id": iter.skill,
+                    "data": iter.datos.sort().map(i => {
+                        let fec = i.fecha.split("-")
+                        return {
+                            "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+                            "y": i.cantidad
+                        }
+                    })
+                }
+            })
+            setData(dataCloudServices)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficos data={data} />
+    )
+}
+
+const MobileGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                    LaboralAgrupadoPorMes(where: {field: "pais",value: "${context.pais}"}){
+                        skill
+                        datos{
+                            fecha
+                            cantidad
+                        }
+                    }
+                }`
+        }).then(res => {
+            let dataMobiles = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
+                iter.skill === "Android" ||
+                iter.skill === "Cordova" ||
+                iter.skill === "Ionic" ||
+                iter.skill === "Kotlin" ||
+                iter.skill === "PhoneGap" ||
+                iter.skill === "React-Native" ||
+                iter.skill === "Xamarin" ||
+                iter.skill === "iOS" ||
+                iter.skill === "kotlin"
+
+            ).map(iter => {
+                return {
+                    "id": iter.skill,
+                    "data": iter.datos.sort().map(i => {
+                        let fec = i.fecha.split("-")
+                        return {
+                            "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+                            "y": i.cantidad
+                        }
+                    })
+                }
+            })
+            setData(dataMobiles)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficos data={data} />
+    )
+}
+
+const LanguageAcumulatedGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
+                        skill
+                        cantidad
+                    }
+                }`
+        }).then(res => {
+            const dataLenguajeAcumulado = res.data.data.LaboralAcumulado.filter(iter =>
+                iter.skill === "C" ||
+                iter.skill === "C#" ||
+                iter.skill === "C++" ||
+                iter.skill === "Erlang" ||
+                iter.skill === "Go" ||
+                iter.skill === "Golang" ||
+                iter.skill === "Java" ||
+                iter.skill === "JavaScript" ||
+                iter.skill === "Objetive-C" ||
+                iter.skill === "PHP" ||
+                iter.skill === "Python" ||
+                iter.skill === "R" ||
+                iter.skill === "Ruby" ||
+                iter.skill === "Scala" ||
+                iter.skill === "Swift" ||
+                iter.skill === "TypeScript" ||
+                iter.skill === "Kotlin"
+            ).map(iter => {
+                return {
+                    "id": iter.skill,
+                    "value": iter.cantidad
+                }
+            })
+            setData(dataLenguajeAcumulado)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficoPie data={data} />
     )
 }
 
