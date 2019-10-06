@@ -12,22 +12,35 @@ class CompSection extends Component {
         return (
             <div className="contenido">
                 
+                <hr/>
                 <LanguageAcumulatedGraph />
                 <LanguageGraph />
                 <LanguajeSalaryGraph/>
+                <hr/>
 
+                <hr/>
                 <DatabaseAcumulatedGraph/>
                 <DatabaseGraph />
-                
+                <DatabaseSalaryGraph/>
+                <hr/>
+
+                <hr/>
                 <FrameworkJSAcumulatedGraph/>
                 <FrameworkJSGraph />
-                
+                <FrameworkJSSalaryGraph/>
+                <hr/>
+
+                <hr/>
                 <CloudServicesSAcumulatedGraph/>
                 <CloudServicesGraph />
-                
+                <CloudServicesSalaryGraph/>
+                <hr/>
+
+                <hr/>
                 <MobileAcumulatedGraph/>
                 <MobileGraph />
-
+                <MobileSalaryGraph/>
+                <hr/>
             </div>
         );
     }
@@ -534,5 +547,154 @@ const LanguajeSalaryGraph = () => {
         <CompGraficoBarra data={data} />
     )
 }
+
+const DatabaseSalaryGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
+                    skill
+                    salariominimo
+                    salariomaximo
+                    media
+                    cantidad
+                }
+            }`
+        }).then(res => {
+            const dataBaseDeDatosSalario = res.data.data.LaboralSalarios.filter(iter =>
+                iter.skill === "MongoDB" ||
+                iter.skill === "MySQL" ||
+                iter.skill === "NoSQL" ||
+                iter.skill === "Oracle" ||
+                iter.skill === "Oracle DB" ||
+                iter.skill === "PostgreSQL" ||
+                iter.skill === "Redis" ||
+                iter.skill === "SQL"
+            )
+            setData(dataBaseDeDatosSalario)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficoBarra data={data} />
+    )
+}
+
+const FrameworkJSSalaryGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
+                    skill
+                    salariominimo
+                    salariomaximo
+                    media
+                    cantidad
+                }
+            }`
+        }).then(res => {
+            const dataFrameworkJSSalario = res.data.data.LaboralSalarios.filter(iter =>
+                iter.skill === "Angular 2" ||
+                iter.skill === "Angular 4" ||
+                iter.skill === "Angular 5" ||
+                iter.skill === "Angular 6" ||
+                iter.skill === "AngularJS" ||
+                iter.skill === "Backbone.js" ||
+                iter.skill === "Ember.js" ||
+                iter.skill === "jQuery" ||
+                iter.skill === "Meteor" ||
+                iter.skill === "React" ||
+                iter.skill === "Sails.js" ||
+                iter.skill === "vue.js"
+            )
+            setData(dataFrameworkJSSalario)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficoBarra data={data} />
+    )
+}
+
+const CloudServicesSalaryGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
+                    skill
+                    salariominimo
+                    salariomaximo
+                    media
+                    cantidad
+                }
+            }`
+        }).then(res => {
+            const dataCloudServicesSalario = res.data.data.LaboralSalarios.filter(iter =>
+                iter.skill === "Amazon Web Services" ||
+                iter.skill === "Azure" ||
+                iter.skill === "Google App Engine"
+            )
+            setData(dataCloudServicesSalario)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficoBarra data={data} />
+    )
+}
+
+const MobileSalaryGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
+                    skill
+                    salariominimo
+                    salariomaximo
+                    media
+                    cantidad
+                }
+            }`
+        }).then(res => {
+            const dataMobilesSalario = res.data.data.LaboralSalarios.filter(iter =>
+                iter.skill === "Android" ||
+                iter.skill === "Cordova" ||
+                iter.skill === "Ionic" ||
+                iter.skill === "Kotlin" ||
+                iter.skill === "PhoneGap" ||
+                iter.skill === "React-Native" ||
+                iter.skill === "Xamarin" ||
+                iter.skill === "iOS" ||
+                iter.skill === "kotlin"
+            )
+            setData(dataMobilesSalario)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficoBarra data={data} />
+    )
+}
+
 
 export default CompSection;
