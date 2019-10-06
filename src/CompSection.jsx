@@ -1,6 +1,7 @@
 import React, { Component, useContext, useState, useEffect } from 'react';
 import CompGraficos from './CompGraficoLinea';
 import CompGraficoPie from './CompGraficoPie';
+import CompGraficoBarra from './CompGraficoBarra';
 import Axios from 'axios';
 import config from './config.json';
 import AppContext from './AppContext'
@@ -13,7 +14,8 @@ class CompSection extends Component {
                 
                 <LanguageAcumulatedGraph />
                 <LanguageGraph />
-                
+                <LanguajeSalaryGraph/>
+
                 <DatabaseAcumulatedGraph/>
                 <DatabaseGraph />
                 
@@ -484,6 +486,52 @@ const MobileAcumulatedGraph = () => {
 
     return (
         <CompGraficoPie data={data} />
+    )
+}
+
+const LanguajeSalaryGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
+                    skill
+                    salariominimo
+                    salariomaximo
+                    media
+                    cantidad
+                }
+            }`
+        }).then(res => {
+            const dataLenguajeSalario = res.data.data.LaboralSalarios.filter(iter =>
+                iter.skill === "C" ||
+                iter.skill === "C#" ||
+                iter.skill === "C++" ||
+                iter.skill === "Erlang" ||
+                iter.skill === "Go" ||
+                iter.skill === "Golang" ||
+                iter.skill === "Java" ||
+                iter.skill === "JavaScript" ||
+                iter.skill === "Objetive-C" ||
+                iter.skill === "PHP" ||
+                iter.skill === "Python" ||
+                iter.skill === "R" ||
+                iter.skill === "Ruby" ||
+                iter.skill === "Scala" ||
+                iter.skill === "Swift" ||
+                iter.skill === "TypeScript" ||
+                iter.skill === "Kotlin"
+            )
+            setData(dataLenguajeSalario)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficoBarra data={data} />
     )
 }
 
