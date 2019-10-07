@@ -2,6 +2,7 @@ import React, { Component, useContext, useState, useEffect } from 'react';
 import CompGraficos from './CompGraficoLinea';
 import CompGraficoPie from './CompGraficoPie';
 import CompGraficoBarra from './CompGraficoBarra';
+import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
 import Axios from 'axios';
 import config from './config.json';
 import AppContext from './AppContext'
@@ -11,6 +12,10 @@ class CompSection extends Component {
     render() {
         return (
             <div className="contenido">
+
+                <hr/>
+                <OtherSkillGraph/>
+                <hr/>
                 
                 <hr/>
                 <LanguageAcumulatedGraph />
@@ -693,6 +698,42 @@ const MobileSalaryGraph = () => {
 
     return (
         <CompGraficoBarra data={data} />
+    )
+}
+
+const OtherSkillGraph = () => {
+    const context = useContext(AppContext)
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        
+        let variablefromselect = 'Java'
+
+        Axios.post(config.urlGraphQL, {
+            query: `{
+                LaboralConOtrosSkill(country: {value: "${context.pais}"}, skill: {value: "${variablefromselect}"}){
+                    skill
+                    cantidad
+                }
+            }`
+        }).then(res => {
+            const datOtherSkill = res.data.data.LaboralConOtrosSkill.filter(iter => iter.skill !== variablefromselect).slice(0,10).sort( (a, b)=> {
+                if (a.cantidad > b.cantidad) {
+                  return 1;
+                }
+                if (a.cantidad < b.cantidad) {
+                  return -1;
+                }
+                return 0;
+              })
+            setData(datOtherSkill)
+        }).catch(error => {
+            console.log(error)
+        })
+    }, [context.pais])
+
+    return (
+        <CompGraficoBarraHorizontal data={data} />
     )
 }
 
