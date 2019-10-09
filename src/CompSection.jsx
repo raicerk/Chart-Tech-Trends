@@ -53,13 +53,13 @@ class CompSection extends Component {
                 <hr />
                 {/* Fin separador */}
                 
-                Bases de datos acumuladas desde mayo de 2018 a la fecha
+                Frameworks JavaScript acumulados desde mayo de 2018 a la fecha
                 <FrameworkJSAcumulatedGraph />
 
-                Base de datos, tendencias de bases de datos o motores solicitadas en ofertas laborales desde mayo de 2018 a la fecha
+                Frameworks JavaScript, tendencias de Frameworks JavaScript y tecnologias JavaScript solicitadas en ofertas laborales desde mayo de 2018 a la fecha
                 <FrameworkJSGraph />
 
-                Base de datos promedios de salarios desde mayo de 2018 a la fecha
+                Frameworks JavaScript promedios de salarios desde mayo de 2018 a la fecha
                 <FrameworkJSSalaryGraph />
 
                 {/* Separador */}
