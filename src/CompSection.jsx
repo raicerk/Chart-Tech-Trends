@@ -35,8 +35,13 @@ class CompSection extends Component {
                 <hr />
                 <hr />
 
+                Bases de datos acumuladas desde mayo de 2018 a la fecha
                 <DatabaseAcumulatedGraph />
+
+                Base de datos, tendencias de bases de datos o motores solicitadas en ofertas laborales desde mayo de 2018 a la fecha
                 <DatabaseGraph />
+
+                Base de datos promedios de salarios desde mayo de 2018 a la fecha
                 <DatabaseSalaryGraph />
                 <hr />
 
