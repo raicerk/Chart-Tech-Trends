@@ -20,8 +20,10 @@ class CompSection extends Component {
                 las ofertas laborales:<br/> <br/><br/>
                 <OtherSkillGraph />
                
+                {/* Separador */}
                 <hr />
                 <hr />
+                {/* Fin separador */}
 
                 Lenguajes de programación acumulados desde mayo de 2018 a la fecha
                 <LanguageAcumulatedGraph />
@@ -32,8 +34,10 @@ class CompSection extends Component {
                 Lenguajes de programación promedios de salarios desde mayo de 2018 a la fecha
                 <LanguajeSalaryGraph />
                 
+                {/* Separador */}
                 <hr />
                 <hr />
+                {/* Fin separador */}
 
                 Bases de datos acumuladas desde mayo de 2018 a la fecha
                 <DatabaseAcumulatedGraph />
@@ -43,21 +47,35 @@ class CompSection extends Component {
 
                 Base de datos promedios de salarios desde mayo de 2018 a la fecha
                 <DatabaseSalaryGraph />
+                
+                {/* Separador */}
                 <hr />
-
                 <hr />
+                {/* Fin separador */}
+                
+                Bases de datos acumuladas desde mayo de 2018 a la fecha
                 <FrameworkJSAcumulatedGraph />
-                <FrameworkJSGraph />
-                <FrameworkJSSalaryGraph />
-                <hr />
 
+                Base de datos, tendencias de bases de datos o motores solicitadas en ofertas laborales desde mayo de 2018 a la fecha
+                <FrameworkJSGraph />
+
+                Base de datos promedios de salarios desde mayo de 2018 a la fecha
+                <FrameworkJSSalaryGraph />
+
+                {/* Separador */}
                 <hr />
+                <hr />
+                {/* Fin separador */}
+
                 <CloudServicesSAcumulatedGraph />
                 <CloudServicesGraph />
                 <CloudServicesSalaryGraph />
+  
+                {/* Separador */}
                 <hr />
+                <hr />
+                {/* Fin separador */}
 
-                <hr />
                 <MobileAcumulatedGraph />
                 <MobileGraph />
                 <MobileSalaryGraph />
