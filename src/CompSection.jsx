@@ -13,7 +13,9 @@ class CompSection extends Component {
         return (
             <div className="contenido">
 
+                {/* Separador */}
                 <hr />
+                {/* Fin separador */}
 
                 Esta funcionalidad te permitirá elegir un skill y ver cuales otros skill son requeridos en conjunto con el seleccionado, 
                 en el gráfico se refleja los skill complementarios que necesitas aprender o tener noción y que solicitan las compañías en 
@@ -67,8 +69,13 @@ class CompSection extends Component {
                 <hr />
                 {/* Fin separador */}
 
+                Servicios cloud acumulados desde mayo de 2018 a la fecha
                 <CloudServicesSAcumulatedGraph />
+
+                Servicios cloud, tendencias de nubes solicitadas en ofertas laborales desde mayo de 2018 a la fecha
                 <CloudServicesGraph />
+                
+                Servicios cloud promedios de salarios desde mayo de 2018 a la fecha
                 <CloudServicesSalaryGraph />
   
                 {/* Separador */}
