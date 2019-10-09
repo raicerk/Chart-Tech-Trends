@@ -58,7 +58,7 @@ class CompSection extends Component {
                 Frameworks JavaScript acumulados desde mayo de 2018 a la fecha
                 <FrameworkJSAcumulatedGraph />
 
-                Frameworks JavaScript, tendencias de Frameworks JavaScript y tecnologias JavaScript solicitadas en ofertas laborales desde mayo de 2018 a la fecha
+                Frameworks JavaScript, tendencias de Frameworks JavaScript y tecnologías JavaScript solicitadas en ofertas laborales desde mayo de 2018 a la fecha
                 <FrameworkJSGraph />
 
                 Frameworks JavaScript promedios de salarios desde mayo de 2018 a la fecha
@@ -83,8 +83,13 @@ class CompSection extends Component {
                 <hr />
                 {/* Fin separador */}
 
+                Tecnologías móviles acumuladas desde mayo de 2018 a la fecha
                 <MobileAcumulatedGraph />
+
+                Tecnologías móviles, tendencias de tecnologías móviles solicitadas en ofertas laborales desde mayo de 2018 a la fecha
                 <MobileGraph />
+
+                Tecnologías móviles promedios de salarios desde mayo de 2018 a la fecha
                 <MobileSalaryGraph />
                 <hr />
             </div>
