@@ -316,7 +316,6 @@ const LanguageAcumulatedGraph = () => {
                     }
                 }`
         }).then(res => {
-            console.log(JSON.stringify(res.data.data.LaboralAcumulado.map(iter=>iter.skill)))
             const dataLenguajeAcumulado = res.data.data.LaboralAcumulado.filter(iter =>
                 iter.skill === "C" ||
                 iter.skill === "C#" ||
