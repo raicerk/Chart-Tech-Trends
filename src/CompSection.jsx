@@ -14,16 +14,27 @@ class CompSection extends Component {
             <div className="contenido">
 
                 <hr />
+
+                Esta funcionalidad te permitirá elegir un skill y ver cuales otros skill son requeridos en conjunto con el seleccionado, 
+                en el gráfico se refleja los skill complementarios que necesitas aprender o tener noción y que solicitan las compañías en 
+                las ofertas laborales:<br/> <br/><br/>
                 <OtherSkillGraph />
+               
+                <hr />
                 <hr />
 
-                <hr />
+                Lenguajes de programación acumulados desde mayo de 2018 a la fecha
                 <LanguageAcumulatedGraph />
+                
+                Lenguajes de programación, tendencias de lenguajes solicitados en ofertas laborales desde mayo de 2018 a la fecha
                 <LanguageGraph />
+                
+                Lenguajes de programación promedios de salarios desde mayo de 2018 a la fecha
                 <LanguajeSalaryGraph />
+                
+                <hr />
                 <hr />
 
-                <hr />
                 <DatabaseAcumulatedGraph />
                 <DatabaseGraph />
                 <DatabaseSalaryGraph />
@@ -735,6 +746,7 @@ const OtherSkillGraph = () => {
 
     return (
         <div>
+            Selecciona un skill: 
             <select onChange={(e) => { setSkill(e.target.value) }} >
                 {
                     skills.map((iter, index) =>
