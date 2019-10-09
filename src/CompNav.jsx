@@ -12,15 +12,15 @@ class CompNav extends Component {
                     <span></span>
                     <span></span>
 
-                    <ul id="menu">
+                    <ul id="menu" style={{background: '#fff'}}>
                         <a href="#home">
                             <li>Inicio</li>
                         </a>
                         <a href="https://github.com/pgramadores/APIEstadisticas" target="_blank" rel="noopener noreferrer">
-                            <li>API in Github</li>
+                            <li>Proyecto de API in Github</li>
                         </a>
-                        <a href="https://github.com/raicerk/Chart-Tech-Statistics" target="_blank" rel="noopener noreferrer">
-                            <li>Page in Github</li>
+                        <a href="https://github.com/raicerk/Chart-Tech-Trends" target="_blank" rel="noopener noreferrer">
+                            <li>Proyecto Github</li>
                         </a>
                         <a href="#home2">
                             <li>Aporta</li>

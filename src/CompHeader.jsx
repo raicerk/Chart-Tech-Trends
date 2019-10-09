@@ -6,7 +6,8 @@ class CompHeader extends Component {
     render() {
         return (
             <header className="App-header">
-                <CompNav/>
+                <CompNav />
+                <label style={{ fontSize: '20px' }}>Tendencias tecnológicas laborales (Beta)</label>
                 <CompPaises />
             </header>
         );
