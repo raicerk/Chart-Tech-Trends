@@ -13,98 +13,23 @@ class CompSection extends Component {
         return (
             <div className="contenido">
 
-                <DatosTendencias />
+                <GetData />
 
-                {/* Separador */}
-                <hr />
-                <hr />
-                {/* Fin separador */}
 
-                Esta funcionalidad te permitirá elegir un skill y ver cuales otros skill son requeridos en conjunto con el seleccionado,
-                en el gráfico se refleja los skill complementarios que necesitas aprender o tener noción y que solicitan las compañías en
-                las ofertas laborales:<br /> <br /><br />
-                <OtherSkillGraph />
-
-                {/* Separador */}
-                <hr />
-                <hr />
-                {/* Fin separador */}
-
-                Lenguajes de programación acumulados desde mayo de 2018 a la fecha
-                <LanguageAcumulatedGraph />
-
-                Lenguajes de programación, tendencias de lenguajes solicitados en ofertas laborales desde mayo de 2018 a la fecha
-                <LanguageGraph />
-
-                Lenguajes de programación promedios de salarios desde mayo de 2018 a la fecha
-                <LanguajeSalaryGraph />
-
-                {/* Separador */}
-                <hr />
-                <hr />
-                {/* Fin separador */}
-
-                Bases de datos acumuladas desde mayo de 2018 a la fecha
-                <DatabaseAcumulatedGraph />
-
-                Base de datos, tendencias de bases de datos o motores solicitadas en ofertas laborales desde mayo de 2018 a la fecha
-                <DatabaseGraph />
-
-                Base de datos promedios de salarios desde mayo de 2018 a la fecha
-                <DatabaseSalaryGraph />
-
-                {/* Separador */}
-                <hr />
-                <hr />
-                {/* Fin separador */}
-
-                Frameworks JavaScript acumulados desde mayo de 2018 a la fecha
-                <FrameworkJSAcumulatedGraph />
-
-                Frameworks JavaScript, tendencias de Frameworks JavaScript y tecnologías JavaScript solicitadas en ofertas laborales desde mayo de 2018 a la fecha
-                <FrameworkJSGraph />
-
-                Frameworks JavaScript promedios de salarios desde mayo de 2018 a la fecha
-                <FrameworkJSSalaryGraph />
-
-                {/* Separador */}
-                <hr />
-                <hr />
-                {/* Fin separador */}
-
-                Servicios cloud acumulados desde mayo de 2018 a la fecha
-                <CloudServicesSAcumulatedGraph />
-
-                Servicios cloud, tendencias de nubes solicitadas en ofertas laborales desde mayo de 2018 a la fecha
-                <CloudServicesGraph />
-
-                Servicios cloud promedios de salarios desde mayo de 2018 a la fecha
-                <CloudServicesSalaryGraph />
-
-                {/* Separador */}
-                <hr />
-                <hr />
-                {/* Fin separador */}
-
-                Tecnologías móviles acumuladas desde mayo de 2018 a la fecha
-                <MobileAcumulatedGraph />
-
-                Tecnologías móviles, tendencias de tecnologías móviles solicitadas en ofertas laborales desde mayo de 2018 a la fecha
-                <MobileGraph />
-
-                Tecnologías móviles promedios de salarios desde mayo de 2018 a la fecha
-                <MobileSalaryGraph />
-                <hr />
             </div>
         );
     }
 }
 
-const LanguageGraph = () => {
+const GetData = () => {
     const context = useContext(AppContext)
-    const [data, setData] = useState([])
+    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
+    const [dataAcumulado, setDataAcumulado] = useState([])
+    const [dataSalario, setDataSalario] = useState([])
 
     useEffect(() => {
+
+        //Agrupado por mes
         Axios.post(config.urlGraphQL, {
             query: `{
                     LaboralAgrupadoPorMes(where: {field: "pais",value: "${context.pais}"}){
@@ -116,247 +41,13 @@ const LanguageGraph = () => {
                     }
                 }`
         }).then(res => {
-            const dataLenguaje = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
-                iter.skill === "C" ||
-                iter.skill === "C#" ||
-                iter.skill === "C++" ||
-                iter.skill === "Erlang" ||
-                iter.skill === "Go" ||
-                iter.skill === "Golang" ||
-                iter.skill === "Java" ||
-                iter.skill === "JavaScript" ||
-                iter.skill === "Objetive-C" ||
-                iter.skill === "PHP" ||
-                iter.skill === "Python" ||
-                iter.skill === "R" ||
-                iter.skill === "Ruby" ||
-                iter.skill === "Scala" ||
-                iter.skill === "Swift" ||
-                iter.skill === "TypeScript" ||
-                iter.skill === "Kotlin"
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
-                        return {
-                            "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                            "y": i.cantidad
-                        }
-                    })
-                }
-            })
-            setData(dataLenguaje)
+            setDataAgrupadoPorMes(res.data.data.LaboralAgrupadoPorMes)
         }).catch(error => {
             console.log(error)
         })
-    }, [context.pais])
 
-    return (
-        <CompGraficos data={data} />
-    )
-}
 
-const DatabaseGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                    LaboralAgrupadoPorMes(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        datos{
-                            fecha
-                            cantidad
-                        }
-                    }
-                }`
-        }).then(res => {
-            let dataBaseDeDatos = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
-                iter.skill === "MongoDB" ||
-                iter.skill === "MySQL" ||
-                iter.skill === "NoSQL" ||
-                iter.skill === "Oracle" ||
-                iter.skill === "Oracle DB" ||
-                iter.skill === "PostgreSQL" ||
-                iter.skill === "Redis" ||
-                iter.skill === "SQL"
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
-                        return {
-                            "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                            "y": i.cantidad
-                        }
-                    })
-                }
-            })
-            setData(dataBaseDeDatos)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficos data={data} />
-    )
-}
-
-const FrameworkJSGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                    LaboralAgrupadoPorMes(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        datos{
-                            fecha
-                            cantidad
-                        }
-                    }
-                }`
-        }).then(res => {
-            let dataFrameworkJS = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
-                iter.skill === "Angular 2" ||
-                iter.skill === "Angular 4" ||
-                iter.skill === "Angular 5" ||
-                iter.skill === "Angular 6" ||
-                iter.skill === "AngularJS" ||
-                iter.skill === "Backbone.js" ||
-                iter.skill === "Ember.js" ||
-                iter.skill === "jQuery" ||
-                iter.skill === "Meteor" ||
-                iter.skill === "React" ||
-                iter.skill === "Sails.js" ||
-                iter.skill === "vue.js"
-
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
-                        return {
-                            "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                            "y": i.cantidad
-                        }
-                    })
-                }
-            })
-            setData(dataFrameworkJS)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficos data={data} />
-    )
-}
-
-const CloudServicesGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                    LaboralAgrupadoPorMes(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        datos{
-                            fecha
-                            cantidad
-                        }
-                    }
-                }`
-        }).then(res => {
-            let dataCloudServices = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
-                iter.skill === "Amazon Web Services" ||
-                iter.skill === "Azure" ||
-                iter.skill === "Google App Engine"
-
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
-                        return {
-                            "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                            "y": i.cantidad
-                        }
-                    })
-                }
-            })
-            setData(dataCloudServices)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficos data={data} />
-    )
-}
-
-const MobileGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                    LaboralAgrupadoPorMes(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        datos{
-                            fecha
-                            cantidad
-                        }
-                    }
-                }`
-        }).then(res => {
-            let dataMobiles = res.data.data.LaboralAgrupadoPorMes.filter(iter =>
-                iter.skill === "Android" ||
-                iter.skill === "Cordova" ||
-                iter.skill === "Ionic" ||
-                iter.skill === "Kotlin" ||
-                iter.skill === "PhoneGap" ||
-                iter.skill === "React-Native" ||
-                iter.skill === "Xamarin" ||
-                iter.skill === "iOS" ||
-                iter.skill === "kotlin"
-
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "data": iter.datos.sort().map(i => {
-                        let fec = i.fecha.split("-")
-                        return {
-                            "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                            "y": i.cantidad
-                        }
-                    })
-                }
-            })
-            setData(dataMobiles)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficos data={data} />
-    )
-}
-
-const LanguageAcumulatedGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
+        //Acumulado
         Axios.post(config.urlGraphQL, {
             query: `{
                 LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
@@ -365,202 +56,12 @@ const LanguageAcumulatedGraph = () => {
                     }
                 }`
         }).then(res => {
-            const dataLenguajeAcumulado = res.data.data.LaboralAcumulado.filter(iter =>
-                iter.skill === "C" ||
-                iter.skill === "C#" ||
-                iter.skill === "C++" ||
-                iter.skill === "Erlang" ||
-                iter.skill === "Go" ||
-                iter.skill === "Golang" ||
-                iter.skill === "Java" ||
-                iter.skill === "JavaScript" ||
-                iter.skill === "Objetive-C" ||
-                iter.skill === "PHP" ||
-                iter.skill === "Python" ||
-                iter.skill === "R" ||
-                iter.skill === "Ruby" ||
-                iter.skill === "Scala" ||
-                iter.skill === "Swift" ||
-                iter.skill === "TypeScript" ||
-                iter.skill === "Kotlin"
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "value": iter.cantidad
-                }
-            })
-            setData(dataLenguajeAcumulado)
+            setDataAcumulado(res.data.data.LaboralAcumulado)
         }).catch(error => {
             console.log(error)
         })
-    }, [context.pais])
 
-    return (
-        <CompGraficoPie data={data} />
-    )
-}
-
-const DatabaseAcumulatedGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        cantidad
-                    }
-                }`
-        }).then(res => {
-            const dataBaseDeDatosAcumulado = res.data.data.LaboralAcumulado.filter(iter =>
-                iter.skill === "MongoDB" ||
-                iter.skill === "MySQL" ||
-                iter.skill === "NoSQL" ||
-                iter.skill === "Oracle" ||
-                iter.skill === "Oracle DB" ||
-                iter.skill === "PostgreSQL" ||
-                iter.skill === "Redis" ||
-                iter.skill === "SQL"
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "value": iter.cantidad
-                }
-            })
-            setData(dataBaseDeDatosAcumulado)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficoPie data={data} />
-    )
-}
-
-const FrameworkJSAcumulatedGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        cantidad
-                    }
-                }`
-        }).then(res => {
-            const dataFrameworkJSAcumulado = res.data.data.LaboralAcumulado.filter(iter =>
-                iter.skill === "Angular 2" ||
-                iter.skill === "Angular 4" ||
-                iter.skill === "Angular 5" ||
-                iter.skill === "Angular 6" ||
-                iter.skill === "AngularJS" ||
-                iter.skill === "Backbone.js" ||
-                iter.skill === "Ember.js" ||
-                iter.skill === "jQuery" ||
-                iter.skill === "Meteor" ||
-                iter.skill === "React" ||
-                iter.skill === "Sails.js" ||
-                iter.skill === "vue.js"
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "value": iter.cantidad
-                }
-            })
-            setData(dataFrameworkJSAcumulado)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficoPie data={data} />
-    )
-}
-
-const CloudServicesSAcumulatedGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        cantidad
-                    }
-                }`
-        }).then(res => {
-            const dataCloudServicesAcumulado = res.data.data.LaboralAcumulado.filter(iter =>
-                iter.skill === "Amazon Web Services" ||
-                iter.skill === "Azure" ||
-                iter.skill === "Google App Engine"
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "value": iter.cantidad
-                }
-            })
-            setData(dataCloudServicesAcumulado)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficoPie data={data} />
-    )
-}
-
-const MobileAcumulatedGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
-                        skill
-                        cantidad
-                    }
-                }`
-        }).then(res => {
-            const dataMobileAcumulado = res.data.data.LaboralAcumulado.filter(iter =>
-                iter.skill === "Android" ||
-                iter.skill === "Cordova" ||
-                iter.skill === "Ionic" ||
-                iter.skill === "Kotlin" ||
-                iter.skill === "PhoneGap" ||
-                iter.skill === "React-Native" ||
-                iter.skill === "Xamarin" ||
-                iter.skill === "iOS" ||
-                iter.skill === "kotlin"
-            ).map(iter => {
-                return {
-                    "id": iter.skill,
-                    "value": iter.cantidad
-                }
-            })
-            setData(dataMobileAcumulado)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
-
-    return (
-        <CompGraficoPie data={data} />
-    )
-}
-
-const LanguajeSalaryGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
-
-    useEffect(() => {
+        //Salarios
         Axios.post(config.urlGraphQL, {
             query: `{
                 LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
@@ -572,184 +73,564 @@ const LanguajeSalaryGraph = () => {
                 }
             }`
         }).then(res => {
-            const dataLenguajeSalario = res.data.data.LaboralSalarios.filter(iter =>
-                iter.skill === "C" ||
-                iter.skill === "C#" ||
-                iter.skill === "C++" ||
-                iter.skill === "Erlang" ||
-                iter.skill === "Go" ||
-                iter.skill === "Golang" ||
-                iter.skill === "Java" ||
-                iter.skill === "JavaScript" ||
-                iter.skill === "Objetive-C" ||
-                iter.skill === "PHP" ||
-                iter.skill === "Python" ||
-                iter.skill === "R" ||
-                iter.skill === "Ruby" ||
-                iter.skill === "Scala" ||
-                iter.skill === "Swift" ||
-                iter.skill === "TypeScript" ||
-                iter.skill === "Kotlin"
-            )
-            setData(dataLenguajeSalario)
+            setDataSalario(res.data.data.LaboralSalarios)
         }).catch(error => {
             console.log(error)
         })
+
     }, [context.pais])
 
     return (
-        <CompGraficoBarra data={data} />
+        <article>
+
+            {/* Separador */}
+            <hr />
+            <hr />
+            {/* Fin separador */}
+
+            Esta funcionalidad te permitirá elegir un skill y ver cuales otros skill son requeridos en conjunto con el seleccionado,
+            en el gráfico se refleja los skill complementarios que necesitas aprender o tener noción y que solicitan las compañías en
+                las ofertas laborales:<br /> <br /><br />
+            <OtherSkillGraph />
+
+            {/* Separador */}
+            <hr />
+            <hr />
+            {/* Fin separador */}
+
+            <label>Lenguajes de programación acumulados desde mayo de 2018 a la fecha</label>
+            <LanguageAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <label>Lenguajes de programación, tendencias de lenguajes solicitados en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <LanguageGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <label>Lenguajes de programación promedios de salarios desde mayo de 2018 a la fecha</label>
+            <LanguageSalaryGraphProps LaboralSalarios={dataSalario} />
+
+
+            {/* Separador */}
+            <hr />
+            <hr />
+            {/* Fin separador */}
+
+
+            <label>Bases de datos acumuladas desde mayo de 2018 a la fecha</label>
+            <DataBaseAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <label>Base de datos, tendencias de bases de datos o motores solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <DataBaseGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <label>Base de datos promedios de salarios desde mayo de 2018 a la fecha</label>
+            <DataBaseSalaryGraphProps LaboralSalarios={dataSalario} />
+
+
+            {/* Separador */}
+            <hr />
+            <hr />
+            {/* Fin separador */}
+
+
+            <label>Frameworks JavaScript acumulados desde mayo de 2018 a la fecha</label>
+            <FrameworkJSAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <label>Frameworks JavaScript, tendencias de Frameworks JavaScript y tecnologías JavaScript solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <FrameworkJSGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <label>Frameworks JavaScript promedios de salarios desde mayo de 2018 a la fecha</label>
+            <FrameworkJSSalaryGraphProps LaboralSalarios={dataSalario} />
+
+
+            {/* Separador */}
+            <hr />
+            <hr />
+            {/* Fin separador */}
+
+
+            <label>Servicios cloud acumulados desde mayo de 2018 a la fecha</label>
+            <CloudServicesAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <label>Servicios cloud, tendencias de nubes solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <CloudServicesGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <label>Servicios cloud promedios de salarios desde mayo de 2018 a la fecha</label>
+            <CloudServicesSalaryGraphProps LaboralSalarios={dataSalario} />
+
+
+            {/* Separador */}
+            <hr />
+            <hr />
+            {/* Fin separador */}
+
+
+            <label>Tecnologías móviles acumuladas desde mayo de 2018 a la fecha</label>
+            <MobileAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <label>Tecnologías móviles, tendencias de tecnologías móviles solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <MobileGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <label>Tecnologías móviles promedios de salarios desde mayo de 2018 a la fecha</label>
+            <MobileSalaryGraphProps LaboralSalarios={dataSalario} />
+
+        </article>
     )
 }
 
-const DatabaseSalaryGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
+const LanguageAcumulatedGraphProps = (props) => {
+
+    const [dataAcumulado, setDataAcumulado] = useState([])
 
     useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
-                    skill
-                    salariominimo
-                    salariomaximo
-                    media
-                    cantidad
-                }
-            }`
-        }).then(res => {
-            const dataBaseDeDatosSalario = res.data.data.LaboralSalarios.filter(iter =>
-                iter.skill === "MongoDB" ||
-                iter.skill === "MySQL" ||
-                iter.skill === "NoSQL" ||
-                iter.skill === "Oracle" ||
-                iter.skill === "Oracle DB" ||
-                iter.skill === "PostgreSQL" ||
-                iter.skill === "Redis" ||
-                iter.skill === "SQL"
-            )
-            setData(dataBaseDeDatosSalario)
-        }).catch(error => {
-            console.log(error)
+        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
+            iter.skill === "C" ||
+            iter.skill === "C#" ||
+            iter.skill === "C++" ||
+            iter.skill === "Erlang" ||
+            iter.skill === "Go" ||
+            iter.skill === "Golang" ||
+            iter.skill === "Java" ||
+            iter.skill === "JavaScript" ||
+            iter.skill === "Objetive-C" ||
+            iter.skill === "PHP" ||
+            iter.skill === "Python" ||
+            iter.skill === "R" ||
+            iter.skill === "Ruby" ||
+            iter.skill === "Scala" ||
+            iter.skill === "Swift" ||
+            iter.skill === "TypeScript" ||
+            iter.skill === "Kotlin"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "value": iter.cantidad
+            }
         })
-    }, [context.pais])
+        setDataAcumulado(dataLenguajeAcumulado)
+    }, [props])
 
     return (
-        <CompGraficoBarra data={data} />
+        <CompGraficoPie data={dataAcumulado} />
     )
 }
 
-const FrameworkJSSalaryGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
+const LanguageGraphProps = (props) => {
+
+    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
 
     useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
-                    skill
-                    salariominimo
-                    salariomaximo
-                    media
-                    cantidad
-                }
-            }`
-        }).then(res => {
-            const dataFrameworkJSSalario = res.data.data.LaboralSalarios.filter(iter =>
-                iter.skill === "Angular 2" ||
-                iter.skill === "Angular 4" ||
-                iter.skill === "Angular 5" ||
-                iter.skill === "Angular 6" ||
-                iter.skill === "AngularJS" ||
-                iter.skill === "Backbone.js" ||
-                iter.skill === "Ember.js" ||
-                iter.skill === "jQuery" ||
-                iter.skill === "Meteor" ||
-                iter.skill === "React" ||
-                iter.skill === "Sails.js" ||
-                iter.skill === "vue.js"
-            )
-            setData(dataFrameworkJSSalario)
-        }).catch(error => {
-            console.log(error)
+        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
+            iter.skill === "C" ||
+            iter.skill === "C#" ||
+            iter.skill === "C++" ||
+            iter.skill === "Erlang" ||
+            iter.skill === "Go" ||
+            iter.skill === "Golang" ||
+            iter.skill === "Java" ||
+            iter.skill === "JavaScript" ||
+            iter.skill === "Objetive-C" ||
+            iter.skill === "PHP" ||
+            iter.skill === "Python" ||
+            iter.skill === "R" ||
+            iter.skill === "Ruby" ||
+            iter.skill === "Scala" ||
+            iter.skill === "Swift" ||
+            iter.skill === "TypeScript" ||
+            iter.skill === "Kotlin"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "data": iter.datos.sort().map(i => {
+                    let fec = i.fecha.split("-")
+                    return {
+                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+                        "y": i.cantidad
+                    }
+                })
+            }
         })
-    }, [context.pais])
+        setDataAgrupadoPorMes(dataLenguaje)
+    }, [props])
 
     return (
-        <CompGraficoBarra data={data} />
+        <CompGraficos data={dataAgrupadoPorMes} />
     )
 }
 
-const CloudServicesSalaryGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
+const LanguageSalaryGraphProps = (props) => {
+
+    const [dataSalario, setDataSalario] = useState([])
 
     useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
-                    skill
-                    salariominimo
-                    salariomaximo
-                    media
-                    cantidad
-                }
-            }`
-        }).then(res => {
-            const dataCloudServicesSalario = res.data.data.LaboralSalarios.filter(iter =>
-                iter.skill === "Amazon Web Services" ||
-                iter.skill === "Azure" ||
-                iter.skill === "Google App Engine"
-            )
-            setData(dataCloudServicesSalario)
-        }).catch(error => {
-            console.log(error)
-        })
-    }, [context.pais])
+        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
+            iter.skill === "C" ||
+            iter.skill === "C#" ||
+            iter.skill === "C++" ||
+            iter.skill === "Erlang" ||
+            iter.skill === "Go" ||
+            iter.skill === "Golang" ||
+            iter.skill === "Java" ||
+            iter.skill === "JavaScript" ||
+            iter.skill === "Objetive-C" ||
+            iter.skill === "PHP" ||
+            iter.skill === "Python" ||
+            iter.skill === "R" ||
+            iter.skill === "Ruby" ||
+            iter.skill === "Scala" ||
+            iter.skill === "Swift" ||
+            iter.skill === "TypeScript" ||
+            iter.skill === "Kotlin"
+        )
+        setDataSalario(dataLenguajeSalario)
+    }, [props])
 
     return (
-        <CompGraficoBarra data={data} />
+        <CompGraficoBarra data={dataSalario} />
     )
 }
 
-const MobileSalaryGraph = () => {
-    const context = useContext(AppContext)
-    const [data, setData] = useState([])
+//-----------------------------------------------------------
+//--------------------- Bases de datos ----------------------
+//-----------------------------------------------------------
+const DataBaseAcumulatedGraphProps = (props) => {
+    const [dataAcumulado, setDataAcumulado] = useState([])
 
     useEffect(() => {
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralSalarios(where: {field: "pais",value: "${context.pais}"}){
-                    skill
-                    salariominimo
-                    salariomaximo
-                    media
-                    cantidad
-                }
-            }`
-        }).then(res => {
-            const dataMobilesSalario = res.data.data.LaboralSalarios.filter(iter =>
-                iter.skill === "Android" ||
-                iter.skill === "Cordova" ||
-                iter.skill === "Ionic" ||
-                iter.skill === "Kotlin" ||
-                iter.skill === "PhoneGap" ||
-                iter.skill === "React-Native" ||
-                iter.skill === "Xamarin" ||
-                iter.skill === "iOS" ||
-                iter.skill === "kotlin"
-            )
-            setData(dataMobilesSalario)
-        }).catch(error => {
-            console.log(error)
+        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
+            iter.skill === "MongoDB" ||
+            iter.skill === "MySQL" ||
+            iter.skill === "NoSQL" ||
+            iter.skill === "Oracle" ||
+            iter.skill === "Oracle DB" ||
+            iter.skill === "PostgreSQL" ||
+            iter.skill === "Redis" ||
+            iter.skill === "SQL"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "value": iter.cantidad
+            }
         })
-    }, [context.pais])
+        setDataAcumulado(dataLenguajeAcumulado)
+    }, [props])
 
     return (
-        <CompGraficoBarra data={data} />
+        <CompGraficoPie data={dataAcumulado} />
     )
 }
 
+const DataBaseGraphProps = (props) => {
+
+    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
+
+    useEffect(() => {
+        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
+            iter.skill === "MongoDB" ||
+            iter.skill === "MySQL" ||
+            iter.skill === "NoSQL" ||
+            iter.skill === "Oracle" ||
+            iter.skill === "Oracle DB" ||
+            iter.skill === "PostgreSQL" ||
+            iter.skill === "Redis" ||
+            iter.skill === "SQL"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "data": iter.datos.sort().map(i => {
+                    let fec = i.fecha.split("-")
+                    return {
+                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+                        "y": i.cantidad
+                    }
+                })
+            }
+        })
+        setDataAgrupadoPorMes(dataLenguaje)
+    }, [props])
+
+    return (
+        <CompGraficos data={dataAgrupadoPorMes} />
+    )
+}
+
+const DataBaseSalaryGraphProps = (props) => {
+
+    const [dataSalario, setDataSalario] = useState([])
+
+    useEffect(() => {
+        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
+            iter.skill === "MongoDB" ||
+            iter.skill === "MySQL" ||
+            iter.skill === "NoSQL" ||
+            iter.skill === "Oracle" ||
+            iter.skill === "Oracle DB" ||
+            iter.skill === "PostgreSQL" ||
+            iter.skill === "Redis" ||
+            iter.skill === "SQL"
+        )
+        setDataSalario(dataLenguajeSalario)
+    }, [props])
+
+    return (
+        <CompGraficoBarra data={dataSalario} />
+    )
+}
+
+//-----------------------------------------------------------
+//------------------ Framework JavaScript -------------------
+//-----------------------------------------------------------
+const FrameworkJSAcumulatedGraphProps = (props) => {
+
+    const [dataAcumulado, setDataAcumulado] = useState([])
+
+    useEffect(() => {
+        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
+            iter.skill === "Angular 2" ||
+            iter.skill === "Angular 4" ||
+            iter.skill === "Angular 5" ||
+            iter.skill === "Angular 6" ||
+            iter.skill === "AngularJS" ||
+            iter.skill === "Backbone.js" ||
+            iter.skill === "Ember.js" ||
+            iter.skill === "jQuery" ||
+            iter.skill === "Meteor" ||
+            iter.skill === "React" ||
+            iter.skill === "Sails.js" ||
+            iter.skill === "vue.js"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "value": iter.cantidad
+            }
+        })
+        setDataAcumulado(dataLenguajeAcumulado)
+    }, [props])
+
+    return (
+        <CompGraficoPie data={dataAcumulado} />
+    )
+}
+
+const FrameworkJSGraphProps = (props) => {
+
+    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
+
+    useEffect(() => {
+        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
+            iter.skill === "Angular 2" ||
+            iter.skill === "Angular 4" ||
+            iter.skill === "Angular 5" ||
+            iter.skill === "Angular 6" ||
+            iter.skill === "AngularJS" ||
+            iter.skill === "Backbone.js" ||
+            iter.skill === "Ember.js" ||
+            iter.skill === "jQuery" ||
+            iter.skill === "Meteor" ||
+            iter.skill === "React" ||
+            iter.skill === "Sails.js" ||
+            iter.skill === "vue.js"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "data": iter.datos.sort().map(i => {
+                    let fec = i.fecha.split("-")
+                    return {
+                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+                        "y": i.cantidad
+                    }
+                })
+            }
+        })
+        setDataAgrupadoPorMes(dataLenguaje)
+    }, [props])
+
+    return (
+        <CompGraficos data={dataAgrupadoPorMes} />
+    )
+}
+
+const FrameworkJSSalaryGraphProps = (props) => {
+
+    const [dataSalario, setDataSalario] = useState([])
+
+    useEffect(() => {
+        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
+            iter.skill === "Angular 2" ||
+            iter.skill === "Angular 4" ||
+            iter.skill === "Angular 5" ||
+            iter.skill === "Angular 6" ||
+            iter.skill === "AngularJS" ||
+            iter.skill === "Backbone.js" ||
+            iter.skill === "Ember.js" ||
+            iter.skill === "jQuery" ||
+            iter.skill === "Meteor" ||
+            iter.skill === "React" ||
+            iter.skill === "Sails.js" ||
+            iter.skill === "vue.js"
+        )
+        setDataSalario(dataLenguajeSalario)
+    }, [props])
+
+    return (
+        <CompGraficoBarra data={dataSalario} />
+    )
+}
+
+//-----------------------------------------------------------
+//--------------------- Cloud Services ----------------------
+//-----------------------------------------------------------
+const CloudServicesAcumulatedGraphProps = (props) => {
+
+    const [dataAcumulado, setDataAcumulado] = useState([])
+
+    useEffect(() => {
+        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
+            iter.skill === "Amazon Web Services" ||
+            iter.skill === "Azure" ||
+            iter.skill === "Google App Engine"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "value": iter.cantidad
+            }
+        })
+        setDataAcumulado(dataLenguajeAcumulado)
+    }, [props])
+
+    return (
+        <CompGraficoPie data={dataAcumulado} />
+    )
+}
+
+const CloudServicesGraphProps = (props) => {
+
+    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
+
+    useEffect(() => {
+        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
+            iter.skill === "Amazon Web Services" ||
+            iter.skill === "Azure" ||
+            iter.skill === "Google App Engine"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "data": iter.datos.sort().map(i => {
+                    let fec = i.fecha.split("-")
+                    return {
+                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+                        "y": i.cantidad
+                    }
+                })
+            }
+        })
+        setDataAgrupadoPorMes(dataLenguaje)
+    }, [props])
+
+    return (
+        <CompGraficos data={dataAgrupadoPorMes} />
+    )
+}
+
+const CloudServicesSalaryGraphProps = (props) => {
+
+    const [dataSalario, setDataSalario] = useState([])
+
+    useEffect(() => {
+        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
+            iter.skill === "Amazon Web Services" ||
+            iter.skill === "Azure" ||
+            iter.skill === "Google App Engine"
+        )
+        setDataSalario(dataLenguajeSalario)
+    }, [props])
+
+    return (
+        <CompGraficoBarra data={dataSalario} />
+    )
+}
+
+//-----------------------------------------------------------
+//------------------------- Mobile --------------------------
+//-----------------------------------------------------------
+const MobileAcumulatedGraphProps = (props) => {
+
+    const [dataAcumulado, setDataAcumulado] = useState([])
+
+    useEffect(() => {
+        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
+            iter.skill === "Android" ||
+            iter.skill === "Cordova" ||
+            iter.skill === "Ionic" ||
+            iter.skill === "Kotlin" ||
+            iter.skill === "PhoneGap" ||
+            iter.skill === "React-Native" ||
+            iter.skill === "Xamarin" ||
+            iter.skill === "iOS" ||
+            iter.skill === "kotlin"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "value": iter.cantidad
+            }
+        })
+        setDataAcumulado(dataLenguajeAcumulado)
+    }, [props])
+
+    return (
+        <CompGraficoPie data={dataAcumulado} />
+    )
+}
+
+const MobileGraphProps = (props) => {
+
+    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
+
+    useEffect(() => {
+        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
+            iter.skill === "Android" ||
+            iter.skill === "Cordova" ||
+            iter.skill === "Ionic" ||
+            iter.skill === "Kotlin" ||
+            iter.skill === "PhoneGap" ||
+            iter.skill === "React-Native" ||
+            iter.skill === "Xamarin" ||
+            iter.skill === "iOS" ||
+            iter.skill === "kotlin"
+        ).map(iter => {
+            return {
+                "id": iter.skill,
+                "data": iter.datos.sort().map(i => {
+                    let fec = i.fecha.split("-")
+                    return {
+                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+                        "y": i.cantidad
+                    }
+                })
+            }
+        })
+        setDataAgrupadoPorMes(dataLenguaje)
+    }, [props])
+
+    return (
+        <CompGraficos data={dataAgrupadoPorMes} />
+    )
+}
+
+const MobileSalaryGraphProps = (props) => {
+
+    const [dataSalario, setDataSalario] = useState([])
+
+    useEffect(() => {
+        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
+            iter.skill === "Android" ||
+            iter.skill === "Cordova" ||
+            iter.skill === "Ionic" ||
+            iter.skill === "Kotlin" ||
+            iter.skill === "PhoneGap" ||
+            iter.skill === "React-Native" ||
+            iter.skill === "Xamarin" ||
+            iter.skill === "iOS" ||
+            iter.skill === "kotlin"
+        )
+        setDataSalario(dataLenguajeSalario)
+    }, [props])
+
+    return (
+        <CompGraficoBarra data={dataSalario} />
+    )
+}
+
+//-----------------------------------------------------------
+//----------------- Skill complementarios -------------------
+//-----------------------------------------------------------
 const OtherSkillGraph = () => {
     const context = useContext(AppContext)
     const [data, setData] = useState([])
@@ -799,85 +680,52 @@ const OtherSkillGraph = () => {
     )
 }
 
-const DatosTendencias = () => {
-    const context = useContext(AppContext)
-    const [cantidadSkill, setCantidadSkill] = useState(0)
-    const [cantidadOferta, setCantidadOferta] = useState(0)
+// const DatosTendencias = () => {
+//     const context = useContext(AppContext)
+//     const [cantidadSkill, setCantidadSkill] = useState(0)
+//     const [cantidadOferta, setCantidadOferta] = useState(0)
 
-    useEffect(() => {
-
-
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
-                        cantidad
-                    }
-                }`
-        }).then(resAcunulado => {
-            let cantidadSkill = resAcunulado.data.data.LaboralAcumulado.reduce((a, b) => ({
-                cantidad: a.cantidad + b.cantidad
-            }))
-            setCantidadSkill(cantidadSkill.cantidad)
-        }).catch(error => {
-            console.log(error)
-        })
+//     useEffect(() => {
 
 
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                Laboral(where: {field: "pais", value: "${context.pais}"}, order: {by: "fecha", orientation: "desc"}) {
-                        link
-                    }
-                }`
-        }).then(resOfertas => {
-            console.log(resOfertas.data.data.Laboral.length)
-            setCantidadOferta(resOfertas.data.data.Laboral.length)
-        }).catch(error => {
-            console.log(error)
-        })
-
-    }, [context.pais])
-
-    return (
-        <div>
-            Cantidad de skills: {cantidadSkill}<br />
-            Cantidad de ofertas laborales: {cantidadOferta}
-       </div>
-    )
-}
-
-const DatosTendencias = () => {
-    const context = useContext(AppContext)
-    const [cantidadSkill, setCantidadSkill] = useState(0)
-    const [cantidadOferta, setCantidadOferta] = useState(0)
-
-    useEffect(() => {
+//         Axios.post(config.urlGraphQL, {
+//             query: `{
+//                 LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
+//                         cantidad
+//                     }
+//                 }`
+//         }).then(resAcunulado => {
+//             let cantidadSkill = resAcunulado.data.data.LaboralAcumulado.reduce((a, b) => ({
+//                 cantidad: a.cantidad + b.cantidad
+//             }))
+//             setCantidadSkill(cantidadSkill.cantidad)
+//         }).catch(error => {
+//             console.log(error)
+//         })
 
 
-        Axios.post(config.urlGraphQL, {
-            query: `{
-                LaboralAcumulado(where: {field: "pais",value: "${context.pais}"}){
-                        cantidad
-                    }
-                }`
-        }).then(resAcunulado => {
-            let cantidadSkill = resAcunulado.data.data.LaboralAcumulado.reduce((a, b) => ({
-                cantidad: a.cantidad + b.cantidad
-            }))
-            setCantidadSkill(cantidadSkill.cantidad)
-        }).catch(error => {
-            console.log(error)
-        })
+//         Axios.post(config.urlGraphQL, {
+//             query: `{
+//                 Laboral(where: {field: "pais", value: "${context.pais}"}, order: {by: "fecha", orientation: "desc"}) {
+//                         link
+//                     }
+//                 }`
+//         }).then(resOfertas => {
+//             console.log(resOfertas.data.data.Laboral.length)
+//             setCantidadOferta(resOfertas.data.data.Laboral.length)
+//         }).catch(error => {
+//             console.log(error)
+//         })
 
-    }, [context.pais])
+//     }, [context.pais])
 
-    return (
-        <div>
-            Cantidad de skills: {cantidadSkill}<br />
-            Cantidad de ofertas laborales: {cantidadOferta}
-       </div>
-    )
-}
+//     return (
+//         <div>
+//             Cantidad de skills: {cantidadSkill}<br />
+//             Cantidad de ofertas laborales: {cantidadOferta}
+//         </div>
+//     )
+// }
 
 
 export default CompSection;
