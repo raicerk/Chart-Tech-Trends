@@ -12,10 +12,7 @@ class CompSection extends Component {
     render() {
         return (
             <div className="contenido">
-
                 <GetData />
-
-
             </div>
         );
     }
