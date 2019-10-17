@@ -161,30 +161,19 @@ const GetData = () => {
         </article>
     )
 }
+const skillsGroup = ["C", "C#", "C++", "Erlang", "Go", 
+        "Golang", "Java", "Javascript", "Objective-C", "PHP", 
+        "Python", "R", "Ruby","Scala", "Swift",
+        "TypeScript", "Kotlin"];
 
 const LanguageAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
+    
 
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            iter.skill === "C" ||
-            iter.skill === "C#" ||
-            iter.skill === "C++" ||
-            iter.skill === "Erlang" ||
-            iter.skill === "Go" ||
-            iter.skill === "Golang" ||
-            iter.skill === "Java" ||
-            iter.skill === "JavaScript" ||
-            iter.skill === "Objetive-C" ||
-            iter.skill === "PHP" ||
-            iter.skill === "Python" ||
-            iter.skill === "R" ||
-            iter.skill === "Ruby" ||
-            iter.skill === "Scala" ||
-            iter.skill === "Swift" ||
-            iter.skill === "TypeScript" ||
-            iter.skill === "Kotlin"
+            skillsGroup.includes(iter.skill) 
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -205,23 +194,7 @@ const LanguageGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            iter.skill === "C" ||
-            iter.skill === "C#" ||
-            iter.skill === "C++" ||
-            iter.skill === "Erlang" ||
-            iter.skill === "Go" ||
-            iter.skill === "Golang" ||
-            iter.skill === "Java" ||
-            iter.skill === "JavaScript" ||
-            iter.skill === "Objetive-C" ||
-            iter.skill === "PHP" ||
-            iter.skill === "Python" ||
-            iter.skill === "R" ||
-            iter.skill === "Ruby" ||
-            iter.skill === "Scala" ||
-            iter.skill === "Swift" ||
-            iter.skill === "TypeScript" ||
-            iter.skill === "Kotlin"
+            skillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -248,23 +221,7 @@ const LanguageSalaryGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            iter.skill === "C" ||
-            iter.skill === "C#" ||
-            iter.skill === "C++" ||
-            iter.skill === "Erlang" ||
-            iter.skill === "Go" ||
-            iter.skill === "Golang" ||
-            iter.skill === "Java" ||
-            iter.skill === "JavaScript" ||
-            iter.skill === "Objetive-C" ||
-            iter.skill === "PHP" ||
-            iter.skill === "Python" ||
-            iter.skill === "R" ||
-            iter.skill === "Ruby" ||
-            iter.skill === "Scala" ||
-            iter.skill === "Swift" ||
-            iter.skill === "TypeScript" ||
-            iter.skill === "Kotlin"
+            skillsGroup.includes(iter.skill)
         )
         setDataSalario(dataLenguajeSalario)
     }, [props])
@@ -277,19 +234,14 @@ const LanguageSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //--------------------- Bases de datos ----------------------
 //-----------------------------------------------------------
+const dbSkillsGroup = ["MongoDB", "MySQL", "NoSQL", "Oracle", 
+    "Oracle DB", "PostgreSQL", "Redis", "SQL"];
 const DataBaseAcumulatedGraphProps = (props) => {
     const [dataAcumulado, setDataAcumulado] = useState([])
 
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            iter.skill === "MongoDB" ||
-            iter.skill === "MySQL" ||
-            iter.skill === "NoSQL" ||
-            iter.skill === "Oracle" ||
-            iter.skill === "Oracle DB" ||
-            iter.skill === "PostgreSQL" ||
-            iter.skill === "Redis" ||
-            iter.skill === "SQL"
+            dbSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -310,14 +262,7 @@ const DataBaseGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            iter.skill === "MongoDB" ||
-            iter.skill === "MySQL" ||
-            iter.skill === "NoSQL" ||
-            iter.skill === "Oracle" ||
-            iter.skill === "Oracle DB" ||
-            iter.skill === "PostgreSQL" ||
-            iter.skill === "Redis" ||
-            iter.skill === "SQL"
+            dbSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -344,14 +289,7 @@ const DataBaseSalaryGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            iter.skill === "MongoDB" ||
-            iter.skill === "MySQL" ||
-            iter.skill === "NoSQL" ||
-            iter.skill === "Oracle" ||
-            iter.skill === "Oracle DB" ||
-            iter.skill === "PostgreSQL" ||
-            iter.skill === "Redis" ||
-            iter.skill === "SQL"
+            dbSkillsGroup.includes(iter.skill)
         )
         setDataSalario(dataLenguajeSalario)
     }, [props])
@@ -364,24 +302,16 @@ const DataBaseSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //------------------ Framework JavaScript -------------------
 //-----------------------------------------------------------
+const jsSkillsGroup = ["Angular 2", "Angular 4", "Angular 5", "Angular 6", "AngularJS",
+            "Backbone.js", "Ember.js", "jQuery", "Meteor",
+            "React", "Sails.js", "vue.js" ];
 const FrameworkJSAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
 
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            iter.skill === "Angular 2" ||
-            iter.skill === "Angular 4" ||
-            iter.skill === "Angular 5" ||
-            iter.skill === "Angular 6" ||
-            iter.skill === "AngularJS" ||
-            iter.skill === "Backbone.js" ||
-            iter.skill === "Ember.js" ||
-            iter.skill === "jQuery" ||
-            iter.skill === "Meteor" ||
-            iter.skill === "React" ||
-            iter.skill === "Sails.js" ||
-            iter.skill === "vue.js"
+            dbSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -402,18 +332,7 @@ const FrameworkJSGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            iter.skill === "Angular 2" ||
-            iter.skill === "Angular 4" ||
-            iter.skill === "Angular 5" ||
-            iter.skill === "Angular 6" ||
-            iter.skill === "AngularJS" ||
-            iter.skill === "Backbone.js" ||
-            iter.skill === "Ember.js" ||
-            iter.skill === "jQuery" ||
-            iter.skill === "Meteor" ||
-            iter.skill === "React" ||
-            iter.skill === "Sails.js" ||
-            iter.skill === "vue.js"
+            jsSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -440,18 +359,7 @@ const FrameworkJSSalaryGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            iter.skill === "Angular 2" ||
-            iter.skill === "Angular 4" ||
-            iter.skill === "Angular 5" ||
-            iter.skill === "Angular 6" ||
-            iter.skill === "AngularJS" ||
-            iter.skill === "Backbone.js" ||
-            iter.skill === "Ember.js" ||
-            iter.skill === "jQuery" ||
-            iter.skill === "Meteor" ||
-            iter.skill === "React" ||
-            iter.skill === "Sails.js" ||
-            iter.skill === "vue.js"
+            jsSkillsGroup.includes(iter.skill)
         )
         setDataSalario(dataLenguajeSalario)
     }, [props])
@@ -464,15 +372,14 @@ const FrameworkJSSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //--------------------- Cloud Services ----------------------
 //-----------------------------------------------------------
+const cloudSkillsGroup = ["Amazon Web Services", "Azure", "Google App Engine"];
 const CloudServicesAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
 
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            iter.skill === "Amazon Web Services" ||
-            iter.skill === "Azure" ||
-            iter.skill === "Google App Engine"
+            cloudSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -493,9 +400,7 @@ const CloudServicesGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            iter.skill === "Amazon Web Services" ||
-            iter.skill === "Azure" ||
-            iter.skill === "Google App Engine"
+            cloudSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -522,9 +427,7 @@ const CloudServicesSalaryGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            iter.skill === "Amazon Web Services" ||
-            iter.skill === "Azure" ||
-            iter.skill === "Google App Engine"
+            cloudSkillsGroup.includes(iter.skill)            
         )
         setDataSalario(dataLenguajeSalario)
     }, [props])
@@ -537,21 +440,15 @@ const CloudServicesSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //------------------------- Mobile --------------------------
 //-----------------------------------------------------------
+const mobileSkillsGroup = ["Android", "Cordova", "Ionic",
+    "Kotlin", "PhoneGap", "React-Native", "Xamarin", "iOS", "kotlin"];
 const MobileAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
 
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            iter.skill === "Android" ||
-            iter.skill === "Cordova" ||
-            iter.skill === "Ionic" ||
-            iter.skill === "Kotlin" ||
-            iter.skill === "PhoneGap" ||
-            iter.skill === "React-Native" ||
-            iter.skill === "Xamarin" ||
-            iter.skill === "iOS" ||
-            iter.skill === "kotlin"
+            mobileSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -572,15 +469,7 @@ const MobileGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            iter.skill === "Android" ||
-            iter.skill === "Cordova" ||
-            iter.skill === "Ionic" ||
-            iter.skill === "Kotlin" ||
-            iter.skill === "PhoneGap" ||
-            iter.skill === "React-Native" ||
-            iter.skill === "Xamarin" ||
-            iter.skill === "iOS" ||
-            iter.skill === "kotlin"
+            mobileSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -607,15 +496,7 @@ const MobileSalaryGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            iter.skill === "Android" ||
-            iter.skill === "Cordova" ||
-            iter.skill === "Ionic" ||
-            iter.skill === "Kotlin" ||
-            iter.skill === "PhoneGap" ||
-            iter.skill === "React-Native" ||
-            iter.skill === "Xamarin" ||
-            iter.skill === "iOS" ||
-            iter.skill === "kotlin"
+            mobileSkillsGroup.includes(iter.skill)
         )
         setDataSalario(dataLenguajeSalario)
     }, [props])
