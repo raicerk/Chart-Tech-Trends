@@ -28,7 +28,9 @@ const CompPaises = React.memo((props) => (
     <AppContext.Consumer>
         {(context) => (
             <div className="paises">
+                <label for="pais_select" className="sr-only">Pa&iacute;s:</label>
                 <select
+                    id="pais_select"
                     onChange={(e) => { context.setPais(e.target.value) }}
                     value={context.pais}
                 >

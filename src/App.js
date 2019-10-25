@@ -23,7 +23,9 @@ class App extends Component {
        }}>
         <div className="App">
           <CompHeader />
-          <CompSection />
+          <main>
+            <CompSection />
+          </main>
         </div>
       </AppContext.Provider>
     );

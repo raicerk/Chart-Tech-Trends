@@ -454,8 +454,8 @@ const OtherSkillGraph = () => {
 
     return (
         <div>
-            Selecciona un skill:
-            <select onChange={(e) => { setSkill(e.target.value) }} >
+            <label for="skill_select">Selecciona una Skill:</label>
+            <select id="skill_select" onChange={(e) => { setSkill(e.target.value) }} >
                 {
                     skills.map((iter, index) =>
                         <option key={String(index)} value={iter}>
