@@ -1,0 +1,13 @@
+.footer {
+  background: #ddd;
+  text-align: center;
+  padding: 15px;
+}
+
+.footer__resources {
+  list-style-type: none;
+}
+
+.footer a {
+  color: #333;
+}

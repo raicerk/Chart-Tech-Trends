@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import CompHeader from './CompHeader';
 import CompSection from './CompSection';
-import AppContext from './AppContext'
+import AppContext from './AppContext';
+import Footer from './Footer/Footer';
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
           <CompHeader />
           <main>
             <CompSection />
+            <Footer />
           </main>
         </div>
       </AppContext.Provider>
