@@ -161,16 +161,16 @@ const GetData = () => {
         </article>
     )
 }
-const skillsGroup = ['C','C#','C++','Elixir','Erlang','Go','Golang','Java','JavaScript','Kotlin','Objective-C','PHP','Python','R','Ruby','Scala','kotlin','objective c','TypeScript','Swift'];
+const skillsGroup = ['C', 'C#', 'C++', 'Elixir', 'Erlang', 'Go', 'Golang', 'Java', 'JavaScript', 'Kotlin', 'Objective-C', 'PHP', 'Python', 'R', 'Ruby', 'Scala', 'kotlin', 'objective c', 'TypeScript', 'Swift'];
 
 const LanguageAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
-    
+
 
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            skillsGroup.includes(iter.skill) 
+            skillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -231,8 +231,7 @@ const LanguageSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //--------------------- Bases de datos ----------------------
 //-----------------------------------------------------------
-const dbSkillsGroup = ["MongoDB", "MySQL", "NoSQL", "Oracle", 
-    "Oracle DB", "PostgreSQL", "Redis", "SQL"];
+const dbSkillsGroup = ['MongoDB', 'MySQL', 'NoSQL', 'Oracle DB', 'Oracle', 'PostgreSQL', 'SQL', 'Redis'];
 const DataBaseAcumulatedGraphProps = (props) => {
     const [dataAcumulado, setDataAcumulado] = useState([])
 
@@ -299,16 +298,15 @@ const DataBaseSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //------------------ Framework JavaScript -------------------
 //-----------------------------------------------------------
-const jsSkillsGroup = ["Angular 2", "Angular 4", "Angular 5", "Angular 6", "AngularJS",
-            "Backbone.js", "Ember.js", "jQuery", "Meteor",
-            "React", "Sails.js", "vue.js" ];
+const jsSkillsGroup = ['Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJS', 'Backbone.js', 'Ember.js', 'jQuery', 'Meteor', 'React', 'Sails.js', 'vue.js'];
+
 const FrameworkJSAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
 
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            dbSkillsGroup.includes(iter.skill)
+            jsSkillsGroup.includes(iter.skill)
         ).map(iter => {
             return {
                 "id": iter.skill,
@@ -424,7 +422,7 @@ const CloudServicesSalaryGraphProps = (props) => {
 
     useEffect(() => {
         const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            cloudSkillsGroup.includes(iter.skill)            
+            cloudSkillsGroup.includes(iter.skill)
         )
         setDataSalario(dataLenguajeSalario)
     }, [props])
