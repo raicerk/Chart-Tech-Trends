@@ -18,6 +18,18 @@ class CompSection extends Component {
     }
 }
 
+const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
+const traducirAgrupadoPorMes = iter => ({
+  id: iter.skill,
+  data: iter.datos.sort().map(i => {
+    let fec = i.fecha.split("-")
+    return {
+      x: `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+      y: i.cantidad
+    }
+  })
+})
+
 const GetData = () => {
     const context = useContext(AppContext)
     const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
@@ -107,12 +119,7 @@ const LanguageAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             skillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -128,18 +135,7 @@ const LanguageGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             skillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -174,12 +170,7 @@ const DataBaseAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             dbSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -195,18 +186,7 @@ const DataBaseGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             dbSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -243,12 +223,7 @@ const FrameworkJSAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             jsSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -264,18 +239,7 @@ const FrameworkJSGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             jsSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -311,12 +275,7 @@ const CloudServicesAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             cloudSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -332,18 +291,7 @@ const CloudServicesGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             cloudSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -379,12 +327,7 @@ const MobileAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             mobileSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -400,18 +343,7 @@ const MobileGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             mobileSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
