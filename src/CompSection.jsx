@@ -161,10 +161,7 @@ const GetData = () => {
         </article>
     )
 }
-const skillsGroup = ["C", "C#", "C++", "Erlang", "Go", 
-        "Golang", "Java", "Javascript", "Objective-C", "PHP", 
-        "Python", "R", "Ruby","Scala", "Swift",
-        "TypeScript", "Kotlin"];
+const skillsGroup = ['C','C#','C++','Elixir','Erlang','Go','Golang','Java','JavaScript','Kotlin','Objective-C','PHP','Python','R','Ruby','Scala','kotlin','objective c','TypeScript','Swift'];
 
 const LanguageAcumulatedGraphProps = (props) => {
 
