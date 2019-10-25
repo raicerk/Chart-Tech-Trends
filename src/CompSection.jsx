@@ -6,6 +6,7 @@ import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
 import api from './api';
 import AppContext from './AppContext'
 
+import './CompSection.css'
 
 class CompSection extends Component {
     render() {
@@ -42,85 +43,57 @@ const GetData = () => {
 
     return (
         <article>
-
-            {/* Separador */}
-            <hr />
-            <hr />
-            {/* Fin separador */}
-
-            Esta funcionalidad te permitirá elegir un skill y ver cuales otros skill son requeridos en conjunto con el seleccionado,
+          <div className="section">
+            <p>Esta funcionalidad te permitirá elegir un skill y ver cuales otros skill son requeridos en conjunto con el seleccionado,
             en el gráfico se refleja los skill complementarios que necesitas aprender o tener noción y que solicitan las compañías en
-                las ofertas laborales:<br /> <br /><br />
+            las ofertas laborales:</p>
             <OtherSkillGraph />
+          </div>
 
-            {/* Separador */}
-            <hr />
-            <hr />
-            {/* Fin separador */}
-
+          <div className="section">
             <label>Lenguajes de programación acumulados desde mayo de 2018 a la fecha</label>
             <LanguageAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
             <label>Lenguajes de programación, tendencias de lenguajes solicitados en ofertas laborales desde mayo de 2018 a la fecha</label>
             <LanguageGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <label>Lenguajes de programación promedios de salarios desde mayo de 2018 a la fecha</label>
             <LanguageSalaryGraphProps LaboralSalarios={dataSalario} />
+         </div>
 
-
-            {/* Separador */}
-            <hr />
-            <hr />
-            {/* Fin separador */}
-
-
+         <div className="section">
             <label>Bases de datos acumuladas desde mayo de 2018 a la fecha</label>
             <DataBaseAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
             <label>Base de datos, tendencias de bases de datos o motores solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
             <DataBaseGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <label>Base de datos promedios de salarios desde mayo de 2018 a la fecha</label>
             <DataBaseSalaryGraphProps LaboralSalarios={dataSalario} />
+         </div>
 
-
-            {/* Separador */}
-            <hr />
-            <hr />
-            {/* Fin separador */}
-
-
+          <div className="section">
             <label>Frameworks JavaScript acumulados desde mayo de 2018 a la fecha</label>
             <FrameworkJSAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
             <label>Frameworks JavaScript, tendencias de Frameworks JavaScript y tecnologías JavaScript solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
             <FrameworkJSGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <label>Frameworks JavaScript promedios de salarios desde mayo de 2018 a la fecha</label>
             <FrameworkJSSalaryGraphProps LaboralSalarios={dataSalario} />
+          </div>
 
-
-            {/* Separador */}
-            <hr />
-            <hr />
-            {/* Fin separador */}
-
-
+          <div className="section">
             <label>Servicios cloud acumulados desde mayo de 2018 a la fecha</label>
             <CloudServicesAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
             <label>Servicios cloud, tendencias de nubes solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
             <CloudServicesGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <label>Servicios cloud promedios de salarios desde mayo de 2018 a la fecha</label>
             <CloudServicesSalaryGraphProps LaboralSalarios={dataSalario} />
+          </div>
 
-
-            {/* Separador */}
-            <hr />
-            <hr />
-            {/* Fin separador */}
-
-
+          <div className="section">
             <label>Tecnologías móviles acumuladas desde mayo de 2018 a la fecha</label>
             <MobileAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
             <label>Tecnologías móviles, tendencias de tecnologías móviles solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
             <MobileGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <label>Tecnologías móviles promedios de salarios desde mayo de 2018 a la fecha</label>
             <MobileSalaryGraphProps LaboralSalarios={dataSalario} />
-
+          </div>
         </article>
     )
 }
