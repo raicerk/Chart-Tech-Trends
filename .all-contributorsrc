@@ -31,6 +31,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "joseglego",
+      "name": "Jose Lezama",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/238259?v=4",
+      "profile": "http://joseglego.io/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
