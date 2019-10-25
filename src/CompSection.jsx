@@ -367,7 +367,7 @@ const FrameworkJSSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //--------------------- Cloud Services ----------------------
 //-----------------------------------------------------------
-const cloudSkillsGroup = ["Amazon Web Services", "Azure", "Google App Engine"];
+const cloudSkillsGroup = ['Amazon Web Services', 'Azure', 'Google App Engine'];
 const CloudServicesAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
@@ -435,8 +435,7 @@ const CloudServicesSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 //------------------------- Mobile --------------------------
 //-----------------------------------------------------------
-const mobileSkillsGroup = ["Android", "Cordova", "Ionic",
-    "Kotlin", "PhoneGap", "React-Native", "Xamarin", "iOS", "kotlin"];
+const mobileSkillsGroup = ['Android', 'Cordova', 'Ionic', 'iOS', 'Kotlin', 'kotlin', 'PhoneGap', 'React-Native', 'Xamarin'];
 const MobileAcumulatedGraphProps = (props) => {
 
     const [dataAcumulado, setDataAcumulado] = useState([])
