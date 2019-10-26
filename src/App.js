@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import CompHeader from './CompHeader';
+import Header from './Header/Header';
 import Home from './Home/Home';
 import CompSection from './CompSection';
 import AppContext from './AppContext';
@@ -24,7 +24,7 @@ class App extends Component {
         setPais: this.handleSetPais
        }}>
         <div className="App">
-          <CompHeader />
+          <Header />
           <main>
             <Home />
             <CompSection />
