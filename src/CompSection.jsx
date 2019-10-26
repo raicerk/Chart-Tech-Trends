@@ -128,26 +128,14 @@ const GetData = () => {
         </article>
     )
 }
+
+//-----------------------------------------------------------
+//-------------- Definición de Grupos de Datos --------------
+//-----------------------------------------------------------
 const skillsGroup = ['C', 'C#', 'C++', 'Elixir', 'Erlang', 'Go', 'Golang', 'Java', 'JavaScript', 'Kotlin', 'Objective-C', 'PHP', 'Python', 'R', 'Ruby', 'Scala', 'kotlin', 'objective c', 'TypeScript', 'Swift'];
-
-//-----------------------------------------------------------
-//--------------------- Bases de datos ----------------------
-//-----------------------------------------------------------
 const dbSkillsGroup = ['MongoDB', 'MySQL', 'NoSQL', 'Oracle DB', 'Oracle', 'PostgreSQL', 'SQL', 'Redis'];
-
-//-----------------------------------------------------------
-//------------------ Framework JavaScript -------------------
-//-----------------------------------------------------------
 const jsSkillsGroup = ['Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJS', 'Backbone.js', 'Ember.js', 'jQuery', 'Meteor', 'React', 'Sails.js', 'vue.js'];
-
-//-----------------------------------------------------------
-//--------------------- Cloud Services ----------------------
-//-----------------------------------------------------------
 const cloudSkillsGroup = ['Amazon Web Services', 'Azure', 'Google App Engine'];
-
-//-----------------------------------------------------------
-//------------------------- Mobile --------------------------
-//-----------------------------------------------------------
 const mobileSkillsGroup = ['Android', 'Cordova', 'Ionic', 'iOS', 'Kotlin', 'kotlin', 'PhoneGap', 'React-Native', 'Xamarin'];
 
 //-----------------------------------------------------------
