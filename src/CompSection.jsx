@@ -19,6 +19,7 @@ class CompSection extends Component {
 }
 
 const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
+
 const traducirAgrupadoPorMes = iter => ({
   id: iter.skill,
   data: iter.datos.sort().map(i => {
@@ -29,6 +30,10 @@ const traducirAgrupadoPorMes = iter => ({
     }
   })
 })
+
+const procesarDataAcumulados = (data, elements) => {
+  return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAcumulado(iter))
+}
 
 const GetData = () => {
     const context = useContext(AppContext)
@@ -66,7 +71,7 @@ const GetData = () => {
           <div className="section">
             <h2 className="section__title">Lenguajes de Programación</h2>
             <h3 className="section__subtitle">Ocurrencias</h3>
-            <LanguageAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, skillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
             <LanguageGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
@@ -76,7 +81,7 @@ const GetData = () => {
           <div className="section">
             <h2 className="section__title">Motores de Base de Datos</h2>
             <h3 className="section__subtitle">Ocurrencias</h3>
-            <DataBaseAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, dbSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
             <DataBaseGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
@@ -86,7 +91,7 @@ const GetData = () => {
           <div className="section">
             <h2 className="section__title">Frameworks de JavaScript</h2>
             <h3 className="section__subtitle">Ocurrencias</h3>
-            <FrameworkJSAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, jsSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
             <FrameworkJSGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
@@ -96,7 +101,7 @@ const GetData = () => {
           <div className="section">
             <h2 className="section__title">Servicios Cloud</h2>
             <h3 className="section__subtitle">Ocurrencias</h3>
-            <CloudServicesAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, cloudSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
             <CloudServicesGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
@@ -106,7 +111,7 @@ const GetData = () => {
           <div className="section">
             <h2 className="section__title">Tecnologías Móviles</h2>
             <h3 className="section__subtitle">Ocurrencias</h3>
-            <MobileAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
+            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, mobileSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
             <MobileGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
@@ -116,23 +121,6 @@ const GetData = () => {
     )
 }
 const skillsGroup = ['C', 'C#', 'C++', 'Elixir', 'Erlang', 'Go', 'Golang', 'Java', 'JavaScript', 'Kotlin', 'Objective-C', 'PHP', 'Python', 'R', 'Ruby', 'Scala', 'kotlin', 'objective c', 'TypeScript', 'Swift'];
-
-const LanguageAcumulatedGraphProps = (props) => {
-
-    const [dataAcumulado, setDataAcumulado] = useState([])
-
-
-    useEffect(() => {
-        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            skillsGroup.includes(iter.skill)
-        ).map(iter => traducirAcumulado(iter))
-        setDataAcumulado(dataLenguajeAcumulado)
-    }, [props])
-
-    return (
-        <CompGraficoPie data={dataAcumulado} />
-    )
-}
 
 const LanguageGraphProps = (props) => {
 
@@ -170,20 +158,6 @@ const LanguageSalaryGraphProps = (props) => {
 //--------------------- Bases de datos ----------------------
 //-----------------------------------------------------------
 const dbSkillsGroup = ['MongoDB', 'MySQL', 'NoSQL', 'Oracle DB', 'Oracle', 'PostgreSQL', 'SQL', 'Redis'];
-const DataBaseAcumulatedGraphProps = (props) => {
-    const [dataAcumulado, setDataAcumulado] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            dbSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAcumulado(iter))
-        setDataAcumulado(dataLenguajeAcumulado)
-    }, [props])
-
-    return (
-        <CompGraficoPie data={dataAcumulado} />
-    )
-}
 
 const DataBaseGraphProps = (props) => {
 
@@ -222,22 +196,6 @@ const DataBaseSalaryGraphProps = (props) => {
 //-----------------------------------------------------------
 const jsSkillsGroup = ['Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJS', 'Backbone.js', 'Ember.js', 'jQuery', 'Meteor', 'React', 'Sails.js', 'vue.js'];
 
-const FrameworkJSAcumulatedGraphProps = (props) => {
-
-    const [dataAcumulado, setDataAcumulado] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            jsSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAcumulado(iter))
-        setDataAcumulado(dataLenguajeAcumulado)
-    }, [props])
-
-    return (
-        <CompGraficoPie data={dataAcumulado} />
-    )
-}
-
 const FrameworkJSGraphProps = (props) => {
 
     const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
@@ -274,21 +232,6 @@ const FrameworkJSSalaryGraphProps = (props) => {
 //--------------------- Cloud Services ----------------------
 //-----------------------------------------------------------
 const cloudSkillsGroup = ['Amazon Web Services', 'Azure', 'Google App Engine'];
-const CloudServicesAcumulatedGraphProps = (props) => {
-
-    const [dataAcumulado, setDataAcumulado] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            cloudSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAcumulado(iter))
-        setDataAcumulado(dataLenguajeAcumulado)
-    }, [props])
-
-    return (
-        <CompGraficoPie data={dataAcumulado} />
-    )
-}
 
 const CloudServicesGraphProps = (props) => {
 
@@ -326,21 +269,6 @@ const CloudServicesSalaryGraphProps = (props) => {
 //------------------------- Mobile --------------------------
 //-----------------------------------------------------------
 const mobileSkillsGroup = ['Android', 'Cordova', 'Ionic', 'iOS', 'Kotlin', 'kotlin', 'PhoneGap', 'React-Native', 'Xamarin'];
-const MobileAcumulatedGraphProps = (props) => {
-
-    const [dataAcumulado, setDataAcumulado] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
-            mobileSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAcumulado(iter))
-        setDataAcumulado(dataLenguajeAcumulado)
-    }, [props])
-
-    return (
-        <CompGraficoPie data={dataAcumulado} />
-    )
-}
 
 const MobileGraphProps = (props) => {
 
