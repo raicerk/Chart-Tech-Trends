@@ -35,6 +35,10 @@ const procesarDataAcumulados = (data, elements) => {
   return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAcumulado(iter))
 }
 
+const procesarDataSalarios = (data, elements) => {
+  return data.filter(iter => elements.includes(iter.skill))
+}
+
 const GetData = () => {
     const context = useContext(AppContext)
     const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
@@ -75,7 +79,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Tendencias</h3>
             <LanguageGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
-            <LanguageSalaryGraphProps LaboralSalarios={dataSalario} />
+            <CompGraficoBarra data={procesarDataSalarios(dataSalario, skillsGroup)} />
          </div>
 
           <div className="section">
@@ -85,7 +89,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Tendencias</h3>
             <DataBaseGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
-            <DataBaseSalaryGraphProps LaboralSalarios={dataSalario} />
+            <CompGraficoBarra data={procesarDataSalarios(dataSalario, dbSkillsGroup)} />
          </div>
 
           <div className="section">
@@ -95,7 +99,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Tendencias</h3>
             <FrameworkJSGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
-            <FrameworkJSSalaryGraphProps LaboralSalarios={dataSalario} />
+            <CompGraficoBarra data={procesarDataSalarios(dataSalario, jsSkillsGroup)} />
           </div>
 
           <div className="section">
@@ -105,7 +109,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Tendencias</h3>
             <CloudServicesGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
-            <CloudServicesSalaryGraphProps LaboralSalarios={dataSalario} />
+            <CompGraficoBarra data={procesarDataSalarios(dataSalario, cloudSkillsGroup)} />
           </div>
 
           <div className="section">
@@ -115,7 +119,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Tendencias</h3>
             <MobileGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
-            <MobileSalaryGraphProps LaboralSalarios={dataSalario} />
+            <CompGraficoBarra data={procesarDataSalarios(dataSalario, mobileSkillsGroup)} />
           </div>
         </article>
     )
@@ -135,22 +139,6 @@ const LanguageGraphProps = (props) => {
 
     return (
         <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
-
-const LanguageSalaryGraphProps = (props) => {
-
-    const [dataSalario, setDataSalario] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            skillsGroup.includes(iter.skill)
-        )
-        setDataSalario(dataLenguajeSalario)
-    }, [props])
-
-    return (
-        <CompGraficoBarra data={dataSalario} />
     )
 }
 
@@ -175,22 +163,6 @@ const DataBaseGraphProps = (props) => {
     )
 }
 
-const DataBaseSalaryGraphProps = (props) => {
-
-    const [dataSalario, setDataSalario] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            dbSkillsGroup.includes(iter.skill)
-        )
-        setDataSalario(dataLenguajeSalario)
-    }, [props])
-
-    return (
-        <CompGraficoBarra data={dataSalario} />
-    )
-}
-
 //-----------------------------------------------------------
 //------------------ Framework JavaScript -------------------
 //-----------------------------------------------------------
@@ -209,22 +181,6 @@ const FrameworkJSGraphProps = (props) => {
 
     return (
         <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
-
-const FrameworkJSSalaryGraphProps = (props) => {
-
-    const [dataSalario, setDataSalario] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            jsSkillsGroup.includes(iter.skill)
-        )
-        setDataSalario(dataLenguajeSalario)
-    }, [props])
-
-    return (
-        <CompGraficoBarra data={dataSalario} />
     )
 }
 
@@ -249,22 +205,6 @@ const CloudServicesGraphProps = (props) => {
     )
 }
 
-const CloudServicesSalaryGraphProps = (props) => {
-
-    const [dataSalario, setDataSalario] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            cloudSkillsGroup.includes(iter.skill)
-        )
-        setDataSalario(dataLenguajeSalario)
-    }, [props])
-
-    return (
-        <CompGraficoBarra data={dataSalario} />
-    )
-}
-
 //-----------------------------------------------------------
 //------------------------- Mobile --------------------------
 //-----------------------------------------------------------
@@ -283,22 +223,6 @@ const MobileGraphProps = (props) => {
 
     return (
         <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
-
-const MobileSalaryGraphProps = (props) => {
-
-    const [dataSalario, setDataSalario] = useState([])
-
-    useEffect(() => {
-        const dataLenguajeSalario = props.LaboralSalarios.filter(iter =>
-            mobileSkillsGroup.includes(iter.skill)
-        )
-        setDataSalario(dataLenguajeSalario)
-    }, [props])
-
-    return (
-        <CompGraficoBarra data={dataSalario} />
     )
 }
 
