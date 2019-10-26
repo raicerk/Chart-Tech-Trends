@@ -15,7 +15,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  opacity: 0.3;
+  opacity: 0.25;
   width: 100%;
   height: calc(100vh - 60px);
   position: absolute;
@@ -44,5 +44,5 @@
 }
 
 .home__extra-text {
-    color: #666;
+  color: #666;
 }
