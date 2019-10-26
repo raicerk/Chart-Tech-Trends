@@ -39,6 +39,10 @@ const procesarDataSalarios = (data, elements) => {
   return data.filter(iter => elements.includes(iter.skill))
 }
 
+const procesarDataAgrupadosPorMes = (data, elements) => {
+  return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAgrupadoPorMes(iter))
+}
+
 const GetData = () => {
     const context = useContext(AppContext)
     const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
@@ -77,7 +81,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Ocurrencias</h3>
             <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, skillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
-            <LanguageGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, skillsGroup)} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
             <CompGraficoBarra data={procesarDataSalarios(dataSalario, skillsGroup)} />
          </div>
@@ -87,7 +91,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Ocurrencias</h3>
             <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, dbSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
-            <DataBaseGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, dbSkillsGroup)} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
             <CompGraficoBarra data={procesarDataSalarios(dataSalario, dbSkillsGroup)} />
          </div>
@@ -97,7 +101,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Ocurrencias</h3>
             <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, jsSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
-            <FrameworkJSGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, jsSkillsGroup)} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
             <CompGraficoBarra data={procesarDataSalarios(dataSalario, jsSkillsGroup)} />
           </div>
@@ -107,7 +111,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Ocurrencias</h3>
             <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, cloudSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
-            <CloudServicesGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, cloudSkillsGroup)} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
             <CompGraficoBarra data={procesarDataSalarios(dataSalario, cloudSkillsGroup)} />
           </div>
@@ -117,7 +121,7 @@ const GetData = () => {
             <h3 className="section__subtitle">Ocurrencias</h3>
             <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, mobileSkillsGroup)} />
             <h3 className="section__subtitle">Tendencias</h3>
-            <MobileGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
+            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, mobileSkillsGroup)} />
             <h3 className="section__subtitle">Salarios Promedios</h3>
             <CompGraficoBarra data={procesarDataSalarios(dataSalario, mobileSkillsGroup)} />
           </div>
@@ -126,105 +130,25 @@ const GetData = () => {
 }
 const skillsGroup = ['C', 'C#', 'C++', 'Elixir', 'Erlang', 'Go', 'Golang', 'Java', 'JavaScript', 'Kotlin', 'Objective-C', 'PHP', 'Python', 'R', 'Ruby', 'Scala', 'kotlin', 'objective c', 'TypeScript', 'Swift'];
 
-const LanguageGraphProps = (props) => {
-
-    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
-
-    useEffect(() => {
-        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            skillsGroup.includes(iter.skill)
-        ).map(iter => traducirAgrupadoPorMes(iter))
-        setDataAgrupadoPorMes(dataLenguaje)
-    }, [props])
-
-    return (
-        <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
-
 //-----------------------------------------------------------
 //--------------------- Bases de datos ----------------------
 //-----------------------------------------------------------
 const dbSkillsGroup = ['MongoDB', 'MySQL', 'NoSQL', 'Oracle DB', 'Oracle', 'PostgreSQL', 'SQL', 'Redis'];
-
-const DataBaseGraphProps = (props) => {
-
-    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
-
-    useEffect(() => {
-        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            dbSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAgrupadoPorMes(iter))
-        setDataAgrupadoPorMes(dataLenguaje)
-    }, [props])
-
-    return (
-        <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
 
 //-----------------------------------------------------------
 //------------------ Framework JavaScript -------------------
 //-----------------------------------------------------------
 const jsSkillsGroup = ['Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJS', 'Backbone.js', 'Ember.js', 'jQuery', 'Meteor', 'React', 'Sails.js', 'vue.js'];
 
-const FrameworkJSGraphProps = (props) => {
-
-    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
-
-    useEffect(() => {
-        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            jsSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAgrupadoPorMes(iter))
-        setDataAgrupadoPorMes(dataLenguaje)
-    }, [props])
-
-    return (
-        <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
-
 //-----------------------------------------------------------
 //--------------------- Cloud Services ----------------------
 //-----------------------------------------------------------
 const cloudSkillsGroup = ['Amazon Web Services', 'Azure', 'Google App Engine'];
 
-const CloudServicesGraphProps = (props) => {
-
-    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
-
-    useEffect(() => {
-        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            cloudSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAgrupadoPorMes(iter))
-        setDataAgrupadoPorMes(dataLenguaje)
-    }, [props])
-
-    return (
-        <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
-
 //-----------------------------------------------------------
 //------------------------- Mobile --------------------------
 //-----------------------------------------------------------
 const mobileSkillsGroup = ['Android', 'Cordova', 'Ionic', 'iOS', 'Kotlin', 'kotlin', 'PhoneGap', 'React-Native', 'Xamarin'];
-
-const MobileGraphProps = (props) => {
-
-    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
-
-    useEffect(() => {
-        const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
-            mobileSkillsGroup.includes(iter.skill)
-        ).map(iter => traducirAgrupadoPorMes(iter))
-        setDataAgrupadoPorMes(dataLenguaje)
-    }, [props])
-
-    return (
-        <CompGraficos data={dataAgrupadoPorMes} />
-    )
-}
 
 //-----------------------------------------------------------
 //----------------- Skill complementarios -------------------
