@@ -18,6 +18,18 @@ class CompSection extends Component {
     }
 }
 
+const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
+const traducirAgrupadoPorMes = iter => ({
+  id: iter.skill,
+  data: iter.datos.sort().map(i => {
+    let fec = i.fecha.split("-")
+    return {
+      x: `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
+      y: i.cantidad
+    }
+  })
+})
+
 const GetData = () => {
     const context = useContext(AppContext)
     const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
@@ -44,6 +56,7 @@ const GetData = () => {
     return (
         <article>
           <div className="section">
+            <h2 className="section__title">Skills Relacionadas</h2>
             <p>Esta funcionalidad te permitirá elegir un skill y ver cuales otros skill son requeridos en conjunto con el seleccionado,
             en el gráfico se refleja los skill complementarios que necesitas aprender o tener noción y que solicitan las compañías en
             las ofertas laborales:</p>
@@ -51,47 +64,52 @@ const GetData = () => {
           </div>
 
           <div className="section">
-            <label>Lenguajes de programación acumulados desde mayo de 2018 a la fecha</label>
+            <h2 className="section__title">Lenguajes de Programación</h2>
+            <h3 className="section__subtitle">Ocurrencias</h3>
             <LanguageAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
-            <label>Lenguajes de programación, tendencias de lenguajes solicitados en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Tendencias</h3>
             <LanguageGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
-            <label>Lenguajes de programación promedios de salarios desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Salarios Promedios</h3>
             <LanguageSalaryGraphProps LaboralSalarios={dataSalario} />
          </div>
 
-         <div className="section">
-            <label>Bases de datos acumuladas desde mayo de 2018 a la fecha</label>
+          <div className="section">
+            <h2 className="section__title">Motores de Base de Datos</h2>
+            <h3 className="section__subtitle">Ocurrencias</h3>
             <DataBaseAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
-            <label>Base de datos, tendencias de bases de datos o motores solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Tendencias</h3>
             <DataBaseGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
-            <label>Base de datos promedios de salarios desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Salarios Promedios</h3>
             <DataBaseSalaryGraphProps LaboralSalarios={dataSalario} />
          </div>
 
           <div className="section">
-            <label>Frameworks JavaScript acumulados desde mayo de 2018 a la fecha</label>
+            <h2 className="section__title">Frameworks de JavaScript</h2>
+            <h3 className="section__subtitle">Ocurrencias</h3>
             <FrameworkJSAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
-            <label>Frameworks JavaScript, tendencias de Frameworks JavaScript y tecnologías JavaScript solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Tendencias</h3>
             <FrameworkJSGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
-            <label>Frameworks JavaScript promedios de salarios desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Salarios Promedios</h3>
             <FrameworkJSSalaryGraphProps LaboralSalarios={dataSalario} />
           </div>
 
           <div className="section">
-            <label>Servicios cloud acumulados desde mayo de 2018 a la fecha</label>
+            <h2 className="section__title">Servicios Cloud</h2>
+            <h3 className="section__subtitle">Ocurrencias</h3>
             <CloudServicesAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
-            <label>Servicios cloud, tendencias de nubes solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Tendencias</h3>
             <CloudServicesGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
-            <label>Servicios cloud promedios de salarios desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Salarios Promedios</h3>
             <CloudServicesSalaryGraphProps LaboralSalarios={dataSalario} />
           </div>
 
           <div className="section">
-            <label>Tecnologías móviles acumuladas desde mayo de 2018 a la fecha</label>
+            <h2 className="section__title">Tecnologías Móviles</h2>
+            <h3 className="section__subtitle">Ocurrencias</h3>
             <MobileAcumulatedGraphProps LaboralAcumulado={dataAcumulado} />
-            <label>Tecnologías móviles, tendencias de tecnologías móviles solicitadas en ofertas laborales desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Tendencias</h3>
             <MobileGraphProps LaboralAgrupadoPorMes={dataAgrupadoPorMes} />
-            <label>Tecnologías móviles promedios de salarios desde mayo de 2018 a la fecha</label>
+            <h3 className="section__subtitle">Salarios Promedios</h3>
             <MobileSalaryGraphProps LaboralSalarios={dataSalario} />
           </div>
         </article>
@@ -107,12 +125,7 @@ const LanguageAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             skillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -128,18 +141,7 @@ const LanguageGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             skillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -174,12 +176,7 @@ const DataBaseAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             dbSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -195,18 +192,7 @@ const DataBaseGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             dbSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -243,12 +229,7 @@ const FrameworkJSAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             jsSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -264,18 +245,7 @@ const FrameworkJSGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             jsSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -311,12 +281,7 @@ const CloudServicesAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             cloudSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -332,18 +297,7 @@ const CloudServicesGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             cloudSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 
@@ -379,12 +333,7 @@ const MobileAcumulatedGraphProps = (props) => {
     useEffect(() => {
         const dataLenguajeAcumulado = props.LaboralAcumulado.filter(iter =>
             mobileSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "value": iter.cantidad
-            }
-        })
+        ).map(iter => traducirAcumulado(iter))
         setDataAcumulado(dataLenguajeAcumulado)
     }, [props])
 
@@ -400,18 +349,7 @@ const MobileGraphProps = (props) => {
     useEffect(() => {
         const dataLenguaje = props.LaboralAgrupadoPorMes.filter(iter =>
             mobileSkillsGroup.includes(iter.skill)
-        ).map(iter => {
-            return {
-                "id": iter.skill,
-                "data": iter.datos.sort().map(i => {
-                    let fec = i.fecha.split("-")
-                    return {
-                        "x": `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
-                        "y": i.cantidad
-                    }
-                })
-            }
-        })
+        ).map(iter => traducirAgrupadoPorMes(iter))
         setDataAgrupadoPorMes(dataLenguaje)
     }, [props])
 

@@ -1,11 +1,13 @@
-@import "https://fonts.googleapis.com/css?family=Roboto:400,700";
+@import "https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700|PT+Mono:300";
+
 *, :before, :after {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-  font-family: Roboto;
+  font-family: 'Roboto', sans-serif;
+  color: #666;
 }
 
 header {

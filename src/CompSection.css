@@ -1,6 +1,9 @@
 .section {
   margin-top: 30px;
   border-top: 1px solid #666;
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .section::before {
@@ -21,4 +24,18 @@
   .section:first-child, .section:first-child::before {
     border-top-color: #eee
   }
+}
+
+.section__title {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: #222;
+  margin-bottom: 0;
+}
+
+.section__subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+  margin-top: 0;
+  margin-bottom: 5px;
 }

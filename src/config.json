@@ -3,7 +3,6 @@
     "chart": {
         "axisBottom": {
             "format": "%b %Y",
-            "tickValues": "every month",
             "orient": "bottom",
             "tickSize": 5,
             "tickPadding": 5,
