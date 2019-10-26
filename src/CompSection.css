@@ -25,3 +25,17 @@
     border-top-color: #eee
   }
 }
+
+.section__title {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  color: #222;
+  margin-bottom: 0;
+}
+
+.section__subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: #222;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
