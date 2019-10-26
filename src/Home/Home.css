@@ -10,7 +10,7 @@
   content: ' ';
   display: block;
   z-index: -1;
-  background: url('/images/background.jpeg') no-repeat center center fixed;
+  background: url('/images/background.jpeg') no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
