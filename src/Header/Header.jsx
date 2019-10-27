@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CompPaises from '../CompPaises';
+import Paises from './Paises';
 
 import './Header.css';
 
@@ -26,7 +26,7 @@ function Header() {
         <span className='header-title__second'>Trends</span>
         <span className="header-title__special"> beta</span>
       </h1>
-      <CompPaises />
+      <Paises />
     </header>
   );
 }
