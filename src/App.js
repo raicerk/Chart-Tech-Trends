@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './Header/Header';
 import Home from './Home/Home';
-import CompSection from './CompSection';
+import Section from './Section/Section';
 import AppContext from './AppContext';
 import Footer from './Footer/Footer';
 
@@ -27,9 +27,9 @@ class App extends Component {
           <Header />
           <main>
             <Home />
-            <CompSection />
-            <Footer />
+            <Section />
           </main>
+          <Footer />
         </div>
       </AppContext.Provider>
     );

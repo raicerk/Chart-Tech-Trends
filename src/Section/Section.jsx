@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
-import CompGraficos from './CompGraficoLinea';
-import CompGraficoPie from './CompGraficoPie';
-import CompGraficoBarra from './CompGraficoBarra';
-import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
-import api from './api';
-import AppContext from './AppContext'
+import CompGraficos from '../CompGraficoLinea';
+import CompGraficoPie from '../CompGraficoPie';
+import CompGraficoBarra from '../CompGraficoBarra';
+import CompGraficoBarraHorizontal from '../CompGraficoBarraHorizontal';
+import api from '../api';
+import AppContext from '../AppContext'
 
-import './CompSection.css'
+import './Section.css'
 
 const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
 
