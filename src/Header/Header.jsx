@@ -7,10 +7,10 @@ function Header() {
   const [extraClass, setExtraClass] = useState('no-header')
 
   const handleScroll = () => {
-    const offset = 500;
+    const offset = 440;
     const windowsScrollTop  = window.pageYOffset;
 
-    setExtraClass(windowsScrollTop >= offset ? '' : 'no-header')
+    setExtraClass(windowsScrollTop >= offset ? 'show-header' : 'no-header')
   }
 
   useEffect(() => {
@@ -20,6 +20,7 @@ function Header() {
 
   return (
     <header className={`header ${extraClass}`}>
+
       <h1 className="header__title">
         Tech
         <span className='header-title__second'>Trends</span>

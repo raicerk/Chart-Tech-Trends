@@ -19,7 +19,21 @@
 }
 
 .no-header {
+  height: 0;
+  min-height: 0;
+  padding: 0;
+  transform: translate(0, -110%);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+.no-header * {
   display: none;
+}
+
+.show-header {
+  height: 60px;
+  transform: translate(0, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 }
 
 @media (prefers-color-scheme: dark) {
