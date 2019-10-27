@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ResponsiveBar } from '@nivo/bar'
-import config from './config.json';
+import { ResponsiveBar } from '@nivo/bar';
+import config from '../config.json';
 import PropTypes from 'prop-types';
 
 class CompGraficoBarraHorizontal extends Component {

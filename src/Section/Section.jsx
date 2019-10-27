@@ -1,22 +1,12 @@
-import React, { Component, useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import CompGraficos from './CompGraficoLinea';
 import CompGraficoPie from './CompGraficoPie';
 import CompGraficoBarra from './CompGraficoBarra';
 import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
-import api from './api';
-import AppContext from './AppContext'
+import api from '../api';
+import AppContext from '../AppContext'
 
-import './CompSection.css'
-
-class CompSection extends Component {
-    render() {
-        return (
-            <div className="contenido">
-                <GetData />
-            </div>
-        );
-    }
-}
+import './Section.css'
 
 const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
 
@@ -43,7 +33,7 @@ const procesarDataAgrupadosPorMes = (data, elements) => {
   return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAgrupadoPorMes(iter))
 }
 
-const GetData = () => {
+const Section = () => {
     const context = useContext(AppContext)
     const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
     const [dataAcumulado, setDataAcumulado] = useState([])
@@ -67,6 +57,7 @@ const GetData = () => {
     }, [context.pais])
 
     return (
+      <div className="contenido">
         <article>
           <div className="section">
             <h2 className="section__title">Skills Relacionadas</h2>
@@ -76,67 +67,41 @@ const GetData = () => {
             <OtherSkillGraph />
           </div>
 
-          <div className="section">
-            <h2 className="section__title">Lenguajes de Programación</h2>
-            <h3 className="section__subtitle">Ocurrencias</h3>
-            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, skillsGroup)} />
-            <h3 className="section__subtitle">Tendencias</h3>
-            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, skillsGroup)} />
-            <h3 className="section__subtitle">Salarios Promedios</h3>
-            <CompGraficoBarra data={procesarDataSalarios(dataSalario, skillsGroup)} />
-         </div>
-
-          <div className="section">
-            <h2 className="section__title">Motores de Base de Datos</h2>
-            <h3 className="section__subtitle">Ocurrencias</h3>
-            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, dbSkillsGroup)} />
-            <h3 className="section__subtitle">Tendencias</h3>
-            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, dbSkillsGroup)} />
-            <h3 className="section__subtitle">Salarios Promedios</h3>
-            <CompGraficoBarra data={procesarDataSalarios(dataSalario, dbSkillsGroup)} />
-         </div>
-
-          <div className="section">
-            <h2 className="section__title">Frameworks de JavaScript</h2>
-            <h3 className="section__subtitle">Ocurrencias</h3>
-            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, jsSkillsGroup)} />
-            <h3 className="section__subtitle">Tendencias</h3>
-            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, jsSkillsGroup)} />
-            <h3 className="section__subtitle">Salarios Promedios</h3>
-            <CompGraficoBarra data={procesarDataSalarios(dataSalario, jsSkillsGroup)} />
-          </div>
-
-          <div className="section">
-            <h2 className="section__title">Servicios Cloud</h2>
-            <h3 className="section__subtitle">Ocurrencias</h3>
-            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, cloudSkillsGroup)} />
-            <h3 className="section__subtitle">Tendencias</h3>
-            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, cloudSkillsGroup)} />
-            <h3 className="section__subtitle">Salarios Promedios</h3>
-            <CompGraficoBarra data={procesarDataSalarios(dataSalario, cloudSkillsGroup)} />
-          </div>
-
-          <div className="section">
-            <h2 className="section__title">Tecnologías Móviles</h2>
-            <h3 className="section__subtitle">Ocurrencias</h3>
-            <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, mobileSkillsGroup)} />
-            <h3 className="section__subtitle">Tendencias</h3>
-            <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, mobileSkillsGroup)} />
-            <h3 className="section__subtitle">Salarios Promedios</h3>
-            <CompGraficoBarra data={procesarDataSalarios(dataSalario, mobileSkillsGroup)} />
-          </div>
+          { definedDatasets.map(set => (
+              <div className="section" key={set.name}>
+                <h2 className="section__title">{set.name}</h2>
+                <h3 className="section__subtitle">Ocurrencias</h3>
+                <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, set.skills)} />
+                <h3 className="section__subtitle">Tendencias</h3>
+                <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)} />
+                <h3 className="section__subtitle">Salarios Promedios</h3>
+                <CompGraficoBarra data={procesarDataSalarios(dataSalario, set.skills)} />
+              </div>
+            ))}
         </article>
+      </div>
     )
 }
 
 //-----------------------------------------------------------
 //-------------- Definición de Grupos de Datos --------------
 //-----------------------------------------------------------
-const skillsGroup = ['C', 'C#', 'C++', 'Elixir', 'Erlang', 'Go', 'Golang', 'Java', 'JavaScript', 'Kotlin', 'Objective-C', 'PHP', 'Python', 'R', 'Ruby', 'Scala', 'kotlin', 'objective c', 'TypeScript', 'Swift'];
-const dbSkillsGroup = ['MongoDB', 'MySQL', 'NoSQL', 'Oracle DB', 'Oracle', 'PostgreSQL', 'SQL', 'Redis'];
-const jsSkillsGroup = ['Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJS', 'Backbone.js', 'Ember.js', 'jQuery', 'Meteor', 'React', 'Sails.js', 'vue.js'];
-const cloudSkillsGroup = ['Amazon Web Services', 'Azure', 'Google App Engine'];
-const mobileSkillsGroup = ['Android', 'Cordova', 'Ionic', 'iOS', 'Kotlin', 'kotlin', 'PhoneGap', 'React-Native', 'Xamarin'];
+const definedDatasets = [{
+  name: 'Lenguajes de Programación',
+  skills: ['C', 'C#', 'C++', 'Elixir', 'Erlang', 'Go', 'Golang', 'Java', 'JavaScript', 'Kotlin', 'Objective-C', 'PHP', 'Python', 'R', 'Ruby', 'Scala', 'kotlin', 'objective c', 'TypeScript', 'Swift']
+}, {
+  name: 'Motores de Base de Datos',
+  skills: ['MongoDB', 'MySQL', 'NoSQL', 'Oracle DB', 'Oracle', 'PostgreSQL', 'SQL', 'Redis']
+}, {
+  name: 'Frameworks de JavaScript',
+  skills: ['Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJS', 'Backbone.js', 'Ember.js', 'jQuery', 'Meteor', 'React', 'Sails.js', 'vue.js']
+}, {
+  name: 'Servcios Cloud',
+  skills: ['Amazon Web Services', 'Azure', 'Google App Engine']
+}, {
+  name: 'Tecnologías Móviles',
+  skills: ['Android', 'Cordova', 'Ionic', 'iOS', 'Kotlin', 'kotlin', 'PhoneGap', 'React-Native', 'Xamarin']
+}];
 
 //-----------------------------------------------------------
 //----------------- Skill complementarios -------------------
@@ -197,4 +162,4 @@ const OtherSkillGraph = () => {
 // }
 
 
-export default CompSection;
+export default Section;

@@ -1,5 +1,5 @@
 import React  from 'react';
-import AppContext from './AppContext'
+import AppContext from '../AppContext';
 
 const OPTIONS = [
     {
@@ -24,7 +24,7 @@ const OPTIONS = [
     }
 ]
 
-const CompPaises = React.memo((props) => (
+const Paises = React.memo((props) => (
     <AppContext.Consumer>
         {(context) => (
             <div className="paises">
@@ -51,4 +51,4 @@ const CompPaises = React.memo((props) => (
     </AppContext.Consumer>
 ))
 
-export default CompPaises;
+export default Paises;
