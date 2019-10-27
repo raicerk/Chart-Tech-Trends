@@ -5,7 +5,11 @@ function Home() {
   return (
     <div className="home">
       <div className="home__content">
-        <h1 className="home__title">Tendencias Tecnológicas Laborales <span className="home-title__special">0.1</span></h1>
+        <h2 className="home__title">
+          Tech
+          <span className="home-title__second">Trends</span>
+          <span className="home-title__special"> beta</span>
+        </h2>
         <p className="home__text">Sitio de estadísticas laborales tecnológicas obtenidas desde las ofertas laborales vigentes y publicadas por compañías en 5 países.</p>
         <p className="home__extra-text">* Aclaratoria: Las gráficas a continuación están basadas en información recolectada a partir de Mayo del 2018.</p>
       </div>

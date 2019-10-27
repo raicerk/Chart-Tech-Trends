@@ -32,7 +32,15 @@
 }
 
 .home__title {
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.2em;
+  font-weight: normal;
+  color: #333;
+}
+
+.home-title__second {
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .home-title__special {
@@ -47,4 +55,22 @@
 
 .home__extra-text {
   color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+  .home__content {
+    color: #e4e4e4;
+  }
+
+  .home__extra-text {
+    color: #ccc;
+  }
+
+  .home__title {
+    color: #fff;
+  }
+
+  .home-title__special {
+    color: #ff6c6c;
+  }
 }
