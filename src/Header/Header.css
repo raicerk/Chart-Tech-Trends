@@ -18,6 +18,10 @@
   color: red;
 }
 
+.no-header {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   .header__title {
     color: #fff;
