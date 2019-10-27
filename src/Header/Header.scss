@@ -1,23 +1,19 @@
 @import '../variables.scss';
+@import '../mixins.scss';
 
 .header__title {
-  font-family: 'Montserrat', sans-serif;
+  @include logo-base;
+  display: inline-block;
   font-size: 22px;
   margin: 0;
-  font-weight: normal;
-  display: inline-block;
-  color: $lt-logo-color;
 }
 
 .header-title__second {
-  font-weight: bold;
-  text-transform: uppercase;
+  @include logo-second;
 }
 
 .header-title__special {
-  font-size: .9em;
-  font-family: 'PT Mono', monospace;
-  color: $lt-logo-special;
+  @include logo-special;
 }
 
 .no-header {
