@@ -1,4 +1,4 @@
-import React, { Component, useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import CompGraficos from './CompGraficoLinea';
 import CompGraficoPie from './CompGraficoPie';
 import CompGraficoBarra from './CompGraficoBarra';
@@ -7,16 +7,6 @@ import api from './api';
 import AppContext from './AppContext'
 
 import './CompSection.css'
-
-class CompSection extends Component {
-    render() {
-        return (
-            <div className="contenido">
-                <GetData />
-            </div>
-        );
-    }
-}
 
 const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
 
@@ -43,7 +33,7 @@ const procesarDataAgrupadosPorMes = (data, elements) => {
   return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAgrupadoPorMes(iter))
 }
 
-const GetData = () => {
+const Section = () => {
     const context = useContext(AppContext)
     const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
     const [dataAcumulado, setDataAcumulado] = useState([])
@@ -67,6 +57,7 @@ const GetData = () => {
     }, [context.pais])
 
     return (
+      <div className="contenido">
         <article>
           <div className="section">
             <h2 className="section__title">Skills Relacionadas</h2>
@@ -88,6 +79,7 @@ const GetData = () => {
               </div>
             ))}
         </article>
+      </div>
     )
 }
 
@@ -170,4 +162,4 @@ const OtherSkillGraph = () => {
 // }
 
 
-export default CompSection;
+export default Section;
