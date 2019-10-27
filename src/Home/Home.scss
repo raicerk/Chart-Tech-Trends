@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .home {
   width: 100%;
   height: calc(100vh - 60px);
@@ -35,7 +37,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 2.2em;
   font-weight: normal;
-  color: #333;
+  color: $lt-logo-color;
 }
 
 .home-title__second {
@@ -46,7 +48,7 @@
 .home-title__special {
   font-size: .9em;
   font-family: 'PT Mono', monospace;
-  color: red;
+  color: $lt-logo-special;
 }
 
 .home__text {
@@ -67,10 +69,10 @@
   }
 
   .home__title {
-    color: #fff;
+    color: $dt-logo-color;
   }
 
   .home-title__special {
-    color: #ff6c6c;
+    color: $dt-logo-special;
   }
 }
