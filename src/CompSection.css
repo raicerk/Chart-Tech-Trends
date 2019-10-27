@@ -20,12 +20,6 @@
   border-top: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .section:first-child, .section:first-child::before {
-    border-top-color: #eee
-  }
-}
-
 .section__title {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -38,4 +32,14 @@
   color: #222;
   margin-top: 0;
   margin-bottom: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .section:first-child, .section:first-child::before {
+    border-top-color: #eee
+  }
+
+  .section__title, .section__subtitle {
+    color: #e4e4e4;
+  }
 }
