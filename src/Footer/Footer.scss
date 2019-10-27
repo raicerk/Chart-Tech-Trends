@@ -1,0 +1,27 @@
+@import '../variables.scss';
+
+.footer {
+  background: $lt-footer-bg;
+  color: $lt-primary-color;
+  padding: 15px;
+  text-align: center;
+}
+
+.footer__resources {
+  list-style-type: none;
+}
+
+.footer a {
+  color: $lt-foooter-ref;
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: $dt-footer-bg;
+    color: $dt-primary-color;
+  }
+
+  .footer a {
+    color: $dt-foooter-ref;
+  }
+}
