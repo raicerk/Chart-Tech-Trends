@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ResponsiveLine } from '@nivo/line'
-import config from './config.json';
+import { ResponsiveLine } from '@nivo/line';
+import config from '../config.json';
 import PropTypes from 'prop-types';
 
 class CompGraficos extends Component {

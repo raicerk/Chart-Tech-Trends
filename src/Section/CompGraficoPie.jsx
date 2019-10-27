@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { ResponsivePie } from '@nivo/pie'
-import config from './config.json';
+import { ResponsivePie } from '@nivo/pie';
+import config from '../config.json';
 import PropTypes from 'prop-types';
 
 class CompGraficoPie extends Component {
