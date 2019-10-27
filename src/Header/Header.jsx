@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Paises from './Paises';
 
-import './Header.css';
+import './Header.scss';
 
 function Header() {
   const [extraClass, setExtraClass] = useState('no-header')
