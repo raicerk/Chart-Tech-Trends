@@ -3,7 +3,7 @@ import Paises from './Paises';
 import AppContext from '../AppContext'
 import api from '../api';
 
-import './Header.css';
+import './Header.scss';
 
 function Header() {
   const context = useContext(AppContext)

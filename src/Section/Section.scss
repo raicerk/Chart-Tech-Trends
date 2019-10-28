@@ -1,6 +1,8 @@
+@import '../variables.scss';
+
 .section {
   margin-top: 30px;
-  border-top: 1px solid #666;
+  border-top: 1px solid $lt-border-color;
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
@@ -8,7 +10,7 @@
 
 .section::before {
   content: ' ';
-  border-top: 1px solid #666;
+  border-top: 1px solid $lt-border-color;
   width: 100%;
   height: 5px;
   display: block;
@@ -23,23 +25,23 @@
 .section__title {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
-  color: #222;
+  color: $lt-title-color;
   margin-bottom: 0;
 }
 
 .section__subtitle {
   font-family: 'Montserrat', sans-serif;
-  color: #222;
+  color: $lt-title-color;
   margin-top: 0;
   margin-bottom: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
   .section:first-child, .section:first-child::before {
-    border-top-color: #eee
+    border-top-color: $dt-border-color;
   }
 
   .section__title, .section__subtitle {
-    color: #e4e4e4;
+    color: $dt-title-color;
   }
 }
