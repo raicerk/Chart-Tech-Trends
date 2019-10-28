@@ -1,4 +1,5 @@
-@import "https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700|PT+Mono:300";
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700|PT+Mono:300');
+@import 'variables.scss';
 
 *, :before, :after {
   box-sizing: border-box;
@@ -7,7 +8,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  color: #666;
+  color: $lt-primary-color;
 }
 
 header {
@@ -16,7 +17,7 @@ header {
   position:sticky; 
   top:0;
   min-height: 60px;
-  background: #F6F9F8;
+  background: $lt-bg-color;
   box-shadow: 0 0 0.5rem rgba(83,78,76,.5);
   z-index: 1;
 }
@@ -113,7 +114,7 @@ header {
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-  background: #F6F9F8;
+  background: $lt-bg-color;
 }
 
 
@@ -126,28 +127,26 @@ header {
   transform: none;
 }
 
-
-
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #444;
-    color: #e4e4e4;
+    background-color: $dt-bg-color;
+    color: $dt-primary-color;
   }
 
   header{
-    background-color: #444;
-    color: #e4e4e4;
+    background-color: $dt-bg-color;
+    color: $dt-primary-color;
   }
 
   a {
-    color: #e39777;
+    color: $dt-ref-color;
   }
   img {
     filter: grayscale(30%);
   }
 
   text {
-    fill: #e4e4e4 !important;
+    fill: $dt-primary-color !important;
   }
 }
 

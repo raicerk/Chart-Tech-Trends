@@ -1,0 +1,18 @@
+@import './variables.scss';
+
+@mixin logo-base {
+  color: $lt-logo-color;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+}
+
+@mixin logo-second {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@mixin logo-special {
+  color: $lt-logo-special;
+  font-family: 'PT Mono', monospace;
+  font-size: .9em;
+}

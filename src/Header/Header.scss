@@ -1,21 +1,19 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
 .header__title {
-  font-family: 'Montserrat', sans-serif;
+  @include logo-base;
+  display: inline-block;
   font-size: 22px;
   margin: 0;
-  font-weight: normal;
-  display: inline-block;
-  color: #333;
 }
 
 .header-title__second {
-  font-weight: bold;
-  text-transform: uppercase;
+  @include logo-second;
 }
 
 .header-title__special {
-  font-size: .9em;
-  font-family: 'PT Mono', monospace;
-  color: red;
+  @include logo-special;
 }
 
 .header-datatrend{
@@ -42,10 +40,10 @@
 
 @media (prefers-color-scheme: dark) {
   .header__title {
-    color: #fff;
+    color: $dt-logo-color;
   }
 
   .header-title__special {
-    color: #ff6c6c;
+    color: $dt-logo-special;
   }
 }

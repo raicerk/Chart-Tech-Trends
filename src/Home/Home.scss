@@ -1,3 +1,6 @@
+@import '../variables.scss';
+@import '../mixins.scss';
+
 .home {
   width: 100%;
   height: calc(100vh - 60px);
@@ -32,25 +35,20 @@
 }
 
 .home__title {
-  font-family: 'Montserrat', sans-serif;
+  @include logo-base;
   font-size: 2.2em;
-  font-weight: normal;
-  color: #333;
 }
 
 .home-title__second {
-  font-weight: bold;
-  text-transform: uppercase;
+  @include logo-second;
 }
 
 .home-title__special {
-  font-size: .9em;
-  font-family: 'PT Mono', monospace;
-  color: red;
+  @include logo-special;
 }
 
 .home__text {
- font-size: 1.4em;
+  font-size: 1.4em;
 }
 
 .home__extra-text {
@@ -67,10 +65,10 @@
   }
 
   .home__title {
-    color: #fff;
+    color: $dt-logo-color;
   }
 
   .home-title__special {
-    color: #ff6c6c;
+    color: $dt-logo-special;
   }
 }

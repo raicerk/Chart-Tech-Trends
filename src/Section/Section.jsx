@@ -6,7 +6,7 @@ import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
 import api from '../api';
 import AppContext from '../AppContext'
 
-import './Section.css'
+import './Section.scss'
 
 const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
 
