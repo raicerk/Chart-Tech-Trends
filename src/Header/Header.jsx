@@ -43,8 +43,8 @@ function Header() {
         <span className='header-title__second'>Trends</span>
         <span className="header-title__special"> beta</span>
       </h1>
-      <span>Cantidad de ofertas: {dataCantidadOfertas}</span>
-      <span>Cantidad de skill: {dataCantidadSkill}</span>
+      <span className='header-datatrend'>Cantidad de ofertas: {dataCantidadOfertas}</span>
+      <span className='header-datatrend'>Cantidad de skill: {dataCantidadSkill}</span>
       <Paises />
     </header>
   );

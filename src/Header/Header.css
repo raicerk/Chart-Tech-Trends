@@ -18,6 +18,10 @@
   color: red;
 }
 
+.header-datatrend{
+  margin: 0 10%;
+}
+
 .no-header {
   height: 0;
   min-height: 0;
