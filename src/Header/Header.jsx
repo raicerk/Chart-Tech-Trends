@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Paises from './Paises';
+import AppContext from '../AppContext'
+import api from '../api';
 
 import './Header.css';
 
 function Header() {
+  const context = useContext(AppContext)
   const [extraClass, setExtraClass] = useState('no-header')
+  const [dataCantidadSkill, setCantidadSkill] = useState(0)
+  const [dataCantidadOfertas, setCantidadOfertas] = useState(0)
 
   const handleScroll = () => {
     const offset = 440;
-    const windowsScrollTop  = window.pageYOffset;
+    const windowsScrollTop = window.pageYOffset;
 
     setExtraClass(windowsScrollTop >= offset ? 'show-header' : 'no-header')
   }
@@ -18,6 +23,18 @@ function Header() {
     return window.addEventListener('scroll', handleScroll);
   })
 
+  useEffect(() => {
+
+    api.cantidadOfertas(context.pais).then(data => {
+      setCantidadOfertas(data)
+    })
+
+    api.cantidadSkills(context.pais).then(data => {
+      setCantidadSkill(data)
+    })
+
+  }, [context.pais])
+
   return (
     <header className={`header ${extraClass}`}>
 
@@ -26,6 +43,8 @@ function Header() {
         <span className='header-title__second'>Trends</span>
         <span className="header-title__special"> beta</span>
       </h1>
+      <span>Cantidad de ofertas: {dataCantidadOfertas}</span>
+      <span>Cantidad de skill: {dataCantidadSkill}</span>
       <Paises />
     </header>
   );
