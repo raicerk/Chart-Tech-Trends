@@ -35,7 +35,7 @@ const CompGraficoPie = ({ data }) => {
                     Cantidad: {value}
                 </label>
             )}
-            legends={config.chart.legens}
+            legends={config.chart.legends}
         />
     </div>
   );

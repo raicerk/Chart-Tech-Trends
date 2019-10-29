@@ -22,7 +22,7 @@ const CompGraficos = ({ data }) => {
             pointBorderColor={ config.chart.pointBorderColor }
             pointLabelYOffset={ config.chart.pointLabelYOffset }
             useMesh={ config.chart.useMesh }
-            legends={ config.chart.legens }
+            legends={ config.chart.legends }
             xFormat="time:%Y-%m-%d"
             enableSlices="x"
             pointLabel="y"

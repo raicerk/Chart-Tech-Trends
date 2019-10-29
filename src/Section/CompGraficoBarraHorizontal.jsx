@@ -26,7 +26,7 @@ const CompGraficoBarraHorizontal = ({ data }) => {
             layout="horizontal"
             enableGridY={false}
             enableGridX={true}
-            legends={config.chart.legens}
+            legends={config.chart.legends}
 
         />
     </div>
