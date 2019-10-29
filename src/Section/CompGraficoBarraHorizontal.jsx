@@ -34,7 +34,7 @@ class CompGraficoBarraHorizontal extends Component {
                     layout="horizontal"
                     enableGridY={false}
                     enableGridX={true}
-                    legends={config.chart.legens}
+                    legends={config.chart.legends}
 
                 />
             </div>
