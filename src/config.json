@@ -37,7 +37,7 @@
             "legendOffset": -40,
             "legendPosition": "middle"
         },
-        "legens": [
+        "legends": [
             {
                 "dataFrom": "keys",
                 "anchor": "bottom-right",

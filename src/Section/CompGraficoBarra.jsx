@@ -46,7 +46,7 @@ class CompGraficoBarra extends Component {
                     animate={true}
                     motionStiffness={90}
                     motionDamping={15}
-                    legends={config.chart.legens}
+                    legends={config.chart.legends}
                     // groupMode="grouped"
                 />
             </div>

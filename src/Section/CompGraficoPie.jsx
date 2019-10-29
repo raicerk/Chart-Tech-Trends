@@ -21,7 +21,7 @@ class CompGraficoPie extends Component {
                     innerRadius={0.5}
                     padAngle={0.7}
                     cornerRadius={3}
-                    colors={{ scheme: 'category10' }}
+                    colors={ config.chart.colors }
                     borderWidth={1}
                     borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
                     radialLabelsSkipAngle={5}
@@ -43,7 +43,7 @@ class CompGraficoPie extends Component {
                             Cantidad: {value}
                         </label>
                     )}
-                    legends={config.chart.legens}
+                    legends={config.chart.legends}
                 />
             </div>
         );
