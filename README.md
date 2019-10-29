@@ -1,8 +1,8 @@
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 ## Tendencias tecnológicas laborales
 
-Este proyecto open source busca compartir y distribuir datos sobre tendencias de tecnologías basado en información de ofertas laborales publicadas en distintos sitios, la información es de acceso publico y es obtenida desde el proyecto [OpenData Laboral](https://github.com/pgramadores/LaboralGraphQL), estos datos son obtenidos de ofertas de 5 países:
+Este proyecto open source busca compartir y distribuir datos sobre tendencias de tecnologías basado en información de ofertas laborales publicadas en distintos sitios, la información es de acceso público y es obtenida desde el proyecto [OpenData Laboral](https://github.com/pgramadores/LaboralGraphQL), estos datos son obtenidos desde ofertas de 5 países:
 
 * Chile
 * Argentina
@@ -17,7 +17,7 @@ En caso de que desees mejorar nuestra plataforma o agregar nuevos cruces de info
 
 ### Tecnología de desarrollo
 
-El proyecto a sido desarrollado en React, por lo que te invitamos a leer la documentación desde el sitio de [React](https://es.reactjs.org/).
+El proyecto ha sido desarrollado en React, por lo que te invitamos a leer la documentación desde el sitio de [React](https://es.reactjs.org/).
 
 
 ### Contribuidores
@@ -31,6 +31,7 @@ El proyecto a sido desarrollado en React, por lo que te invitamos a leer la docu
     <td align="center"><a href="https://github.com/agonzalezmurua"><img src="https://avatars0.githubusercontent.com/u/8430727?v=4" width="100px;" alt="Agustín González"/><br /><sub><b>Agustín González</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=agonzalezmurua" title="Code">💻</a></td>
     <td align="center"><a href="https://cl.linkedin.com/in/juanvalentinmoraruiz"><img src="https://avatars0.githubusercontent.com/u/4575267?v=4" width="100px;" alt="Juan Mora"/><br /><sub><b>Juan Mora</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=raicerk" title="Code">💻</a></td>
     <td align="center"><a href="http://joseglego.io/"><img src="https://avatars1.githubusercontent.com/u/238259?v=4" width="100px;" alt="Jose Lezama"/><br /><sub><b>Jose Lezama</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=joseglego" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/noandersonls"><img src="https://avatars0.githubusercontent.com/u/28235226?v=4" width="100px;" alt="Anderson"/><br /><sub><b>Anderson</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=noandersonls" title="Code">💻</a></td>
   </tr>
 </table>
 
