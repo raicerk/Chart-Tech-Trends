@@ -4,9 +4,22 @@ import CommonSection from './CommonSection';
 import RelatedSkills from './RelatedSkills';
 
 import api from '../api';
+import skillsData from '../data';
+
 import AppContext from '../AppContext';
 
 import './Section.scss';
+
+//-----------------------------------------------------------
+//-------------- Definición de Grupos de Datos --------------
+//-----------------------------------------------------------
+const definedDatasets = [
+  skillsData.languages,
+  skillsData.database,
+  skillsData.js,
+  skillsData.cloud,
+  skillsData.mobile
+];
 
 const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad});
 
@@ -75,25 +88,5 @@ const Section = () => {
     </div>
   );
 };
-
-//-----------------------------------------------------------
-//-------------- Definición de Grupos de Datos --------------
-//-----------------------------------------------------------
-const definedDatasets = [{
-  name: 'Lenguajes de Programación',
-  skills: ['C', 'C#', 'C++', 'Elixir', 'Erlang', 'Go', 'Golang', 'Java', 'JavaScript', 'Kotlin', 'Objective-C', 'PHP', 'Python', 'R', 'Ruby', 'Scala', 'kotlin', 'objective c', 'TypeScript', 'Swift']
-}, {
-  name: 'Motores de Base de Datos',
-  skills: ['MongoDB', 'MySQL', 'NoSQL', 'Oracle DB', 'Oracle', 'PostgreSQL', 'SQL', 'Redis']
-}, {
-  name: 'Frameworks de JavaScript',
-  skills: ['Angular 2', 'Angular 4', 'Angular 5', 'Angular 6', 'AngularJS', 'Backbone.js', 'Ember.js', 'jQuery', 'Meteor', 'React', 'Sails.js', 'vue.js']
-}, {
-  name: 'Servcios Cloud',
-  skills: ['Amazon Web Services', 'Azure', 'Google App Engine']
-}, {
-  name: 'Tecnologías Móviles',
-  skills: ['Android', 'Cordova', 'Ionic', 'iOS', 'Kotlin', 'kotlin', 'PhoneGap', 'React-Native', 'Xamarin']
-}];
 
 export default Section;
