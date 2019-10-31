@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import CommonSection from './CommonSection';
 import RelatedSkills from './RelatedSkills';
+import CompareSkills from './CompareSkills';
 
 import api from '../api';
 import skillsData from '../data';
@@ -52,6 +53,11 @@ const Section = () => {
   const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([]);
   const [dataAcumulado, setDataAcumulado] = useState([]);
   const [dataSalario, setDataSalario] = useState([]);
+  const [customSkills, setCustomsSkills] = useState([]);
+
+  const handleChange = (values) => {
+    setCustomsSkills(values);
+  };
 
   useEffect(() => {
     //Agrupado por mes
@@ -84,6 +90,14 @@ const Section = () => {
             procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
           />
         ))}
+
+        <CompareSkills
+          skills={customSkills}
+          onChange={handleChange}
+          procesadoAcumulado={procesarDataAcumulados(dataAcumulado, customSkills)}
+          procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, customSkills)}
+          procesadoSalarios={procesarDataSalarios(dataSalario, customSkills)}
+        />
       </article>
     </div>
   );
