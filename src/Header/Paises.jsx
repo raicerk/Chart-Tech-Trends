@@ -1,54 +1,30 @@
-import React  from 'react';
+import React from 'react';
+import { SingleSelect } from "react-select-material-ui";
 import AppContext from '../AppContext';
 
-const OPTIONS = [
-    {
-        "code": "CL",
-        "nombre": "Chile"
-    },
-    {
-        "code": "AR",
-        "nombre": "Argentina"
-    },
-    { 
-        "code": "PE",
-        "nombre": "Peru"
-    },
-    {
-        "code": "MX",
-        "nombre": "Mexico"
-    },
-    {
-        "code": "CO",
-        "nombre": "Colombia"
-    }
-]
+const countries = [
+  { label: "Chile", value: "CL" },
+  { label: "Argentina", value: "AR" },
+  { label: "Perú", value: "PE" },
+  { label: "México", value: "MX" },
+  { label: "Colombia", value: "CO" }
+];
+
 
 const Paises = React.memo((props) => (
-    <AppContext.Consumer>
-        {(context) => (
-            <div className="paises">
-                <label for="pais_select" className="sr-only">Pa&iacute;s:</label>
-                <select
-                    id="pais_select"
-                    onChange={(e) => { context.setPais(e.target.value) }}
-                    value={context.pais}
-                >
-                    {
-                        OPTIONS.map(
-                            (pais) =>
-                                <option 
-                                    key={String(pais.code)}
-                                    value={pais.code}
-                                >
-                                    { pais.nombre }
-                                </option>
-                        )
-                    }
-                </select>
-            </div>
-        )}
-    </AppContext.Consumer>
-))
+      <AppContext.Consumer>
+          {(context) => (
+              <div className="paises">
+                <SingleSelect
+                  placeholder="País" 
+                  options={countries}
+                  onChange={country => context.setPais(country)}   
+                  style={{ width: 100 }}  
+                />
+              </div>
+          )}
+      </AppContext.Consumer>
+    )
+)
 
 export default Paises;
