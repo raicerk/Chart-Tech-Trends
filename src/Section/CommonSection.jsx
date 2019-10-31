@@ -5,10 +5,10 @@ import CompGraficoPie from './CompGraficoPie';
 import CompGraficoBarra from './CompGraficoBarra';
 import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
 
-const CommonSection = ({ name, procesadoAcumulado, procesadoPorMes, procesadoSalarios }) => {
+const CommonSection = ({ name, className, procesadoAcumulado, procesadoPorMes, procesadoSalarios }) => {
   return (
-    <div className="section">
-      <h2 className="section__title">{name}</h2>
+    <div className={className || 'section'}>
+      {name && <h2 className="section__title">{name}</h2>}
       <h3 className="section__subtitle">Ocurrencias</h3>
       <CompGraficoPie data={procesadoAcumulado} />
       <h3 className="section__subtitle">Tendencias</h3>
