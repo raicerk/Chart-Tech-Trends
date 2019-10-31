@@ -24,12 +24,14 @@ const CompareSection = ({ skills, onChange, procesadoAcumulado, procesadoPorMes,
         }}
       />
 
-      <CommonSection
-        className='no-section'
-        procesadoAcumulado={procesadoAcumulado}
-        procesadoPorMes={procesadoPorMes}
-        procesadoSalarios={procesadoSalarios}
-      />
+      {skills.length > 0 && (
+        <CommonSection
+          className='no-section'
+          procesadoAcumulado={procesadoAcumulado}
+          procesadoPorMes={procesadoPorMes}
+          procesadoSalarios={procesadoSalarios}
+        />
+      )}
     </div>
   );
 };
