@@ -1,5 +1,5 @@
-@import '../variables.scss';
-@import '../mixins.scss';
+@import "../variables.scss";
+@import "../mixins.scss";
 
 .header__title {
   @include logo-base;
@@ -16,7 +16,7 @@
   @include logo-special;
 }
 
-.header-datatrend{
+.header-datatrend {
   margin: 0 10%;
 }
 
@@ -25,7 +25,7 @@
   min-height: 0;
   padding: 0;
   transform: translate(0, -110%);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
 .no-header * {
@@ -35,7 +35,7 @@
 .show-header {
   height: 60px;
   transform: translate(0, 0);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,5 +45,13 @@
 
   .header-title__special {
     color: $dt-logo-special;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header-datatrend {
+    margin: 5px 0;
+    width: 100%;
+    display: block;
   }
 }
