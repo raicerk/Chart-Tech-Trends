@@ -1,9 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 
-import CompGraficos from './CompGraficoLinea';
-import CompGraficoPie from './CompGraficoPie';
-import CompGraficoBarra from './CompGraficoBarra';
-import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
+import CommonSection from './CommonSection';
 import RelatedSkills from './RelatedSkills';
 
 import api from '../api';
@@ -65,16 +62,14 @@ const Section = () => {
           <RelatedSkills />
 
           { definedDatasets.map(set => (
-              <div className="section" key={set.name}>
-                <h2 className="section__title">{set.name}</h2>
-                <h3 className="section__subtitle">Ocurrencias</h3>
-                <CompGraficoPie data={procesarDataAcumulados(dataAcumulado, set.skills)} />
-                <h3 className="section__subtitle">Tendencias</h3>
-                <CompGraficos data={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)} />
-                <h3 className="section__subtitle">Salarios Promedios</h3>
-                <CompGraficoBarra data={procesarDataSalarios(dataSalario, set.skills)} />
-              </div>
-            ))}
+            <CommonSection
+              key={set.name}
+              name={set.name}
+              procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
+              procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
+              procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
+            />
+          ))}
         </article>
       </div>
     )
