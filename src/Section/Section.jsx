@@ -133,30 +133,4 @@ const OtherSkillGraph = () => {
     )
 }
 
-// const DatosTendencias = () => {
-//     const context = useContext(AppContext)
-//     const [cantidadSkill, setCantidadSkill] = useState(0)
-//     const [cantidadOferta, setCantidadOferta] = useState(0)
-
-//     useEffect(() => {
-
-//      api.cantidadSkills(context.pais).then(data => {
-//        setCantidadSkill(data);
-//      })
-
-//      api.cantidadOfertas(context.pais).then(data => {
-//        setCantidadOferta(data);
-//      })
-
-//     }, [context.pais])
-
-//     return (
-//         <div>
-//             Cantidad de skills: {cantidadSkill}<br />
-//             Cantidad de ofertas laborales: {cantidadOferta}
-//         </div>
-//     )
-// }
-
-
 export default Section;
