@@ -4,76 +4,77 @@ import CommonSection from './CommonSection';
 import RelatedSkills from './RelatedSkills';
 
 import api from '../api';
-import AppContext from '../AppContext'
+import AppContext from '../AppContext';
 
-import './Section.scss'
+import './Section.scss';
 
-const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad})
+const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad});
 
 const traducirAgrupadoPorMes = iter => ({
   id: iter.skill,
   data: iter.datos.sort().map(i => {
-    let fec = i.fecha.split("-")
+    const fec = i.fecha.split("-");
     return {
       x: `${fec[0]}-${fec[1]}-${new Date(fec[0], fec[1], 0).getDate()}`,
       y: i.cantidad
-    }
+    };
   })
-})
+});
 
 const procesarDataAcumulados = (data, elements) => {
-  return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAcumulado(iter))
-}
+  return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAcumulado(iter));
+};
 
 const procesarDataSalarios = (data, elements) => {
-  return data.filter(iter => elements.includes(iter.skill))
-}
+  return data.filter(iter => elements.includes(iter.skill));
+};
 
 const procesarDataAgrupadosPorMes = (data, elements) => {
-  return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAgrupadoPorMes(iter))
-}
+  return data.filter(iter => elements.includes(iter.skill)).map(iter => traducirAgrupadoPorMes(iter));
+};
 
 const Section = () => {
-    const context = useContext(AppContext)
-    const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([])
-    const [dataAcumulado, setDataAcumulado] = useState([])
-    const [dataSalario, setDataSalario] = useState([])
+  const context = useContext(AppContext);
 
-    useEffect(() => {
-      //Agrupado por mes
-      api.agrupadoPorMes(context.pais).then(data => {
-        setDataAgrupadoPorMes(data);
-      })
+  const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([]);
+  const [dataAcumulado, setDataAcumulado] = useState([]);
+  const [dataSalario, setDataSalario] = useState([]);
 
-      //Acumulado
-      api.acumulado(context.pais).then(data => {
-        setDataAcumulado(data)
-      })
+  useEffect(() => {
+    //Agrupado por mes
+    api.agrupadoPorMes(context.pais).then(data => {
+      setDataAgrupadoPorMes(data);
+    });
 
-      //Salarios
-      api.salarios(context.pais).then(data => {
-        setDataSalario(data);
-      })
-    }, [context.pais])
+    //Acumulado
+    api.acumulado(context.pais).then(data => {
+      setDataAcumulado(data);
+    });
 
-    return (
-      <div className="contenido">
-        <article>
-          <RelatedSkills />
+    //Salarios
+    api.salarios(context.pais).then(data => {
+      setDataSalario(data);
+    });
+  }, [context.pais]);
 
-          { definedDatasets.map(set => (
-            <CommonSection
-              key={set.name}
-              name={set.name}
-              procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
-              procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
-              procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
-            />
-          ))}
-        </article>
-      </div>
-    )
-}
+  return (
+    <div className="contenido">
+      <article>
+        <RelatedSkills />
+
+        { definedDatasets.map(set => (
+          <CommonSection
+            key={set.name}
+            name={set.name}
+            procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
+            procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
+            procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
+          />
+        ))}
+      </article>
+    </div>
+  );
+};
 
 //-----------------------------------------------------------
 //-------------- Definición de Grupos de Datos --------------
