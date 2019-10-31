@@ -31,6 +31,8 @@ const RelatedSkills = () => {
 
       <SingleSelect
         placeholder="Selecciona una skill"
+        helperText="Selecciona una skill para ver otras skill relacionadas"
+        defaultValue={skill}
         options={skills}
         onChange={(skill) => setSkill(skill)}
         style={{ width: 320 }}
