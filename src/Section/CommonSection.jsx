@@ -1,9 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 
 import CompGraficos from './CompGraficoLinea';
 import CompGraficoPie from './CompGraficoPie';
 import CompGraficoBarra from './CompGraficoBarra';
-import CompGraficoBarraHorizontal from './CompGraficoBarraHorizontal';
 
 const CommonSection = ({ name, className, procesadoAcumulado, procesadoPorMes, procesadoSalarios }) => {
   return (
