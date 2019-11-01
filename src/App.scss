@@ -143,12 +143,29 @@ header {
   a {
     color: $dt-ref-color;
   }
+
   img {
     filter: grayscale(30%);
   }
 
   text {
     fill: $dt-primary-color !important;
+  }
+
+  .paises__option>div>div>div>div:first-child{
+    color: $dt-primary-color;;
+  }
+  
+  .paises__option>div>div:nth-child(3){
+    background: $dt-bg-color;
+  }
+  
+  .paises__option>div>div:nth-child(3)>div>div:hover{
+    background:#666;
+  }
+
+  .MuiFormHelperText-root{
+    color: $dt-primary-color !important;
   }
 }
 
