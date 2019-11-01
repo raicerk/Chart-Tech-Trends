@@ -22,6 +22,7 @@ const CompareSection = ({ skills, onChange, procesadoAcumulado, procesadoPorMes,
           msgNoOptionsAvailable: "Todas las opciones han sido seleccionadas.=",
           msgNoOptionsMatchFilter: "Ningún skills reconocido"
         }}
+        className='class__option'
       />
 
       {skills.length > 0 && (

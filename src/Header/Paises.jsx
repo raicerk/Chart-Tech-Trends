@@ -21,7 +21,7 @@ const Paises = React.memo((props) => (
                   options={countries}
                   onChange={country => context.setPais(country)}   
                   style={{ width: 100 }}
-                  className='paises__option'
+                  className='class__option'
                 />
               </div>
           )}

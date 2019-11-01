@@ -36,6 +36,7 @@ const RelatedSkills = () => {
         options={skills}
         onChange={(skill) => setSkill(skill)}
         style={{ width: 320 }}
+        className='class__option'
       />
       <CompGraficoBarraHorizontal data={data} />
     </div>

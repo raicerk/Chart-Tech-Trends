@@ -152,21 +152,22 @@ header {
     fill: $dt-primary-color !important;
   }
 
-  .paises__option>div>div>div>div:first-child{
+  .class__option>div>div>div>div:first-child{
     color: $dt-primary-color;;
   }
   
-  .paises__option>div>div:nth-child(3){
+  .class__option>div>div:nth-child(3){
     background: $dt-bg-color;
   }
   
-  .paises__option>div>div:nth-child(3)>div>div:hover{
+  .class__option>div>div:nth-child(3)>div>div:hover{
     background:#666;
   }
 
   .MuiFormHelperText-root{
     color: $dt-primary-color !important;
   }
+
 }
 
 @media only screen and (max-width: 600px) {
