@@ -15,6 +15,10 @@
   color: $lt-foooter-ref;
 }
 
+.footer__resources li{
+  margin: 5px 0;
+}
+
 @media (prefers-color-scheme: dark) {
   .footer {
     background-color: $dt-footer-bg;
