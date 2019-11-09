@@ -1,26 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 
-import CommonSection from './CommonSection';
 import RelatedSkills from './RelatedSkills';
 import CompareSkills from './CompareSkills';
 
 import api from '../api';
-import skillsData from '../data';
 
 import AppContext from '../AppContext';
 
 import './Section.scss';
-
-//-----------------------------------------------------------
-//-------------- Definición de Grupos de Datos --------------
-//-----------------------------------------------------------
-const definedDatasets = [
-  skillsData.languages,
-  skillsData.database,
-  skillsData.js,
-  skillsData.cloud,
-  skillsData.mobile
-];
 
 const traducirAcumulado = iter => ({id: iter.skill, value: iter.cantidad});
 
@@ -80,16 +67,6 @@ const Section = () => {
     <div className="contenido">
       <article>
         <RelatedSkills />
-
-        { definedDatasets.map(set => (
-          <CommonSection
-            key={set.name}
-            name={set.name}
-            procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
-            procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
-            procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
-          />
-        ))}
 
         <CompareSkills
           skills={customSkills}
