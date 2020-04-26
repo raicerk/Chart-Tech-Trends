@@ -9,10 +9,10 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "chalk": "^2.4.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.14.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2",
+    "react-scripts": "^3.4.1",
     "react-select-material-ui": "^6.1.0"
   },
   "scripts": {
