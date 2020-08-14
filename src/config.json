@@ -1,5 +1,5 @@
 {
-    "urlGraphQL": "https://laboral.pro-gramadores.org/graphql",
+    "urlGraphQL": "https://api.tech-trend.org",
     "chart": {
         "axisBottom": {
             "format": "%b %Y",

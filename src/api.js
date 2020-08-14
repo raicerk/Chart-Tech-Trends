@@ -13,6 +13,7 @@ const agrupadoPorMes = (pais) => {
       }
     }`
   }).then(res => {
+    console.log(res.data.data);
     return res.data.data.LaboralAgrupadoPorMes
   }).catch(error => {
     console.log(error)
@@ -95,7 +96,7 @@ const cantidadSkills = (pais) => {
 const cantidadOfertas = (pais) => {
   return Axios.post(config.urlGraphQL, {
     query: `{
-      Laboral(where: {field: "pais", value: "${pais}"}, order: {by: "fecha", orientation: "desc"}) {
+      Laboral(where: {field: "pais", value: "${pais}"}, order: {by: "fecha", orientation: DESC}) {
         link
       }
     }`
