@@ -4,7 +4,7 @@ import config from './config.json';
 const agrupadoPorMes = (pais) => {
   return Axios.post(config.urlGraphQL, {
     query: `{
-      LaboralAgrupadoPorMes(where: {field: "pais",value: "${pais}"}){
+      LaboralAgrupadoPorMes(where: {field: pais,value: "${pais}"}){
       skill
       datos{
           fecha
@@ -13,7 +13,6 @@ const agrupadoPorMes = (pais) => {
       }
     }`
   }).then(res => {
-    console.log(res.data.data);
     return res.data.data.LaboralAgrupadoPorMes
   }).catch(error => {
     console.log(error)
@@ -24,7 +23,7 @@ const agrupadoPorMes = (pais) => {
 const acumulado = (pais) => {
   return Axios.post(config.urlGraphQL, {
     query: `{
-      LaboralAcumulado(where: {field: "pais",value: "${pais}"}){
+      LaboralAcumulado(where: {field: pais,value: "${pais}"}){
         skill
         cantidad
       }
@@ -40,7 +39,7 @@ const acumulado = (pais) => {
 const salarios = (pais) => {
   return Axios.post(config.urlGraphQL, {
     query: `{
-      LaboralSalarios(where: {field: "pais",value: "${pais}"}){
+      LaboralSalarios(where: {field: pais,value: "${pais}"}){
         skill
         salariominimo
         salariomaximo
@@ -81,7 +80,7 @@ const otroSkill = (pais, skill) => {
 const cantidadSkills = (pais) => {
   return Axios.post(config.urlGraphQL, {
     query: `{
-      LaboralAcumulado(where: {field: "pais",value: "${pais}"}){
+      LaboralAcumulado(where: {field: pais,value: "${pais}"}){
         cantidad
       }
     }`
@@ -96,7 +95,7 @@ const cantidadSkills = (pais) => {
 const cantidadOfertas = (pais) => {
   return Axios.post(config.urlGraphQL, {
     query: `{
-      Laboral(where: {field: "pais", value: "${pais}"}, order: {by: "fecha", orientation: DESC}) {
+      Laboral(where: {field: pais, value: "${pais}"}, order: {by: fecha, orientation: DESC}) {
         link
       }
     }`
