@@ -40,7 +40,7 @@ function Header() {
 
       <h1 className="header__title">
         Tech
-        <span className='header-title__second'>Trends</span>
+        <span className='header-title__second'>Trend</span>
       </h1>
       <span className='header-datatrend'>Cantidad de ofertas: {dataCantidadOfertas}</span>
       <span className='header-datatrend'>Cantidad de skill: {dataCantidadSkill}</span>
