@@ -6,10 +6,10 @@
   "commit": false,
   "contributors": [
     {
-      "login": "luchosrock",
-      "name": "Luis Bustamante Flores",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/3098421?v=4",
-      "profile": "https://github.com/luchosrock",
+      "login": "raicerk",
+      "name": "Juan Mora",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4575267?v=4",
+      "profile": "https://cl.linkedin.com/in/juanvalentinmoraruiz",
       "contributions": [
         "code"
       ]
@@ -24,10 +24,37 @@
       ]
     },
     {
-      "login": "raicerk",
-      "name": "Juan Mora",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/4575267?v=4",
-      "profile": "https://cl.linkedin.com/in/juanvalentinmoraruiz",
+      "login": "luchosrock",
+      "name": "Luis Bustamante Flores",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3098421?v=4",
+      "profile": "https://github.com/luchosrock",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "joseglego",
+      "name": "Jose Lezama",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/238259?v=4",
+      "profile": "http://joseglego.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "noandersonls",
+      "name": "Anderson",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/28235226?v=4",
+      "profile": "https://github.com/noandersonls",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "angelopez10",
+      "name": "Angel López",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/46408859?v=4",
+      "profile": "https://github.com/angelopez10",
       "contributions": [
         "code",
         "infra"

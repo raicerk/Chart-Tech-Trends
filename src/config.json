@@ -1,9 +1,8 @@
 {
-    "urlGraphQL": "https://laboral.pro-gramadores.org/graphql",
+    "urlGraphQL": "https://api.tech-trend.org",
     "chart": {
         "axisBottom": {
             "format": "%b %Y",
-            "tickValues": "every month",
             "orient": "bottom",
             "tickSize": 5,
             "tickPadding": 5,
@@ -38,7 +37,7 @@
             "legendOffset": -40,
             "legendPosition": "middle"
         },
-        "legens": [
+        "legends": [
             {
                 "dataFrom": "keys",
                 "anchor": "bottom-right",
@@ -49,7 +48,7 @@
                 "itemsSpacing": 0,
                 "itemDirection": "left-to-right",
                 "itemWidth": 80,
-                "itemHeight": 20,
+                "itemHeight": 15,
                 "itemOpacity": 0.75,
                 "symbolSize": 12,
                 "symbolShape": "circle",

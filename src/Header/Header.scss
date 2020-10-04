@@ -1,0 +1,58 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.header__title {
+  @include logo-base;
+  display: inline-block;
+  font-size: 22px;
+  margin: 0;
+}
+
+.header-title__second {
+  @include logo-second;
+}
+
+.header-title__special {
+  @include logo-special;
+}
+
+.header-datatrend {
+  margin: 0 10%;
+}
+
+.no-header {
+  height: 0;
+  min-height: 0;
+  padding: 0;
+  transform: translate(0, -110%);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  display: none;
+}
+
+.no-header * {
+  display: none;
+}
+
+.show-header {
+  height: 60px;
+  transform: translate(0, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .header__title {
+    color: $dt-logo-color;
+  }
+
+  .header-title__special {
+    color: $dt-logo-special;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header-datatrend {
+    margin: 5px 0;
+    width: 100%;
+    display: block;
+  }
+}

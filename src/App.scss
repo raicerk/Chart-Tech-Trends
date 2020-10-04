@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700|PT+Mono:300");
+@import "variables.scss";
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: $lt-primary-color;
+}
+
+header {
+  padding: 15px 15px 1px 15px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  min-height: 60px;
+  background: #ffffff;
+  box-shadow: 0 0 0.5rem rgba(83, 78, 76, 0.5);
+  z-index: 1;
+}
+
+.grafico {
+  height: 400px;
+}
+
+.paises {
+  float: right;
+  margin-top: -10px;
+}
+
+.top-container {
+  padding: 15px;
+}
+
+.contenido {
+  padding: 15px 15px 1px;
+}
+
+.content {
+  padding: 0;
+}
+
+.container {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $dt-bg-color;
+    color: $dt-primary-color;
+  }
+
+  header {
+    background-color: $dt-bg-color;
+    color: $dt-primary-color;
+  }
+
+  a {
+    color: $dt-ref-color;
+  }
+
+  img {
+    filter: grayscale(30%);
+  }
+
+  text {
+    fill: $dt-primary-color !important;
+  }
+
+  .class__option>div>div>div>div:first-child{
+    color: $dt-primary-color;;
+  }
+  
+  .class__option>div>div:nth-child(3){
+    background: $dt-bg-color;
+  }
+  
+  .class__option>div>div:nth-child(3)>div>div:hover{
+    background:#666;
+  }
+
+  .MuiFormHelperText-root{
+    color: $dt-primary-color !important;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    min-height: 145px;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
