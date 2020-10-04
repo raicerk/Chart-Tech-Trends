@@ -1,9 +1,11 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .footer {
   background: $lt-footer-bg;
   color: $lt-primary-color;
   padding: 15px;
+  margin-top: 30px;
+  line-height: 20px;
   text-align: center;
 }
 
@@ -15,7 +17,7 @@
   color: $lt-foooter-ref;
 }
 
-.footer__resources li{
+.footer__resources li {
   margin: 5px 0;
 }
 
