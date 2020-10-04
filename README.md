@@ -24,17 +24,21 @@ El proyecto ha sido desarrollado en React, por lo que te invitamos a leer la doc
 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://cl.linkedin.com/in/juanvalentinmoraruiz"><img src="https://avatars0.githubusercontent.com/u/4575267?v=4" width="100px;" alt="Juan Mora"/><br /><sub><b>Juan Mora</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=raicerk" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/agonzalezmurua"><img src="https://avatars0.githubusercontent.com/u/8430727?v=4" width="100px;" alt="Agustín González"/><br /><sub><b>Agustín González</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=agonzalezmurua" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/luchosrock"><img src="https://avatars0.githubusercontent.com/u/3098421?v=4" width="100px;" alt="Luis Bustamante Flores"/><br /><sub><b>Luis Bustamante Flores</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=luchosrock" title="Code">💻</a></td>
-    <td align="center"><a href="http://joseglego.io/"><img src="https://avatars1.githubusercontent.com/u/238259?v=4" width="100px;" alt="Jose Lezama"/><br /><sub><b>Jose Lezama</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=joseglego" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/noandersonls"><img src="https://avatars0.githubusercontent.com/u/28235226?v=4" width="100px;" alt="Anderson"/><br /><sub><b>Anderson</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=noandersonls" title="Code">💻</a></td>
+    <td align="center"><a href="https://cl.linkedin.com/in/juanvalentinmoraruiz"><img src="https://avatars0.githubusercontent.com/u/4575267?v=4" width="100px;" alt=""/><br /><sub><b>Juan Mora</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=raicerk" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/agonzalezmurua"><img src="https://avatars0.githubusercontent.com/u/8430727?v=4" width="100px;" alt=""/><br /><sub><b>Agustín González</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=agonzalezmurua" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/luchosrock"><img src="https://avatars0.githubusercontent.com/u/3098421?v=4" width="100px;" alt=""/><br /><sub><b>Luis Bustamante Flores</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=luchosrock" title="Code">💻</a></td>
+    <td align="center"><a href="http://joseglego.io/"><img src="https://avatars1.githubusercontent.com/u/238259?v=4" width="100px;" alt=""/><br /><sub><b>Jose Lezama</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=joseglego" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/noandersonls"><img src="https://avatars0.githubusercontent.com/u/28235226?v=4" width="100px;" alt=""/><br /><sub><b>Anderson</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=noandersonls" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/angelopez10"><img src="https://avatars2.githubusercontent.com/u/46408859?v=4" width="100px;" alt=""/><br /><sub><b>Angel López</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=angelopez10" title="Code">💻</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 ## Contributors ✨
 

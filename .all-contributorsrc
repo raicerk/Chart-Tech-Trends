@@ -32,7 +32,6 @@
         "code"
       ]
     },
-    
     {
       "login": "joseglego",
       "name": "Jose Lezama",
@@ -50,11 +49,21 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "angelopez10",
+      "name": "Angel López",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/46408859?v=4",
+      "profile": "https://github.com/angelopez10",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "Chart-Tech-Trends",
   "projectOwner": "raicerk",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
