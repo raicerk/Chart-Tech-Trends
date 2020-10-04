@@ -28,7 +28,7 @@ El proyecto ha sido desarrollado en React, por lo que te invitamos a leer la doc
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://cl.linkedin.com/in/juanvalentinmoraruiz"><img src="https://avatars0.githubusercontent.com/u/4575267?v=4" width="100px;" alt=""/><br /><sub><b>Juan Mora</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=raicerk" title="Code">💻</a></td>
+    <td align="center"><a href="https://cl.linkedin.com/in/juanvalentinmoraruiz"><img src="https://avatars0.githubusercontent.com/u/4575267?v=4" width="100px;" alt=""/><br /><sub><b>Juan Mora</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=raicerk" title="Code">💻</a> <a href="#infra-raicerk" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/agonzalezmurua"><img src="https://avatars0.githubusercontent.com/u/8430727?v=4" width="100px;" alt=""/><br /><sub><b>Agustín González</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=agonzalezmurua" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/luchosrock"><img src="https://avatars0.githubusercontent.com/u/3098421?v=4" width="100px;" alt=""/><br /><sub><b>Luis Bustamante Flores</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=luchosrock" title="Code">💻</a></td>
     <td align="center"><a href="http://joseglego.io/"><img src="https://avatars1.githubusercontent.com/u/238259?v=4" width="100px;" alt=""/><br /><sub><b>Jose Lezama</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=joseglego" title="Code">💻</a></td>
