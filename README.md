@@ -24,15 +24,18 @@ El proyecto a sido desarrollado en React, por lo que te invitamos a leer la docu
 
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/luchosrock"><img src="https://avatars0.githubusercontent.com/u/3098421?v=4" width="100px;" alt="Luis Bustamante Flores"/><br /><sub><b>Luis Bustamante Flores</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=luchosrock" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/agonzalezmurua"><img src="https://avatars0.githubusercontent.com/u/8430727?v=4" width="100px;" alt="Agustín González"/><br /><sub><b>Agustín González</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=agonzalezmurua" title="Code">💻</a></td>
-    <td align="center"><a href="https://cl.linkedin.com/in/juanvalentinmoraruiz"><img src="https://avatars0.githubusercontent.com/u/4575267?v=4" width="100px;" alt="Juan Mora"/><br /><sub><b>Juan Mora</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=raicerk" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/luchosrock"><img src="https://avatars0.githubusercontent.com/u/3098421?v=4" width="100px;" alt=""/><br /><sub><b>Luis Bustamante Flores</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=luchosrock" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/agonzalezmurua"><img src="https://avatars0.githubusercontent.com/u/8430727?v=4" width="100px;" alt=""/><br /><sub><b>Agustín González</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=agonzalezmurua" title="Code">💻</a></td>
+    <td align="center"><a href="https://cl.linkedin.com/in/juanvalentinmoraruiz"><img src="https://avatars0.githubusercontent.com/u/4575267?v=4" width="100px;" alt=""/><br /><sub><b>Juan Mora</b></sub></a><br /><a href="https://github.com/raicerk/Chart-Tech-Trends/commits?author=raicerk" title="Code">💻</a> <a href="#infra-raicerk" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 ## Contributors ✨
 
