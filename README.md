@@ -2,7 +2,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
 ## Tendencias tecnológicas laborales
 
-Este proyecto open source busca compartir y distribuir datos sobre tendencias de tecnologías basado en información de ofertas laborales publicadas en distintos sitios, la información es de acceso público y es obtenida desde el proyecto [OpenData Laboral](https://github.com/pgramadores/LaboralGraphQL), estos datos son obtenidos desde ofertas de 5 países:
+Este proyecto open source busca compartir y distribuir datos sobre tendencias de tecnologías basado en información de ofertas laborales publicadas en distintos sitios, la información es de acceso público y es obtenida desde el proyecto [OpenData Laboral](https://github.com/raicerk/GraphQL-Laboral), estos datos son obtenidos desde ofertas de 5 países:
 
 * Chile
 * Argentina
