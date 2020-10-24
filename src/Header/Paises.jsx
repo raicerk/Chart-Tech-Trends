@@ -3,6 +3,7 @@ import { SingleSelect } from "react-select-material-ui";
 
 import AppContext from '../AppContext';
 import { countries } from '../utils/countries';
+import './Paises.scss';
 
 const Paises = React.memo((props) => (
       <AppContext.Consumer>
@@ -12,8 +13,7 @@ const Paises = React.memo((props) => (
                   defaultValue={context.pais}
                   placeholder="País" 
                   options={countries}
-                  onChange={country => context.setPais(country)}   
-                  style={{ width: 100 }}
+                  onChange={country => context.setPais(country)}
                   className='class__option'
                 />
               </div>

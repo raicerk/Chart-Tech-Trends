@@ -1,0 +1,9 @@
+.paises {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .paises {
+    width: 120px;
+  }
+}
