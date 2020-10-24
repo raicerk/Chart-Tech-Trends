@@ -39,6 +39,14 @@
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
+.mobile-only {
+  display: none;
+}
+
+.mobile-over {
+  display: inline;
+}
+
 @media (prefers-color-scheme: dark) {
   .header__title {
     color: $dt-logo-color;
@@ -50,10 +58,22 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .header-datatrend {
-    margin: 5px 0;
-    width: 100%;
+  .header__title {
     display: block;
+  }
+
+  .header-datatrend {
+    width: 50%;
+    margin: 10px 0;
+    display: inline-block;
+  }
+
+  .mobile-only {
+    display: inline;
+  }
+
+  .mobile-over {
+    display: none;
   }
 }
 
