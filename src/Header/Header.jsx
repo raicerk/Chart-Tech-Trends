@@ -46,7 +46,7 @@ function Header() {
         <span className='mobile-over'>Cantidad</span><span className='mobile-only'>#</span> de ofertas: {dataCantidadOfertas}
       </span>
       <span className='header-datatrend'>
-        <span className='mobile-over'>Cantidad</span><span className='mobile-only'>#</span> de skill: {dataCantidadSkill}
+        <span className='mobile-over'>Cantidad</span><span className='mobile-only'>#</span> de skills: {dataCantidadSkill}
       </span>
       <Paises />
     </header>
