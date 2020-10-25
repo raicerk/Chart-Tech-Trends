@@ -81,24 +81,31 @@ const Section = () => {
   const salariosHasData = dataSalario && dataSalario.length;
   const atLeastOneHasData = acumuladoHasData || mesHasData || salariosHasData;
 
-  if (!atLeastOneHasData) { return null; }
+  if (!atLeastOneHasData) {
+    return (
+      <div className="section__error">
+        <h4>Ocurrió un Error</h4>
+        <p>
+          Lo sentimos. Por una extraña razón no podemos encontrar información en los servidores. Si quieres puedes intentarlo nuevamente. Si el problema persiste por favor comunicate con nosotros.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="contenido">
       <article>
         <RelatedSkills />
 
-        { definedDatasets.map(set => {
-          return atLeastOneHasData ? (
-            <CommonSection
-              key={set.name}
-              name={set.name}
-              procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
-              procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
-              procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
-            />
-          ) : null;
-        })}
+        { definedDatasets.map(set => (
+          <CommonSection
+            key={set.name}
+            name={set.name}
+            procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
+            procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
+            procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
+          />
+        ))}
 
         <CompareSkills
           skills={customSkills}
