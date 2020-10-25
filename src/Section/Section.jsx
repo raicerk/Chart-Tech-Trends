@@ -76,20 +76,29 @@ const Section = () => {
     });
   }, [context.pais]);
 
+  const acumuladoHasData = dataAcumulado && dataAcumulado.length;
+  const mesHasData = dataAgrupadoPorMes && dataAgrupadoPorMes.length;
+  const salariosHasData = dataSalario && dataSalario.length;
+  const atLeastOneHasData = acumuladoHasData || mesHasData || salariosHasData;
+
+  if (!atLeastOneHasData) { return null; }
+
   return (
     <div className="contenido">
       <article>
         <RelatedSkills />
 
-        { definedDatasets.map(set => (
-          <CommonSection
-            key={set.name}
-            name={set.name}
-            procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
-            procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
-            procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
-          />
-        ))}
+        { definedDatasets.map(set => {
+          return atLeastOneHasData ? (
+            <CommonSection
+              key={set.name}
+              name={set.name}
+              procesadoAcumulado={procesarDataAcumulados(dataAcumulado, set.skills)}
+              procesadoPorMes={procesarDataAgrupadosPorMes(dataAgrupadoPorMes, set.skills)}
+              procesadoSalarios={procesarDataSalarios(dataSalario, set.skills)}
+            />
+          ) : null;
+        })}
 
         <CompareSkills
           skills={customSkills}
