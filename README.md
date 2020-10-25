@@ -14,6 +14,8 @@ Este proyecto open source busca compartir y distribuir datos sobre tendencias de
 
 En caso de que desees mejorar nuestra plataforma o agregar nuevos cruces de información que sea relevante, puedes hacer fork y enviar tus pull request, cuando los pull request sean aceptados se te agregara como contribuidor.
 
+Los pull request deben ser enviados a la rama `Develop` del proyecto.
+
 El formato del pull request está definido y lo puedes revisar directamente cuando crear el PR o en el archivo `pull_request_template.md`. Se sugiere que el nombre del PR siga la siguiente convención [https://www.conventionalcommits.org/en/v1.0.0/](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ### Tecnología de desarrollo
