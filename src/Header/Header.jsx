@@ -42,8 +42,12 @@ function Header() {
         Tech
         <span className='header-title__second'>Trend</span>
       </h1>
-      <span className='header-datatrend'>Cantidad de ofertas: {dataCantidadOfertas}</span>
-      <span className='header-datatrend'>Cantidad de skill: {dataCantidadSkill}</span>
+      <span className='header-datatrend'>
+        <span className='mobile-over'>Cantidad</span><span className='mobile-only'>#</span> de ofertas: {dataCantidadOfertas}
+      </span>
+      <span className='header-datatrend'>
+        <span className='mobile-over'>Cantidad</span><span className='mobile-only'>#</span> de skills: {dataCantidadSkill}
+      </span>
       <Paises />
     </header>
   );
