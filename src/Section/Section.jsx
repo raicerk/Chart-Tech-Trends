@@ -40,7 +40,7 @@ const procesarDataAcumulados = (data, elements) => {
 };
 
 const procesarDataSalarios = (data, elements) => {
-  return data.filter(iter => elements.includes(iter.skill));
+  return data.filter(iter => elements.includes(iter.skill)).sort((a,b) => (a.media > b.media) ? 1 : ((b.media > a.media) ? -1 : 0));
 };
 
 const procesarDataAgrupadosPorMes = (data, elements) => {
