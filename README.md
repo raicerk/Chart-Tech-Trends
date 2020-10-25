@@ -20,6 +20,10 @@ El formato del pull request está definido y lo puedes revisar directamente cuan
 
 El proyecto ha sido desarrollado en React, por lo que te invitamos a leer la documentación desde el sitio de [React](https://es.reactjs.org/).
 
+### Quieres donar?
+El dinero donado se usa para la mantención del sitio, para pagar la mensualidad del servidor donde esta alojada la web y la API Graphql, ademas del pago anual del dominio.
+
+[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_1.svg)](https://cafecito.app/raicerk)
 
 ### Contribuidores
 
