@@ -76,6 +76,22 @@ const Section = () => {
     });
   }, [context.pais]);
 
+  const acumuladoHasData = dataAcumulado && dataAcumulado.length;
+  const mesHasData = dataAgrupadoPorMes && dataAgrupadoPorMes.length;
+  const salariosHasData = dataSalario && dataSalario.length;
+  const atLeastOneHasData = acumuladoHasData || mesHasData || salariosHasData;
+
+  if (!atLeastOneHasData) {
+    return (
+      <div className="section__error">
+        <h4>Ocurrió un Error</h4>
+        <p>
+          Lo sentimos. Por una extraña razón no podemos encontrar información en los servidores. Si quieres puedes intentarlo nuevamente. Si el problema persiste por favor comunicate con nosotros.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="contenido">
       <article>
