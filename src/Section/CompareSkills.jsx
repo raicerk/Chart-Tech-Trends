@@ -4,8 +4,26 @@ import { MultipleSelect } from "react-select-material-ui";
 import CommonSection from './CommonSection';
 
 import skillsData from '../data';
+import './CompareSkills.scss';
 
 const CompareSection = ({ skills, onChange, procesadoAcumulado, procesadoPorMes, procesadoSalarios }) => {
+  const definedDatasets = [
+    skillsData.languages,
+    skillsData.database,
+    skillsData.js,
+    skillsData.cloud,
+    skillsData.mobile
+  ];
+
+  const presetData = definedDatasets.map(dataset => (
+    <div
+    key={dataset.name}
+    className="compare-skills__preset"
+    onClick={() => onChange(dataset.skills)}
+    >
+      {dataset.name}
+    </div>
+  ));
 
   return (
     <div className="section">
@@ -24,6 +42,9 @@ const CompareSection = ({ skills, onChange, procesadoAcumulado, procesadoPorMes,
         }}
         className='class__option'
       />
+
+      <h3 className="section__subtitle">Sugerencias de Búsqueda</h3>
+      {presetData}
 
       {skills.length > 0 && (
         <CommonSection
