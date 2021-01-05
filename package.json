@@ -6,7 +6,7 @@
     "@nivo/bar": "^0.59.2",
     "@nivo/line": "^0.59.3",
     "@nivo/pie": "^0.59.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
     "chalk": "^2.4.2",
     "node-sass": "^4.14.1",
