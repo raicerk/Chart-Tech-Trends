@@ -7,6 +7,6 @@
 
 [Change!] List any known issue of the feature you are implementing.
 
-Issue
+## Issue
 
 [Change!] Link to the associated issue.
