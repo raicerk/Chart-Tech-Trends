@@ -50,3 +50,13 @@
   max-width: 650px;
   margin: 0 auto;
 }
+
+.section__loading {
+  height: calc(100vh - 720px);
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  text-align: center;
+}

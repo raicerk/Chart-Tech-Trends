@@ -8,6 +8,7 @@ import api from '../api';
 import skillsData from '../data';
 
 import AppContext from '../AppContext';
+import Loading from '../Loading/Loading';
 
 import './Section.scss';
 
@@ -50,6 +51,7 @@ const procesarDataAgrupadosPorMes = (data, elements) => {
 const Section = () => {
   const context = useContext(AppContext);
 
+  const [cargado, setCargado] = useState(0);
   const [dataAgrupadoPorMes, setDataAgrupadoPorMes] = useState([]);
   const [dataAcumulado, setDataAcumulado] = useState([]);
   const [dataSalario, setDataSalario] = useState([]);
@@ -60,18 +62,22 @@ const Section = () => {
   };
 
   useEffect(() => {
+    setCargado(0);
     //Agrupado por mes
     api.agrupadoPorMes(context.pais).then(data => {
+      setCargado((cargado) => cargado + 1);
       setDataAgrupadoPorMes(data);
     });
 
     //Acumulado
     api.acumulado(context.pais).then(data => {
+      setCargado((cargado) => cargado + 1);
       setDataAcumulado(data);
     });
 
     //Salarios
     api.salarios(context.pais).then(data => {
+      setCargado((cargado) => cargado + 1);
       setDataSalario(data);
     });
   }, [context.pais]);
@@ -80,6 +86,16 @@ const Section = () => {
   const mesHasData = dataAgrupadoPorMes && dataAgrupadoPorMes.length;
   const salariosHasData = dataSalario && dataSalario.length;
   const atLeastOneHasData = acumuladoHasData || mesHasData || salariosHasData;
+
+  if (cargado < 3) {
+    return (
+      <div className="section__loading">
+        <div>
+          <Loading />
+        </div>
+      </div>
+    );
+  }
 
   if (!atLeastOneHasData) {
     return (
