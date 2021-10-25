@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router,  useLocation, useHistory } from "react-router-dom";
+
+import api from './api';
 
 import Header from './Header/Header';
 import Home from './Home/Home';
@@ -16,13 +18,31 @@ function App() {
   const history = useHistory();
 
   const suggestedCountry = location.pathname.slice(1).toUpperCase();
-  const country = countries.map(country => country.value).includes(suggestedCountry) ? suggestedCountry : 'CL';
-  const [pais, setPais] = useState(country);
+  const [pais, setPais] = useState('');
 
   const handleSetPais = (country) => {
     setPais(country);
     history.push(`/${country.toLowerCase()}`);
   };
+
+  useEffect(() => {
+    const validCountryCodes = countries.map(country => country.value);
+    const defaultCountryCode = countries[0].value;
+
+    if (suggestedCountry && validCountryCodes.includes(suggestedCountry)) {
+      handleSetPais(suggestedCountry);
+      return;
+    }
+
+    api.pais().then(response => {
+      const apiCountryCode = (response && response.data && response.data.country_code) || '';
+      const countryCode = validCountryCodes.includes(apiCountryCode) ? apiCountryCode : defaultCountryCode;
+
+      handleSetPais(countryCode);
+    }).catch(() => {
+      handleSetPais(defaultCountryCode);
+    });
+  }, []);
 
   return (
     <AppContext.Provider value={{
@@ -30,12 +50,16 @@ function App() {
       setPais: handleSetPais
     }}>
       <div className="App">
-        <Header />
-        <main>
-          <Home />
-          <Section />
-        </main>
-        <Footer />
+        {pais && (
+          <Fragment>
+            <Header />
+            <main>
+              <Home />
+              <Section />
+            </main>
+            <Footer />
+          </Fragment>
+        )}
       </div>
     </AppContext.Provider>
   );

@@ -22,6 +22,8 @@ const RelatedSkills = () => {
 
   }, [context.pais, skill]);
 
+  if (!data || !data.length) { return null; }
+
   return (
     <div className="section">
       <h2 className="section__title">Skills Relacionadas</h2>
