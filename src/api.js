@@ -1,6 +1,10 @@
 import Axios from 'axios';
 import config from './config.json';
 
+const pais = () => {
+  return Axios.get(config.urlCountry);
+};
+
 const agrupadoPorMes = (pais) => {
   return Axios.post(config.urlGraphQL, {
     query: `{
@@ -113,5 +117,6 @@ export default {
   salarios,
   otroSkill,
   cantidadSkills,
-  cantidadOfertas
+  cantidadOfertas,
+  pais
 }

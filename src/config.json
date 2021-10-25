@@ -1,4 +1,5 @@
 {
+    "urlCountry": "http://api.ipstack.com/check?access_key=af3411a87dceae75e4323737fa0d52c6",
     "urlGraphQL": "https://api.tech-trend.org",
     "chart": {
         "axisBottom": {
